@@ -1,0 +1,57 @@
+.whyme-container {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  .whyme-left {
+    width: 50%;
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .whyme-right {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 2rem;
+    h1 {
+      font-size: 3rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      span {
+        font-weight: 600;
+        color: $blue;
+      }
+    }
+    p {
+      padding-top: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .whyme-container {
+    flex-direction: column;
+    .whyme-left {
+      width: 100%;
+      height: 60%;
+    }
+    .whyme-right {
+      width: 100%;
+      padding: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .whyme-container {
+    .whyme-right h1 {
+      font-size: 2rem;
+    }
+  }
+}
