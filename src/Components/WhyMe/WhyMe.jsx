@@ -2,7 +2,7 @@ import React from "react";
 import whyme from "../../Assets/Images/CrossSection/whyme.png";
 const WhyMe = () => {
   return (
-    <div className="whyme-container">
+    <div className="whyme-container" id="dlaczego-ja">
       <div className="whyme-left">
         <img src={whyme} alt="whyme section" />
       </div>

@@ -72,3 +72,20 @@
     }
   }
 }
+
+@media screen and (max-width: 755px) {
+  .services-columns {
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-areas:
+      "conversation advice "
+      "modernization repair"
+      "installation virus" !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .services-columns {
+    display: flex !important;
+    flex-direction: column;
+  }
+}

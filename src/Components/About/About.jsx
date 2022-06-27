@@ -2,7 +2,7 @@ import React from "react";
 import about from "../../Assets/Images/CrossSection/about.png";
 const About = () => {
   return (
-    <div className="about-container">
+    <div className="about-container" id="o-mnie">
       <div className="about-left">
         <h1>
           O <span>MNIE</span>?

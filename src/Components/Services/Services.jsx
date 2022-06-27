@@ -9,7 +9,7 @@ import windows from "../../Assets/Images/Services/icons/windows.png";
 
 const Services = () => {
   return (
-    <div className="services-container">
+    <div className="services-container" id="nasze-uslugi">
       <h1>
         NASZE <span>USŁUGI</span>
       </h1>

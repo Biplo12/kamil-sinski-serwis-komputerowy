@@ -1,7 +1,7 @@
 import { useState } from "react";
 import herologo from "../../Assets/Images/Navbar/logo-small.png";
 
-import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import closeIcon from "../../Assets/Images/Navbar/close.svg";
 import menuIcon from "../../Assets/Images/Navbar/menu.svg";
 const Navbar = () => {
@@ -27,34 +27,36 @@ const Navbar = () => {
         navbarOnScroll ? " onScroll" : "",
       ].join("")}
     >
-      <div className="navbar-logo">
-        <img src={herologo} alt="navbar logo" height="55px" />
-      </div>
+      <HashLink to="/#strona-glowna">
+        <div className="navbar-logo">
+          <img src={herologo} alt="navbar logo" height="55px" />
+        </div>
+      </HashLink>
       <nav>
         <ul>
           <li>
             <span className="un">
-              <Link to="/">Strona główna</Link>
+              <HashLink to="/#strona-glowna">Strona główna</HashLink>
             </span>
           </li>
           <li>
             <span className="un">
-              <Link to="/#dlaczego-ja">Dlaczego ja?</Link>
+              <HashLink to="/#dlaczego-ja">Dlaczego ja?</HashLink>
             </span>
           </li>
           <li>
             <span className="un">
-              <Link to="/#o-mnie">O mnie</Link>
+              <HashLink to="/#o-mnie">O mnie</HashLink>
             </span>
           </li>
           <li>
             <span className="un">
-              <Link to="/#nasze-uslugi">Nasze usługi</Link>
+              <HashLink to="/#nasze-uslugi">Nasze usługi</HashLink>
             </span>
           </li>
           <li>
             <span className="un">
-              <Link to="/#kontakt">Kontakt</Link>
+              <HashLink to="/#kontakt">Kontakt</HashLink>
             </span>
           </li>
           <li className="mobile-menu-icon" onClick={handleNavbar}>

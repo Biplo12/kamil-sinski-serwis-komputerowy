@@ -25,9 +25,10 @@
   }
   .mobile-menu-icon {
     display: none;
+    cursor: pointer;
   }
 }
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 755px) {
   .navbar-container.mobile {
     width: 100%;
     height: 100%;
@@ -58,6 +59,7 @@
       }
       .mobile-menu-icon {
         padding: 0 !important;
+        cursor: pointer;
       }
       li:last-child {
         position: absolute;
