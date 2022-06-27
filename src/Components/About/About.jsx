@@ -1,14 +1,11 @@
 import React from "react";
-import whyme from "../../Assets/Images/CrossSection/whyme.png";
-const WhyMe = () => {
+import about from "../../Assets/Images/CrossSection/about.png";
+const About = () => {
   return (
-    <div className="whyme-container">
-      <div className="whyme-left">
-        <img src={whyme} alt="whyme section" />
-      </div>
-      <div className="whyme-right">
+    <div className="about-container">
+      <div className="about-left">
         <h1>
-          DLACZEGO <span>JA</span>?
+          O <span>MNIE</span>?
         </h1>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum
@@ -17,8 +14,11 @@ const WhyMe = () => {
           asperiores animi.
         </p>
       </div>
+      <div className="about-right">
+        <img src={about} alt="about section" />
+      </div>
     </div>
   );
 };
 
-export default WhyMe;
+export default About;

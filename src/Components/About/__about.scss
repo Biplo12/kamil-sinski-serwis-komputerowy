@@ -1,9 +1,9 @@
-.whyme-container {
+.about-container {
   width: 100%;
   height: 90vh;
   display: flex;
-  justify-content: flex-start;
-  .whyme-left {
+  justify-content: flex-end;
+  .about-right {
     width: 50%;
     height: 100%;
     img {
@@ -12,7 +12,7 @@
       object-fit: cover;
     }
   }
-  .whyme-right {
+  .about-left {
     width: 50%;
     height: 100%;
     display: flex;
@@ -23,6 +23,7 @@
     h1 {
       font-size: 3rem;
       font-weight: 300;
+      text-transform: uppercase;
       span {
         font-weight: 600;
         color: $blue;
@@ -35,14 +36,14 @@
 }
 
 @media screen and (max-width: 750px) {
-  .whyme-container {
-    flex-direction: column;
+  .about-container {
+    flex-direction: column-reverse;
     margin-bottom: 2rem;
-    .whyme-left {
+    .about-right {
       width: 100%;
       height: 60%;
     }
-    .whyme-right {
+    .about-left {
       width: 100%;
       height: auto;
       padding: 1rem;
@@ -51,8 +52,8 @@
 }
 
 @media screen and (max-width: 300px) {
-  .whyme-container {
-    .whyme-right h1 {
+  .about-container {
+    .about-left h1 {
       font-size: 2rem;
     }
   }

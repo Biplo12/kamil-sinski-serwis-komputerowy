@@ -1,0 +1,74 @@
+.services-container {
+  width: 100%;
+  height: auto;
+  margin: 5% 0;
+  h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 300;
+    span {
+      font-weight: 600;
+      color: $blue;
+    }
+  }
+  .services-columns {
+    width: 85%;
+    height: 100%;
+    padding-top: 2rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 25px;
+    grid-template-areas:
+      "conversation advice modernization"
+      "conversation repair repair"
+      "installation installation virus";
+    .services {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: rgba(31, 152, 220, 0.5);
+      background-position: center;
+      background-size: cover;
+      box-shadow: $b-shadow;
+      img {
+        height: 75px;
+        padding-bottom: 1rem;
+      }
+      p {
+        padding-top: 1rem;
+      }
+    }
+    .clock {
+      grid-area: conversation;
+      background-image: url(../../Assets/Images/Services/bg/clock-bg.png);
+    }
+    .question-mark {
+      grid-area: advice;
+      background-image: url(../../Assets/Images/Services/bg/advice-bg.png);
+    }
+    .motherboard {
+      grid-area: modernization;
+      background-image: url(../../Assets/Images/Services/bg/motherboard-bg.png);
+    }
+    .repair-kit {
+      grid-area: repair;
+      background-image: url(../../Assets/Images/Services/bg/repair-bg.png);
+    }
+    .windows {
+      grid-area: installation;
+      background-image: url(../../Assets/Images/Services/bg/windows-bg.png);
+    }
+    .virus {
+      grid-area: virus;
+      background-image: url(../../Assets/Images/Services/bg/virus-bg.png);
+    }
+  }
+}

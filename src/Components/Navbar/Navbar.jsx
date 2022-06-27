@@ -2,8 +2,8 @@ import { useState } from "react";
 import herologo from "../../Assets/Images/Navbar/logo-small.png";
 
 import { Link } from "react-router-dom";
-import closeIcon from "../../Assets/Icons/close.svg";
-import menuIcon from "../../Assets/Icons/menu.svg";
+import closeIcon from "../../Assets/Images/Navbar/close.svg";
+import menuIcon from "../../Assets/Images/Navbar/menu.svg";
 const Navbar = () => {
   //Mobile navbar state
   const [navbarOpen, setNavbarOpen] = useState(true);
@@ -39,22 +39,22 @@ const Navbar = () => {
           </li>
           <li>
             <span className="un">
-              <Link to="/">Dlaczego ja?</Link>
+              <Link to="/#dlaczego-ja">Dlaczego ja?</Link>
             </span>
           </li>
           <li>
             <span className="un">
-              <Link to="/">O mnie</Link>
+              <Link to="/#o-mnie">O mnie</Link>
             </span>
           </li>
           <li>
             <span className="un">
-              <Link to="/">Nasze usługi</Link>
+              <Link to="/#nasze-uslugi">Nasze usługi</Link>
             </span>
           </li>
           <li>
             <span className="un">
-              <Link to="/">Kontakt</Link>
+              <Link to="/#kontakt">Kontakt</Link>
             </span>
           </li>
           <li className="mobile-menu-icon" onClick={handleNavbar}>
