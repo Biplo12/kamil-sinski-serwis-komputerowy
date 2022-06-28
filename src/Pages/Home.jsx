@@ -4,6 +4,7 @@ import Hero from "../Components/Hero/Hero";
 import WhyMe from "../Components/WhyMe/WhyMe";
 import About from "../Components/About/About";
 import Services from "../Components/Services/Services";
+import Contact from "../Components/Contact/Contact";
 const Home = () => {
   return (
     <>
@@ -12,6 +13,7 @@ const Home = () => {
       <WhyMe />
       <About />
       <Services />
+      <Contact />
     </>
   );
 };
