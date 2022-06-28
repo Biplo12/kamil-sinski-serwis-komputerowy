@@ -27,7 +27,10 @@ const Contact = () => {
             <ul>
               <li>
                 <img src={location} alt="location icon" />
-                <a href="">
+                <a
+                  href="https://www.google.pl/maps/place/Karbowska+13,+41-923+Bytom/@50.3578451,18.8591928,17z/data=!3m1!4b1!4m5!3m4!1s0x47112cfa55b42dc3:0xd481eac55e6a9cd6!8m2!3d50.3578417!4d18.8613815"
+                  target={"_blank"}
+                >
                   <span className="un">
                     <span>Bytom,</span> Karbowska 13/1, 41-923
                   </span>
@@ -47,7 +50,10 @@ const Contact = () => {
               </li>
               <li>
                 <img src={facebook} alt="location icon" />
-                <a href="">
+                <a
+                  href="https://www.facebook.com/kamilsinskiserwis"
+                  target={"_blank"}
+                >
                   <span className="un">/kamilsinskiserwis</span>
                 </a>
               </li>
