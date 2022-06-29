@@ -1,9 +1,5 @@
 .navbar-container.onScroll {
   background-color: $blue-lighter;
-  transition: $transition;
-}
-.navbar-container.mobile.onScroll {
-  transition: $transition;
 }
 .navbar-container {
   width: 100%;

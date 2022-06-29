@@ -23,7 +23,7 @@
       width: 600px;
       height: calc(100% - 1rem);
       margin: 0.5rem;
-      background-color: #009af1;
+      background-color: $blue-darker;
       border-radius: 30px;
       display: flex;
       flex-direction: column;
@@ -76,32 +76,71 @@
         grid-template-areas:
           "name mail"
           "phone topic"
-          "message message";
-        input {
-          border: none;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-          background-color: transparent;
-          outline: none;
-          padding-bottom: 5px;
-          color: white;
-          transition: $transition;
-        }
-        input::placeholder {
-          color: rgba(255, 255, 255, 0.5);
-        }
-        input:focus {
-          border-bottom: 1px solid white;
-        }
+          "message message ";
 
+        .input-container {
+          position: relative;
+          padding: 15px 0 0;
+          margin-top: 10px;
+          input {
+            width: 100%;
+            height: 55px;
+            border: 0;
+            border-bottom: 2px solid $gray;
+            outline: 0;
+            font-size: 1.3rem;
+            color: white;
+            padding: 7px 0;
+            background: transparent;
+            transition: border-color 0.2s;
+
+            &::placeholder {
+              color: transparent;
+            }
+
+            &:placeholder-shown ~ .input-label {
+              font-size: 1.1rem;
+              cursor: text;
+              top: 20px;
+            }
+          }
+          input:focus {
+            ~ .input-label {
+              position: absolute;
+              top: 0;
+              display: block;
+              transition: 0.2s;
+              font-size: 1rem;
+              color: $blue;
+              font-weight: 700;
+            }
+            padding-bottom: 6px;
+            border-width: 3px;
+            border-image: linear-gradient(to right, $blue, $blue-lighter);
+            border-image-slice: 1;
+          }
+          .input-label {
+            position: absolute;
+            top: 0;
+            display: block;
+            transition: 0.2s;
+            font-size: 1rem;
+            color: gray;
+          }
+        }
         button {
-          width: 100px;
+          width: 200px;
           padding: 15px 10px;
           border: none;
-          color: white;
+          color: rgba(255, 255, 255, 0.75);
           outline: none;
-          background-color: #01a3ff;
+          background: linear-gradient(to right, $blue, $blue-lighter);
           cursor: pointer;
           border-radius: 30px;
+          transition: $transition;
+        }
+        button:hover {
+          color: white;
         }
         .name {
           grid-area: name;
@@ -122,6 +161,13 @@
     }
   }
 }
+
+// input {
+//   &:required,
+//   &:invalid {
+//     box-shadow: none;
+//   }
+// }
 
 @media screen and (max-width: 930px) {
   .contact-container {
