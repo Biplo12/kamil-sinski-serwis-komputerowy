@@ -2,7 +2,6 @@
   width: 100%;
   height: 90vh;
   display: flex;
-  justify-content: flex-start;
   .whyme-left {
     width: 50%;
     height: 100%;
@@ -36,21 +35,21 @@
 
 @media screen and (max-width: 755px) {
   .whyme-container {
+    height: auto;
     flex-direction: column;
-    margin-bottom: 2rem;
     .whyme-left {
       width: 100%;
       height: 60%;
     }
     .whyme-right {
-      width: 100%;
+      width: 90%;
       height: auto;
-      padding: 1rem;
+      padding: 3rem 1rem;
     }
   }
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 310px) {
   .whyme-container {
     .whyme-right h1 {
       font-size: 2rem;

@@ -1,8 +1,10 @@
 .contact-container {
   width: 100%;
-  height: 100vh;
+  height: 90vh;
+  margin: 3rem 0;
   h1 {
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
     text-align: center;
     font-size: 3rem;
     font-weight: 300;
@@ -13,7 +15,7 @@
   }
   .contact-card {
     width: 85%;
-    height: 80vh;
+    height: 75vh;
     margin: 2rem auto;
     background-color: rgba(62, 150, 200, 0.5);
     border-radius: 30px;
@@ -27,6 +29,7 @@
       border-radius: 30px;
       display: flex;
       flex-direction: column;
+      box-shadow: $b-shadow;
       .inner-card-label {
         display: flex;
         flex-direction: column;
@@ -86,9 +89,9 @@
             width: 100%;
             height: 55px;
             border: 0;
-            border-bottom: 2px solid $gray;
+            border-bottom: 2px solid white;
             outline: 0;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: white;
             padding: 7px 0;
             background: transparent;
@@ -99,9 +102,10 @@
             }
 
             &:placeholder-shown ~ .input-label {
-              font-size: 1.1rem;
+              font-size: 0.8rem;
               cursor: text;
               top: 20px;
+              color: white;
             }
           }
           input:focus {
@@ -125,7 +129,7 @@
             display: block;
             transition: 0.2s;
             font-size: 1rem;
-            color: gray;
+            color: $blue;
           }
         }
         button {
@@ -138,6 +142,7 @@
           cursor: pointer;
           border-radius: 30px;
           transition: $transition;
+          box-shadow: $b-shadow;
         }
         button:hover {
           color: white;
@@ -161,13 +166,6 @@
     }
   }
 }
-
-// input {
-//   &:required,
-//   &:invalid {
-//     box-shadow: none;
-//   }
-// }
 
 @media screen and (max-width: 930px) {
   .contact-container {
@@ -198,6 +196,12 @@
     justify-content: center;
     li {
       flex-direction: column;
+      width: 90%;
+      text-align: center;
+      margin: 0 auto;
+      img {
+        margin: 0;
+      }
       a {
         font-size: 0.9rem;
         padding-top: 0.5rem;

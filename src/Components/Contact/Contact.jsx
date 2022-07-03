@@ -62,84 +62,44 @@ const Contact = () => {
         </div>
         <div className="contact-card-form-container">
           <div className="contact-card-form">
-            {/* <input type="text" placeholder="Imię" className="name" required />
-            <input
-              type="Email"
-              className="mail form-control"
-              placeholder="E-mail"
-              required
-            />
-            <input
-              type="phone"
-              placeholder="Numer telefonu (opcjonalne)"
-              className="phone"
-            />
-            <input type="text" placeholder="Temat" className="topic" required />
-            <input
-              type="text"
-              placeholder="Treść wiadomośći"
-              className="message"
-              id="bigger-input"
-              required
-            /> */}
-            <div class="input-container name">
-              <input
-                type="text"
-                placeholder="Imię"
-                class="name"
-                id="name"
-                required
-              />
-              <label for="name" class="input-label">
+            <div className="input-container name">
+              <input type="text" placeholder="Imię" id="name" required />
+              <label className="input-label" htmlFor="name">
                 Imię
               </label>
             </div>
-            <div class="input-container email">
-              <input
-                type="email"
-                placeholder="email"
-                name="email"
-                id="email"
-                required
-              />
-              <label for="email" class="input-label">
+            <div className="input-container email">
+              <input type="email" placeholder="email" id="email" required />
+              <label className="input-label" htmlFor="email">
                 E-mail
               </label>
             </div>
-            <div class="input-container phone">
+            <div className="input-container phone">
               <input
                 type="phone"
                 placeholder="Numer telefonu(opcjonalne)"
-                name="phone"
                 id="phone"
                 required
               />
-              <label for="phone" class="input-label">
+              <label className="input-label" htmlFor="phone">
                 Numer telefonu (opcjonalne)
               </label>
             </div>
-            <div class="input-container topic">
-              <input
-                type="text"
-                placeholder="Temat"
-                name="topic"
-                id="topic"
-                required
-              />
-              <label for="topic" class="input-label">
+            <div className="input-container topic">
+              <input type="text" placeholder="Temat" id="topic" required />
+              <label className="input-label" htmlFor="topic">
                 Temat
               </label>
             </div>
-            <div class="input-container message">
+            <div className="input-container message">
               <input
                 type="text"
-                placeholder="Treść wiadomośći"
-                name="message"
+                placeholder="Treść wiadomości"
                 id="message"
                 required
               />
-              <label for="message" class="input-label">
-                Treść wiadomośći
+              <label className="input-label" htmlFor="message">
+                Treść wiadomości
               </label>
             </div>
             <button type="submit">Wyślij</button>

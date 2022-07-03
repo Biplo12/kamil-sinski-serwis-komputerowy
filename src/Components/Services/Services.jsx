@@ -19,36 +19,42 @@ const Services = () => {
           serviceTitle="Konserwacja laptopów i komputerów"
           serviceText="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae
           facere est molestiae voluptates recusandae consectetur"
+          serviceClass="serviceCard"
         />
         <Service
           icon={questionMark}
           serviceTitle="Doradztwo komputerowe"
           serviceText="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae
             facere est molestiae voluptates recusandae consectetur"
+          serviceClass="adviceCard"
         />
         <Service
           icon={motherboard}
           serviceTitle="Modernizacja komputerów"
           serviceText="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae
           facere est molestiae voluptates recusandae consectetur"
+          serviceClass="modernizationCard"
         />
         <Service
           icon={repairKit}
           serviceTitle="Naprawa sprzętu komputerowego"
           serviceText="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae
           facere est molestiae voluptates recusandae consectetur"
+          serviceClass="repairCard"
         />
         <Service
           icon={windows}
           serviceTitle="Instalacja oprogramowania"
           serviceText="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae
             facere est molestiae voluptates recusandae consectetur"
+          serviceClass="installationCard"
         />
         <Service
           icon={virus}
           serviceTitle="Usuwanie złośliwego oprogramowania"
           serviceText="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae
           facere est molestiae voluptates recusandae consectetur"
+          serviceClass="virusCard"
         />
       </div>
     </div>

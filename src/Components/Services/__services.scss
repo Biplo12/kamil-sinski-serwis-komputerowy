@@ -1,7 +1,7 @@
 .services-container {
   width: 100%;
   height: auto;
-  margin: 5% 0;
+  margin: 3rem 0;
   h1 {
     width: 100%;
     text-align: center;
@@ -46,29 +46,29 @@
         padding-top: 1rem;
       }
     }
-    .clock {
+    .serviceCard {
       grid-area: conversation;
-      background-image: url(../../Assets/Images/Services/bg/clock-bg.png);
+      background-image: url("../../Assets/Images/Services/bg/clock-bg.png");
     }
-    .question-mark {
+    .adviceCard {
       grid-area: advice;
-      background-image: url(../../Assets/Images/Services/bg/advice-bg.png);
+      background-image: url("../../Assets/Images/Services/bg/advice-bg.png");
     }
-    .motherboard {
+    .modernizationCard {
       grid-area: modernization;
-      background-image: url(../../Assets/Images/Services/bg/motherboard-bg.png);
+      background-image: url("../../Assets/Images/Services/bg/motherboard-bg.png");
     }
-    .repair-kit {
+    .repairCard {
       grid-area: repair;
       background-image: url(../../Assets/Images/Services/bg/repair-bg.png);
     }
-    .windows {
+    .installationCard {
       grid-area: installation;
-      background-image: url(../../Assets/Images/Services/bg/windows-bg.png);
+      background-image: url("../../Assets/Images/Services/bg/windows-bg.png");
     }
-    .virus {
+    .virusCard {
       grid-area: virus;
-      background-image: url(../../Assets/Images/Services/bg/virus-bg.png);
+      background-image: url("../../Assets/Images/Services/bg/virus-bg.png");
     }
   }
 }
