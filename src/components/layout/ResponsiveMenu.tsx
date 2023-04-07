@@ -1,0 +1,31 @@
+import Link from 'next/link';
+import React from 'react';
+
+interface IResponsiveMenu {
+  menuState: boolean;
+  links: { href: string; label: string }[];
+}
+
+const ResponsiveMenu: React.FC<IResponsiveMenu> = ({
+  menuState,
+  links,
+}): JSX.Element => {
+  return (
+    <div
+      className={`bg-sea fixed right-0 top-0 z-40 flex h-full w-[35vw] items-center justify-center text-white duration-300 ease-in-out ${
+        menuState ? 'translate-x-0 ' : 'translate-x-full'
+      }`}
+    >
+      <ul className='flex-colspace-y-4 flex flex-col gap-3 text-center'>
+        {links.map(({ href, label }) => (
+          <li key={`${href}${label}`}>
+            <Link href={href} className='text-l'>
+              {label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+export default ResponsiveMenu;
