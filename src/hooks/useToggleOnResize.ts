@@ -4,7 +4,7 @@ export const useToggleOnResize = (
   width: number,
   state: boolean,
   toggleState: () => void
-) => {
+): void => {
   useEffect(() => {
     const handleCloseMenu = () => {
       if (window.innerWidth > width && state === true) {

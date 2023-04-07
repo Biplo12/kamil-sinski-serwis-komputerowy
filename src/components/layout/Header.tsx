@@ -1,6 +1,12 @@
-import { useToggleOnResize } from 'hooks/useToggleOnResize';
-import { useToogleHook } from 'hooks/useToogleHook';
 import Link from 'next/link';
+
+import {
+  useDisableScroll,
+  useIsTop,
+  useScrollDirection,
+  useToggleHook,
+  useToggleOnResize,
+} from '@/hooks';
 
 import ResponsiveMenu from '@/components/layout/ResponsiveMenu';
 
@@ -17,15 +23,28 @@ const links = [
 ];
 
 export default function Header() {
-  const responsiveMenu = useToogleHook(false);
+  const responsiveMenu = useToggleHook(false);
+  const isTop = useIsTop();
   useToggleOnResize(640, responsiveMenu.state, responsiveMenu.toggle);
-
+  const scrollDirection = useScrollDirection();
+  useDisableScroll(responsiveMenu.state);
   return (
     <>
-      <header className='bg-pylon sticky top-0 z-50 px-10'>
-        <div className='layout flex h-[9vh] items-center justify-between'>
-          <Link href='/'>
-            <img src='/images/small-logo.png' alt='small-logo' />
+      <header
+        className={`fixed left-0 top-0 z-50 w-full px-10 duration-300 ${
+          scrollDirection === 'down' ? 'mxsm:-top-[11rem] -top-36' : 'top-0'
+        } ${isTop || responsiveMenu.state ? '' : 'bg-pylon'}`}
+      >
+        <div
+          className={`layout flex h-[9vh] w-full items-center ${
+            responsiveMenu.state ? 'justify-end' : 'justify-between'
+          }`}
+        >
+          <Link
+            href='/'
+            className={`${responsiveMenu.state ? 'hidden' : 'block'}`}
+          >
+            <img src='/images/small-logo-blue.png' alt='small-logo' />
           </Link>
           <nav>
             <ul className='flex items-center justify-between space-x-4 text-white'>
@@ -41,7 +60,7 @@ export default function Header() {
               ))}
               <li
                 onClick={() => responsiveMenu.toggle()}
-                className='mxlg:flex hidden cursor-pointer'
+                className='mxlg:block hidden cursor-pointer'
               >
                 <ResponsiveNavbarIcon menuState={responsiveMenu.state} />
               </li>

@@ -1,7 +1,7 @@
 import React from 'react';
 const Hero: React.FC = (): JSX.Element => {
   return (
-    <div className='relative flex h-full w-full items-center justify-center'>
+    <div className='bg-black-stalion flex h-[100vh] w-full flex-col items-center justify-center text-white'>
       <video
         autoPlay
         loop

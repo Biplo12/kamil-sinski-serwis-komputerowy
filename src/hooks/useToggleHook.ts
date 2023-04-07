@@ -1,6 +1,13 @@
 import { useState } from 'react';
 
-export const useToogleHook = (initialState: boolean) => {
+interface IToggleReturn {
+  state: boolean;
+  toggle: () => void;
+  close: () => void;
+  open: () => void;
+}
+
+export const useToggleHook = (initialState: boolean): IToggleReturn => {
   const [state, setState] = useState(initialState);
 
   const toggle = () => {
