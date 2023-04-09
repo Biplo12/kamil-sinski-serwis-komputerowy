@@ -15,7 +15,7 @@ import ResponsiveNavbarIcon from '~/svg/ResponsiveNavbarIcon';
 const links = [
   { href: '/', label: 'Strona główna' },
   { href: '/o-mnie', label: 'O mnie' },
-  { href: '/dlaczego-ja', label: 'Dlaczego ja?' },
+  { href: '/dlaczego-my', label: 'Dlaczego my?' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/nasze-uslugi', label: 'Nasze usługi' },
   { href: '/status-zlecenia', label: 'Status zlecenia' },
@@ -31,7 +31,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed left-0 top-0 z-50 w-full px-10 duration-300 ${
+        className={`fixed left-0 z-50 w-full px-10 duration-300 ${
           scrollDirection === 'down' ? 'mxsm:-top-[11rem] -top-36' : 'top-0'
         } ${isTop || responsiveMenu.state ? '' : 'bg-pylon'}`}
       >

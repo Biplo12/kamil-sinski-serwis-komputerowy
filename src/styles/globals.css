@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cards-img-1 {
+  background-image: url('/images/example-1.png');
+}
+.cards-img-2 {
+  background-image: url('/images/example-2.png');
+}
