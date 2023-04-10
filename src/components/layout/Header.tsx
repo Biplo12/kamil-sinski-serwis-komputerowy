@@ -47,12 +47,14 @@ export default function Header() {
             <img src='/images/small-logo-blue.png' alt='small-logo' />
           </Link>
           <nav>
-            <ul className='flex items-center justify-between space-x-4 text-white'>
+            <ul className='flex items-center justify-between space-x-4'>
               {links.map(({ href, label }) => (
                 <li key={`${href}${label}`} className='mxlg:hidden flex'>
                   <Link
                     href={href}
-                    className='link link-underline link-underline-black text-l'
+                    className={`link link-underline ${
+                      isTop ? 'link-underline-blue' : 'link-underline-white'
+                    } text-l`}
                   >
                     {label}
                   </Link>

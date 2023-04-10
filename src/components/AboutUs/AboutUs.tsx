@@ -3,7 +3,7 @@ import React from 'react';
 import TextSide from '@/components/Common/TextSide';
 const AboutUs: React.FC = (): JSX.Element => {
   return (
-    <div className='bg-black-stalion mxlg:flex-col mxlg:pb-5 flex h-auto min-h-[100vh] w-full items-center justify-between overflow-hidden text-white'>
+    <div className='bg-black-stalion mxlg:flex-col mxlg:pb-5 flex h-auto min-h-[100vh] w-full items-center justify-between overflow-hidden'>
       <img
         src='/images/example-1.png'
         alt='about-me'

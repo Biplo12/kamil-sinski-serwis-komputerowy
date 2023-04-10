@@ -1,10 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #f5f5f5;
+}
 
 .cards-img-1 {
   background-image: url('/images/example-1.png');
 }
 .cards-img-2 {
   background-image: url('/images/example-2.png');
+}
+
+.bg-card-clock-bg {
+  background-image: url('/images/cards/clock-bg.png');
+}
+.bg-card-question-mark-bg {
+  background-image: url('/images/cards/question-mark-bg.png');
+}
+.bg-card-virus-bg {
+  background-image: url('/images/cards/virus-bg.png');
+}
+.bg-card-motherboard-bg {
+  background-image: url('/images/cards/motherboard-bg.png');
+}
+.bg-card-windows-bg {
+  background-image: url('/images/cards/windows-bg.png');
+}
+.bg-card-repair-kit-bg {
+  background-image: url('/images/cards/repair-kit-bg.png');
 }
