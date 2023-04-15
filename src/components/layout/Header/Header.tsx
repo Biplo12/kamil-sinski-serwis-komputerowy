@@ -8,7 +8,7 @@ import {
   useToggleOnResize,
 } from '@/hooks';
 
-import ResponsiveMenu from '@/components/layout/ResponsiveMenu';
+import ResponsiveMenu from './ResponsiveMenu';
 
 import ResponsiveNavbarIcon from '~/svg/ResponsiveNavbarIcon';
 

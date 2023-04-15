@@ -1,18 +1,18 @@
 import React from 'react';
 
-interface IResponsiveCard {
+interface IResponsiveService {
   title: string;
   icon: string;
   description: string;
 }
 
-const ResponsiveCard: React.FC<IResponsiveCard> = ({
+const ResponsiveService: React.FC<IResponsiveService> = ({
   title,
   icon,
   description,
 }): JSX.Element => {
   return (
-    <div className='bg-pylon h-full bg-opacity-25'>
+    <div className='bg-pylon h-full bg-opacity-25 shadow-lg'>
       <div
         className={`bg-card-${icon}-bg mxxl:p-3 mxsm:h-auto flex h-full min-h-[450px] flex-col items-center justify-center bg-cover bg-center bg-no-repeat text-center `}
       >
@@ -25,4 +25,4 @@ const ResponsiveCard: React.FC<IResponsiveCard> = ({
     </div>
   );
 };
-export default ResponsiveCard;
+export default ResponsiveService;

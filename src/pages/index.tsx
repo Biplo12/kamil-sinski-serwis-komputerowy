@@ -7,6 +7,8 @@ import Seo from '@/components/Seo';
 import Services from '@/components/Services/Services';
 import WhyUs from '@/components/WhyUs/WhyUs';
 
+import Contact from '@/Contact/Contact';
+
 export default function HomePage() {
   return (
     <Layout>
@@ -15,6 +17,7 @@ export default function HomePage() {
       <AboutUs />
       <WhyUs />
       <Services />
+      <Contact />
     </Layout>
   );
 }

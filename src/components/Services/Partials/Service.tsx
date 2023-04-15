@@ -1,14 +1,14 @@
 import React from 'react';
 
-interface ICard {
+interface IService {
   title: string;
   icon: string;
   description: string;
 }
 
-const Card: React.FC<ICard> = ({ title, icon, description }): JSX.Element => {
+const Service: React.FC<IService> = ({ title, icon, description }): JSX.Element => {
   return (
-    <div className='bg-pylon h-full bg-opacity-25'>
+    <div className='bg-pylon h-full bg-opacity-25 shadow-lg'>
       <div
         className={`bg-card-${icon}-bg mxxl:p-3 flex h-full flex-col items-center justify-center bg-cover bg-center bg-no-repeat p-5`}
       >
@@ -21,4 +21,4 @@ const Card: React.FC<ICard> = ({ title, icon, description }): JSX.Element => {
     </div>
   );
 };
-export default Card;
+export default Service;
