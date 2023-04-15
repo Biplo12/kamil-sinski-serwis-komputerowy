@@ -1,44 +1,45 @@
 import React from 'react';
 
+import { contactInfoData } from '@/components/Common/contactInfoData';
+
 import ContactIcon from '@/Contact/Partials/ContactIcon';
+import ResponsiveContactIcon from '@/Contact/Partials/ResponsiveContactIcon';
+
 const ContactInfo: React.FC = (): JSX.Element => {
   return (
-    <div className='bg-blue mxlg:min-w-full mxlg:min-h-[300px] mxlg:py-10 h-full min-h-[800px] w-[25%] min-w-[350px] rounded-[1rem] p-3'>
-      <div className='relative p-3'>
+    <div className='bg-blue mxlg:min-w-full mxlg:min-h-[400px] mxlg:py-5 mxlg:flex mxlg:justify-between mxlg:flex-col h-full min-h-[800px] w-[25%] min-w-[350px] rounded-[1rem]'>
+      <div className='relative p-6'>
         <img src='/images/ellipse.png' alt='ellipse' />
-        <div className='absolute left-0 top-0 flex flex-col items-start justify-center p-5'>
-          <h1 className='mxmd:text-[2rem] text-center text-[3rem] font-bold '>
-            Kontakt
-          </h1>
-          <p>
+        <div className='mxxsm:items-center absolute left-0 top-0 flex flex-col items-start justify-center p-7'>
+          <h1 className='mxmd:text-[2rem] text-[3rem] font-bold'>Kontakt</h1>
+          <p className='mxxsm:text-center'>
             Zapraszamy do kontaktu z naszym zespołem w celu uzyskania
-            szczegółowych informacji na temat naszych usług. Jesteśmy do Twojej
-            dyspozycji i chętnie pomożemy w rozwiązaniu wszelkich problemów
-            związanych z Twoim sprzętem komputerowym.
+            szczegółowych informacji na temat naszych usług.
           </p>
         </div>
       </div>
-      <div className='mxlg:pt-0 flex flex-col items-start justify-center gap-5 px-5 pt-20'>
-        <ContactIcon
-          icon='location'
-          content='Bytom, karbowska 13/1 41-923'
-          href='https://www.google.pl/maps/place/Karbowska+13,+41-923+Bytom/@50.3578451,18.8591928,17z/data=!3m1!4b1!4m5!3m4!1s0x47112cfa55b42dc3:0xd481eac55e6a9cd6!8m2!3d50.3578417!4d18.8613815'
-        />
-        <ContactIcon
-          icon='phone'
-          content='+48 513 292 132'
-          href='tel:+48513292132'
-        />
-        <ContactIcon
-          icon='mail'
-          content='kamilsinskiserwis@gmail.com'
-          href='mailto:kamilsinskiserwis@gmail.com'
-        />
-        <ContactIcon
-          icon='facebook'
-          content='/kamilsinskiserwis'
-          href='https://www.facebook.com/kamilsinskiserwis'
-        />
+      <div className='mxxsm:pt-0 mxxsm:hidden flex flex-col items-start justify-center gap-5 p-7'>
+        {contactInfoData.map((icon, index) => (
+          <>
+            <ContactIcon
+              key={index}
+              icon={icon.icon}
+              content={icon.content}
+              href={icon.href}
+            />
+          </>
+        ))}
+      </div>
+      <div className='mxxsm:pt-0 mxxsm:flex hidden items-start justify-center gap-5 px-5'>
+        {contactInfoData.map((icon, index) => (
+          <>
+            <ResponsiveContactIcon
+              key={index}
+              icon={icon.icon}
+              href={icon.href}
+            />
+          </>
+        ))}
       </div>
     </div>
   );

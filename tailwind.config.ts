@@ -27,7 +27,9 @@ export default {
       },
       screens: {
         // => @media (max-width: 290px) { ... }
-        exsm: { max: '290px' },
+        exxsm: { max: '290px' },
+        // => @media (max-width: 355px) { ... }
+        exsm: { max: '355px' },
         // => @media (max-width: 480px) { ... }
         mxxsm: { max: '480px' },
         // => @media (max-width: 640px) { ... }
