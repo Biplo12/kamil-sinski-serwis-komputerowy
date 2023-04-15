@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import ResponsiveService from '@/components/Services/Partials/ResponsiveService';
 import Service from '@/components/Services/Partials/Service';
@@ -60,21 +60,23 @@ const Services: React.FC = (): JSX.Element => {
   ];
   return (
     <>
-      <div className='bg-black-stalion mxmd:h-0 mxmd:min-h-0 mxlg:pt-0 flex h-auto min-h-[100vh] w-full flex-col items-center justify-center gap-10 overflow-hidden px-5 pt-10'>
+      <div
+        className='bg-black-stalion mxmd:h-0 mxmd:min-h-0 mxlg:pt-0 flex h-auto min-h-[100vh] w-full flex-col items-center justify-center gap-10 overflow-hidden px-5 pt-10'
+        id='nasze-uslugi'
+      >
         <h1 className='mxsm:text-[2.5rem] mxmd:hidden text-[4rem] font-light uppercase tracking-wide'>
           Nasze <span className='text-pylon font-bold'>usługi</span>
         </h1>
         <div className='mxxl:flex mxxl:flex-wrap mxxl:gap-0 mxmd:flex-col grid w-full grid-flow-row grid-cols-3 gap-5 px-[10%]'>
           {servicesData.map((service, index) => (
-            <>
+            <Fragment key={index}>
               <Service
-                key={index}
                 title={service.title}
                 icon={service.icon}
                 description={service.description}
                 classContent={service.classContent}
               />
-            </>
+            </Fragment>
           ))}
         </div>
       </div>
@@ -84,14 +86,13 @@ const Services: React.FC = (): JSX.Element => {
         </h1>
         <div className='flex flex-col gap-5'>
           {servicesData.map((service, index) => (
-            <>
+            <Fragment key={index}>
               <ResponsiveService
-                key={index}
                 title={service.title}
                 icon={service.icon}
                 description={service.description}
               />
-            </>
+            </Fragment>
           ))}
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import contactInfoData from '@/components/Common/contactInfoData';
 
@@ -20,25 +20,20 @@ const ContactInfo: React.FC = (): JSX.Element => {
       </div>
       <div className='mxxsm:pt-0 mxxsm:hidden flex flex-col items-start justify-center gap-5 p-7'>
         {contactInfoData.map((icon, index) => (
-          <>
+          <Fragment key={index}>
             <ContactIcon
-              key={index}
               icon={icon.icon}
               content={icon.label}
               href={icon.href}
             />
-          </>
+          </Fragment>
         ))}
       </div>
       <div className='mxxsm:pt-0 mxxsm:flex hidden items-start justify-center gap-5 px-5'>
         {contactInfoData.map((icon, index) => (
-          <>
-            <ResponsiveContactIcon
-              key={index}
-              icon={icon.icon}
-              href={icon.href}
-            />
-          </>
+          <Fragment key={index}>
+            <ResponsiveContactIcon icon={icon.icon} href={icon.href} />
+          </Fragment>
         ))}
       </div>
     </div>

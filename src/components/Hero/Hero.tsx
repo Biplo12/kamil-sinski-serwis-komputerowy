@@ -3,7 +3,10 @@ import React from 'react';
 import Video from '@/components/Hero/Partials/Video';
 const Hero: React.FC = (): JSX.Element => {
   return (
-    <div className='bg-black-stalion flex h-[100vh] w-full flex-col items-center justify-center '>
+    <div
+      className='bg-black-stalion flex h-[100vh] w-full flex-col items-center justify-center'
+      id='strona-glowna'
+    >
       <Video />
       <img
         src='/images/big-logo.png'

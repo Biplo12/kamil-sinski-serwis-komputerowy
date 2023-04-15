@@ -3,7 +3,10 @@ import React from 'react';
 import TextSide from '@/components/Common/TextSide';
 const WhyUs: React.FC = (): JSX.Element => {
   return (
-    <div className='bg-black-stalion mxlg:flex-col-reverse flex h-auto min-h-[100vh] w-full items-center justify-between overflow-hidden '>
+    <div
+      className='bg-black-stalion mxlg:flex-col-reverse flex h-auto min-h-[100vh] w-full items-center justify-between overflow-hidden'
+      id='dlaczego-my'
+    >
       <TextSide
         title='Dlaczego my?'
         text='Jako specjaliści od serwisu urządzeń komputerowych, jesteśmy zawsze
