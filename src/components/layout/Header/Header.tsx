@@ -8,19 +8,11 @@ import {
   useToggleOnResize,
 } from '@/hooks';
 
+import links from '@/components/Common/links';
+
 import ResponsiveMenu from './ResponsiveMenu';
 
 import ResponsiveNavbarIcon from '~/svg/ResponsiveNavbarIcon';
-
-const links = [
-  { href: '/', label: 'Strona główna' },
-  { href: '/o-mnie', label: 'O mnie' },
-  { href: '/dlaczego-my', label: 'Dlaczego my?' },
-  { href: '/portfolio', label: 'Portfolio' },
-  { href: '/nasze-uslugi', label: 'Nasze usługi' },
-  { href: '/status-zlecenia', label: 'Status zlecenia' },
-  { href: '/kontakt', label: 'Kontakt' },
-];
 
 export default function Header() {
   const responsiveMenu = useToggleHook(false);
