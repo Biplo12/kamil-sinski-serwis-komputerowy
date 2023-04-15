@@ -3,7 +3,7 @@ import React from 'react';
 import ContactIcon from '@/Contact/Partials/ContactIcon';
 const ContactInfo: React.FC = (): JSX.Element => {
   return (
-    <div className='bg-blue h-full min-h-[800px] w-[25%] min-w-[400px] max-w-[600px] rounded-[1rem] p-3'>
+    <div className='bg-blue mxlg:min-w-full mxlg:min-h-[300px] mxlg:py-10 h-full min-h-[800px] w-[25%] min-w-[350px] rounded-[1rem] p-3'>
       <div className='relative p-3'>
         <img src='/images/ellipse.png' alt='ellipse' />
         <div className='absolute left-0 top-0 flex flex-col items-start justify-center p-5'>
@@ -18,7 +18,7 @@ const ContactInfo: React.FC = (): JSX.Element => {
           </p>
         </div>
       </div>
-      <div className='flex flex-col items-start justify-center gap-5 px-5 pt-20'>
+      <div className='mxlg:pt-0 flex flex-col items-start justify-center gap-5 px-5 pt-20'>
         <ContactIcon
           icon='location'
           content='Bytom, karbowska 13/1 41-923'

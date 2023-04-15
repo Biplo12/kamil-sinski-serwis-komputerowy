@@ -5,11 +5,11 @@ import Service from '@/components/Services/Partials/Service';
 const Services: React.FC = (): JSX.Element => {
   return (
     <>
-      <div className='bg-black-stalion mxmd:h-0 mxmd:min-h-0 flex h-auto min-h-[100vh] w-full flex-col items-center justify-start gap-5 overflow-hidden p-5'>
+      <div className='bg-black-stalion mxmd:h-0 mxmd:min-h-0 flex h-auto min-h-[100vh] w-full flex-col items-center justify-center gap-10 overflow-hidden px-5 pt-10'>
         <h1 className='mxsm:text-[2.5rem] mxmd:hidden text-[4rem] font-light uppercase tracking-wide'>
           Nasze <span className='text-pylon font-bold'>usługi</span>
         </h1>
-        <div className='grid- mxxl:flex mxxl:flex-wrap mxxl:p-10 mxxl:gap-0 mxmd:flex-col  grid w-full grid-flow-row grid-cols-3 gap-5 px-[10%]'>
+        <div className='mxxl:flex mxxl:flex-wrap mxxl:gap-0 mxmd:flex-col grid w-full grid-flow-row grid-cols-3 gap-5 px-[10%]'>
           <div className='mxxl:w-1/2 mxxl:p-3 mxmd:w-full mxmd:hidden row-start-1 row-end-4 text-center'>
             <Service
               title='Konserwacja laptopów i komputerów'
@@ -54,7 +54,7 @@ const Services: React.FC = (): JSX.Element => {
           </div>
         </div>
       </div>
-      <div className=' bg-black-stalion mxmd:flex mxmd:gap-5 hidden flex-col items-center justify-center p-5 '>
+      <div className=' bg-black-stalion mxmd:flex mxmd:gap-10 hidden flex-col items-center justify-center px-5 pt-10'>
         <h1 className='mxmd:text-[2.5rem] text-center text-[4rem] font-light uppercase tracking-wide'>
           Nasze <span className='text-pylon font-bold'>usługi</span>
         </h1>
