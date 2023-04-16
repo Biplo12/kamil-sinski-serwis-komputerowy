@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { Fragment } from 'react';
 
 import contactInfoData from '@/components/Common/contactInfoData';

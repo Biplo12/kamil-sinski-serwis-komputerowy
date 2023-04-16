@@ -4,7 +4,7 @@ import ContactClearButton from '@/Contact/Partials/ContactClearButton';
 import ContactInput from '@/Contact/Partials/ContactInput';
 import ContactSubmitButton from '@/Contact/Partials/ContactSubmitButton';
 import ContactTextArea from '@/Contact/Partials/ContactTextArea';
-import { IContactInput, IMessages, ISubmitStatus } from '@/interfaces';
+import { IContactInput, ISubmitStatus } from '@/interfaces';
 const ContactForm: React.FC = (): JSX.Element => {
   const contactInputInitial: IContactInput = {
     Imię: '',
@@ -13,10 +13,6 @@ const ContactForm: React.FC = (): JSX.Element => {
     Temat: '',
     Wiadomość: '',
   };
-  const messagesInitial: IMessages = {
-    success: '',
-    error: '',
-  };
 
   const sumbitStatusInitial: ISubmitStatus = {
     submitted: false,
@@ -24,10 +20,8 @@ const ContactForm: React.FC = (): JSX.Element => {
   };
   const [contactInput, setContactInput] =
     useState<IContactInput>(contactInputInitial);
-  const [messages, setMessages] = useState<IMessages>(messagesInitial);
   const [submitStatus, setSubmitStatus] =
     useState<ISubmitStatus>(sumbitStatusInitial);
-
   const contactInputs = [
     {
       label: 'Imię',
@@ -50,7 +44,6 @@ const ContactForm: React.FC = (): JSX.Element => {
   const handleClear = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     setContactInput(contactInputInitial);
-    setMessages(messagesInitial);
   };
 
   return (
@@ -87,24 +80,18 @@ const ContactForm: React.FC = (): JSX.Element => {
             setContactInput={setContactInput}
             contactInput={contactInput}
           />
-          <div className='flex gap-5'>
+          <div className='mxlg:flex-col mxlg:w-full flex gap-5'>
             <ContactSubmitButton
               contactInput={contactInput}
               handleClear={handleClear}
               setSubmitStatus={setSubmitStatus}
-              setMessages={setMessages}
+              submitStatus={submitStatus}
             />
             <ContactClearButton
               handleClear={handleClear}
               contactInput={contactInput}
             />
           </div>
-          {messages.error ? (
-            <p className='text-center text-red-400'>{messages.error}</p>
-          ) : null}
-          {messages.success ? (
-            <p className='text-center text-green-400'>{messages.success}</p>
-          ) : null}
         </div>
       </form>
     </div>

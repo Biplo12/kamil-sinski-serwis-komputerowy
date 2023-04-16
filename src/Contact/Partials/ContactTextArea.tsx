@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
-import { ISetContactInput } from '@/interfaces';
+import { IContactInput } from '@/interfaces';
 
 interface IContactTextArea {
   label: string;
   id: string;
-  setContactInput: (value: ISetContactInput) => void;
-  contactInput: ISetContactInput;
+  setContactInput: (value: IContactInput) => void;
+  contactInput: IContactInput;
 }
 
 const MAX_SIGN_COUNT = 300;

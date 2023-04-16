@@ -7,11 +7,6 @@ export interface IContactInput {
   [key: string]: string;
 }
 
-export interface IMessages {
-  success: string;
-  error: string;
-}
-
 export interface ISubmitStatus {
   submitted: boolean;
   submitting: boolean;

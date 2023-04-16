@@ -13,9 +13,9 @@ const ContactClearButton: React.FC<IContactClearButton> = ({
   return (
     <button
       onClick={handleClear}
-      className='text from-pylon to-blue transform rounded-full bg-gradient-to-r
-        px-12 py-2 text-lg font-bold text-white opacity-90 shadow-lg transition duration-300
-        ease-in-out hover:scale-[101%] hover:opacity-100 hover:shadow-xl'
+      className='text from-pylon to-blue mxlg:px-2 transform rounded-full
+        bg-gradient-to-r px-12 py-2 text-center text-lg font-bold text-white opacity-90 shadow-lg
+        transition duration-300 ease-in-out hover:scale-[101%] hover:opacity-100 hover:shadow-xl'
     >
       Wyczyść
     </button>
