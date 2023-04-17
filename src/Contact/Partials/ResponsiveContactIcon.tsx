@@ -12,7 +12,7 @@ const ResponsiveContactIcon: React.FC<IResponsiveContactIcon> = ({
   return (
     <div className='flex items-center justify-start gap-1'>
       <a
-        className='text-l link link-underline link-underline-white cursor-pointer'
+        className='text-l transform cursor-pointer transition-all duration-300 hover:scale-110'
         href={href}
         target='_blank'
         rel='noreferrer'

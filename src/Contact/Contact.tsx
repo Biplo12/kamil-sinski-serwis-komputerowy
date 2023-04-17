@@ -5,7 +5,7 @@ import ContactInfo from '@/Contact/Partials/ContactInfo';
 const Contact: React.FC = (): JSX.Element => {
   return (
     <div
-      className='bg-black-stalion mxxsm:px-5 flex h-auto min-h-[100vh] w-full flex-col items-center justify-center gap-10 px-[10%] py-10  '
+      className='bg-black-stalion mxxsm:px-5 flex h-auto min-h-[100vh] w-full flex-col items-center justify-center gap-10 px-[10%] py-10 pb-20'
       id='kontakt'
     >
       <h1 className='mxmd:text-[2.5rem] text-center text-[4rem] font-light uppercase tracking-wide'>
