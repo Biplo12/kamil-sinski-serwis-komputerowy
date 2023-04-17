@@ -1,16 +1,14 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react';
+
+import Video from '@/components/Hero/Partials/Video';
 const Hero: React.FC = (): JSX.Element => {
   return (
-    <div className='bg-black-stalion flex h-[100vh] w-full flex-col items-center justify-center text-white'>
-      <video
-        autoPlay
-        loop
-        muted
-        className='bg-black-stalion absolute h-full w-full object-cover brightness-[35%] filter'
-      >
-        <source src='/videos/hero.mp4' type='video/mp4' />
-        <div className='absolute h-full w-full' />
-      </video>
+    <div
+      className='bg-black-stalion flex h-[100vh] w-full flex-col items-center justify-center'
+      id='strona-glowna'
+    >
+      <Video />
       <img
         src='/images/big-logo.png'
         alt='big-logo'
