@@ -27,7 +27,6 @@ const ContactTextArea: React.FC<IContactTextArea> = ({
       setSignsCount(0);
     }
   }, [contactInput, id]);
-
   return (
     <div className='relative flex w-full flex-col'>
       <label
@@ -57,7 +56,10 @@ const ContactTextArea: React.FC<IContactTextArea> = ({
         />
         <div className='absolute bottom-5 right-5'>
           <p>
-            {signsCount} / {MAX_SIGN_COUNT}
+            <span className={`${focus ? 'text-blue' : ''} ease duration-300`}>
+              {signsCount}
+            </span>{' '}
+            / {MAX_SIGN_COUNT}
           </p>
         </div>
       </div>

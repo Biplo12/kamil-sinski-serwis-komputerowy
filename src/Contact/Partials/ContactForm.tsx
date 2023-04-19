@@ -90,6 +90,7 @@ const ContactForm: React.FC = (): JSX.Element => {
             <ContactClearButton
               handleClear={handleClear}
               contactInput={contactInput}
+              contactInputInitial={contactInputInitial}
             />
           </div>
         </div>
