@@ -26,7 +26,14 @@ const handler = async (
 
     // validation
     validateMethod(req.method as string, 'POST');
-    missingArguments({ email });
+    const missArgs = missingArguments({ email });
+    if (missArgs.length > 0) {
+      res.status(400).json({
+        statusCode: 400,
+        message: `Missing arguments: ${missArgs.join(', ')}`,
+      });
+      return;
+    }
     validateMail(email);
 
     const orderData: IOrderData = {

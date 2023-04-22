@@ -4,7 +4,7 @@ import OrderCheckButton from '@/components/OrderStatus/Partials/OrderCheckButton
 import OrderInput from '@/components/OrderStatus/Partials/OrderInput';
 const OrderStatus: React.FC = (): JSX.Element => {
   const [orderInput, setOrderInput] = useState<string>('');
-
+  const [loading, setLoading] = useState<boolean>(false);
   return (
     <div
       className='bg-black-stalion flex h-auto min-h-[100vh] w-full flex-col items-center justify-center px-5 py-10'
@@ -26,8 +26,16 @@ const OrderStatus: React.FC = (): JSX.Element => {
             <a href='#kontakt'>formularz kontaktowy.</a>
           </span>
         </p>
-        <OrderInput setOrderInput={setOrderInput} orderInput={orderInput} />
-        <OrderCheckButton orderInput={orderInput} />
+        <OrderInput
+          setOrderInput={setOrderInput}
+          orderInput={orderInput}
+          loading={loading}
+        />
+        <OrderCheckButton
+          orderInput={orderInput}
+          setLoading={setLoading}
+          setOrderInput={setOrderInput}
+        />
       </div>
     </div>
   );

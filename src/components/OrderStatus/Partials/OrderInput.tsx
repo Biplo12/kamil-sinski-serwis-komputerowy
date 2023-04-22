@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 interface IOrderInput {
   setOrderInput: React.Dispatch<React.SetStateAction<string>>;
   orderInput: string;
+  loading: boolean;
 }
 
 const OrderInput: React.FC<IOrderInput> = ({
   setOrderInput,
   orderInput,
+  loading,
 }): JSX.Element => {
   const [focus, setFocus] = useState<boolean>(false);
 
@@ -26,12 +28,14 @@ const OrderInput: React.FC<IOrderInput> = ({
         Identyfikator zlecenia
       </label>
       <input
-        type='email'
+        type='text'
         className='input focus:border-pylon ease duration-300 focus:ring-0'
         onChange={(e) => handleChange(e)}
         value={orderInput}
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
+        maxLength={25}
+        disabled={loading}
       />
     </div>
   );

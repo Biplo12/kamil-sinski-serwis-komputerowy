@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import prisma from '@/utils/prisma';
+import validateFilters from '@/utils/validateFilters';
 import validateMethod from '@/utils/validateMethod';
 
 type TKey = 'status' | 'email';
@@ -18,13 +19,12 @@ const handler = async (
   res: NextApiResponse
 ): Promise<void> => {
   try {
-    const filters = req.body as TRequestBody;
+    const filters = req.query as TRequestBody;
     const filtersKeys = Object.keys(filters) as TKey[];
-
     // validation
     validateMethod(req.method as string, 'GET');
+    validateFilters(filtersKeys);
     const params: TQuery = {};
-
     if (filtersKeys.length > 0) {
       for (const key of filtersKeys) {
         params[key] = filters[key];
