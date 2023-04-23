@@ -3,8 +3,7 @@ import React from 'react';
 
 import contactInfoData from '@/components/Common/contactInfoData';
 import links from '@/components/Common/links';
-
-import ContactIcon from '@/Contact/Partials/ContactIcon';
+import ContactIcon from '@/components/Contact/Partials/ContactIcon';
 const Footer: React.FC = (): JSX.Element => {
   return (
     <div className='bg-blue flex items-center justify-between p-10'>
