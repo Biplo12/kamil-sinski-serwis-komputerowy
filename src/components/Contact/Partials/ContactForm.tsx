@@ -49,7 +49,7 @@ const ContactForm: React.FC = (): JSX.Element => {
 
   return (
     <div className='mxlg:p-5 w-full p-10'>
-      <form className='flex flex-col gap-12'>
+      <div className='flex flex-col gap-12'>
         <div className='mxlg:flex-col flex gap-5'>
           {contactInputs.slice(0, 2).map((input, index) => (
             <Fragment key={index}>
@@ -95,7 +95,7 @@ const ContactForm: React.FC = (): JSX.Element => {
             />
           </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

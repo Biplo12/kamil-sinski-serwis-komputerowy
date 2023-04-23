@@ -2,8 +2,7 @@ import Link from 'next/link';
 import React, { Fragment } from 'react';
 
 import contactInfoData from '@/components/Common/contactInfoData';
-
-import ResponsiveContactIcon from '@/Contact/Partials/ResponsiveContactIcon';
+import ResponsiveContactIcon from '@/components/Contact/Partials/ResponsiveContactIcon';
 
 interface IResponsiveMenu {
   menuState: boolean;
