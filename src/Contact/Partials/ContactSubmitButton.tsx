@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 
 import logger from '@/lib/logger';
 
+import FormButton from '@/components/Common/FormButton';
 import Spinner from '@/components/Common/Spinner';
 
 import { IContactInput, ISubmitStatus } from '@/interfaces';
@@ -76,14 +77,11 @@ const ContactSubmitButton: React.FC<IContactButton> = ({
     }
   };
   return (
-    <button
-      onClick={handleSubmit}
-      className='bg-pylon focus:shadow-outline mt-3 flex min-w-[175px] items-center justify-center rounded-lg px-4
-      py-[0.65rem] text-center font-bold text-white
-      transition duration-300 ease-in-out hover:opacity-75 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
-    >
-      {submitStatus.submitting ? <Spinner /> : 'Wyślij'}
-    </button>
+    <FormButton
+      text={submitStatus.submitting ? <Spinner /> : 'Wyślij'}
+      handler={handleSubmit}
+      isDisabled={submitStatus.submitting}
+    />
   );
 };
 export default ContactSubmitButton;

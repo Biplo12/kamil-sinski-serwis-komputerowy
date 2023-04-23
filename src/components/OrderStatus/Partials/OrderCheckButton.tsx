@@ -3,6 +3,7 @@ import { toast } from 'react-hot-toast';
 
 import useFetchOrderById from '@/hooks/tanstack/useFetchOrderById';
 
+import FormButton from '@/components/Common/FormButton';
 import Spinner from '@/components/Common/Spinner';
 
 interface IOrderCheckButton {
@@ -41,7 +42,10 @@ const OrderCheckButton: React.FC<IOrderCheckButton> = ({
 }): JSX.Element => {
   const [orderData, setOrderData] = useState<IOrder | null>();
   const { isLoading, refetch } = useFetchOrderById(orderInput);
-
+  const handleResetToInitialState = () => {
+    setOrderData(null);
+    setOrderInput('');
+  };
   useEffect(() => {
     setLoading(isLoading);
   }, [isLoading, setLoading]);
@@ -56,26 +60,20 @@ const OrderCheckButton: React.FC<IOrderCheckButton> = ({
     }
     if (err?.response?.status === 404) {
       toast.error('Nie znaleziono zamówienia o podanym numerze');
-      setOrderInput('');
+      handleResetToInitialState();
       return;
     }
     toast.error('Wystąpił błąd podczas sprawdzania zamówienia');
-    setOrderInput('');
-    setOrderData(null);
+    handleResetToInitialState();
   };
 
   return (
     <>
-      <button
-        type='submit'
-        className='bg-pylon focus:shadow-outline mt-3 flex min-w-[175px] items-center justify-center rounded-lg px-4
-      py-[0.65rem] text-center font-bold text-white
-      transition duration-300 ease-in-out hover:opacity-75 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
-        disabled={orderInput.length !== 25 || isLoading}
-        onClick={() => checkOrder()}
-      >
-        {isLoading ? <Spinner /> : 'Sprawdź status'}
-      </button>
+      <FormButton
+        text={isLoading ? <Spinner /> : 'Sprawdź status'}
+        handler={checkOrder}
+        isDisabled={orderInput.length !== 25 || isLoading}
+      />
       {orderData ? (
         <div className='mt-3 flex gap-1'>
           <p className='text-lg font-bold'>Status zamówienia:</p>

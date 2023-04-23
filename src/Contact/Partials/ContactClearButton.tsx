@@ -1,5 +1,7 @@
 import React from 'react';
 
+import FormButton from '@/components/Common/FormButton';
+
 import { IContactInput } from '@/interfaces';
 
 interface IContactClearButton {
@@ -16,15 +18,7 @@ const ContactClearButton: React.FC<IContactClearButton> = ({
   const isDisabled =
     JSON.stringify(contactInput) === JSON.stringify(contactInputInitial);
   return (
-    <button
-      onClick={handleClear}
-      className='bg-pylon focus:shadow-outline mt-3 flex min-w-[175px] items-center justify-center rounded-lg px-4
-      py-[0.65rem] text-center font-bold text-white
-      transition duration-300 ease-in-out hover:opacity-75 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
-      disabled={isDisabled}
-    >
-      Wyczyść
-    </button>
+    <FormButton text='Wyczyść' handler={handleClear} isDisabled={isDisabled} />
   );
 };
 export default ContactClearButton;
