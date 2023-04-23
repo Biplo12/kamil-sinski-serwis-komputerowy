@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import { AppProps } from 'next/app';
 import { Toaster } from 'react-hot-toast';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -17,6 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <QueryClientProvider client={queryClient}>
           <Component {...pageProps} />
           <Toaster />
+          <Analytics />
         </QueryClientProvider>
       </Provider>
     </>

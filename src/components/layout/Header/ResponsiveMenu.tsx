@@ -1,5 +1,9 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { Fragment } from 'react';
+
+import contactInfoData from '@/components/Common/contactInfoData';
+
+import ResponsiveContactIcon from '@/Contact/Partials/ResponsiveContactIcon';
 
 interface IResponsiveMenu {
   menuState: boolean;
@@ -26,6 +30,15 @@ const ResponsiveMenu: React.FC<IResponsiveMenu> = ({
           </li>
         ))}
       </ul>
+      <div className='relative'>
+        <div className='min-h-12 min-w-12 fixed bottom-0 left-[50%] flex -translate-x-[50%] items-center justify-center gap-5 p-5'>
+          {contactInfoData.map((icon, index) => (
+            <Fragment key={index}>
+              <ResponsiveContactIcon icon={icon.icon} href={icon.href} />
+            </Fragment>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

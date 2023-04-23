@@ -2,15 +2,15 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 const defaultMeta = {
-  title: 'Next.js + Tailwind CSS + TypeScript Starter',
-  siteName: 'Next.js + Tailwind CSS + TypeScript Starter',
+  title: 'Kamil Siński - Serwis Komputerowy',
+  siteName: 'Kamil Siński - Serwis Komputerowy',
   description:
-    'A starter for Next.js, Tailwind CSS, and TypeScript with Absolute Import, Seo, Link component, pre-configured with Husky',
+    'Serwis komputerowy w Bytomiu. Naprawa laptopów, komputerów stacjonarnych, serwerów, drukarek, routerów, konfiguracja sieci LAN, serwerów, instalacja systemów operacyjnych, konfiguracja oprogramowania, konfiguracja serwerów poczty, serwerów plików, serwerów drukarek, serwerów VPN, serwerów WWW, serwerów baz danych, serwerów proxy, serwerów firewall, serwerów antywirusowych, serwerów antyspamowych, serwerów antyphishingowych, serwerów antyspyware, serwerów antybotnetowych, serwerów antypharmingowych',
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
-  url: 'https://tsnext-tw.thcl.dev',
+  url: 'https://www.kamilsinski.pl/',
   type: 'website',
   robots: 'follow, index',
-  image: 'https://tsnext-tw.thcl.dev/images/large-og.png',
+  image: '/images/big-logo.png',
 };
 
 type SeoProps = {
@@ -76,8 +76,6 @@ export default function Seo(props: SeoProps) {
   );
 }
 
-// !STARTERCONF this is the default favicon, you can generate your own from https://realfavicongenerator.net/
-// ! then replace the whole /public/favicon folder and favicon.ico
 const favicons: Array<React.ComponentPropsWithoutRef<'link'>> = [
   {
     rel: 'apple-touch-icon',
@@ -102,5 +100,5 @@ const favicons: Array<React.ComponentPropsWithoutRef<'link'>> = [
     href: '/favicon/safari-pinned-tab.svg',
     color: '#00e887',
   },
-  { rel: 'shortcut icon', href: '/favicon/favicon.ico' },
+  { rel: 'shortcut icon', href: '/favicon/favicon-32x32' },
 ];
