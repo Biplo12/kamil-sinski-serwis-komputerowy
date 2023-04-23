@@ -56,10 +56,7 @@ const ContactTextArea: React.FC<IContactTextArea> = ({
         />
         <div className='absolute bottom-5 right-5'>
           <p>
-            <span className={`${focus ? 'text-blue' : ''} ease duration-300`}>
-              {signsCount}
-            </span>{' '}
-            / {MAX_SIGN_COUNT}
+            {signsCount} / {MAX_SIGN_COUNT}
           </p>
         </div>
       </div>
