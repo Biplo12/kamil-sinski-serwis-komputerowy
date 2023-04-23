@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 
 import useFetchOrderById from '@/hooks/tanstack/useFetchOrderById';
@@ -6,24 +6,14 @@ import useFetchOrderById from '@/hooks/tanstack/useFetchOrderById';
 import FormButton from '@/components/Common/FormButton';
 import Spinner from '@/components/Common/Spinner';
 
+import { useAppDispatch, useAppSelector } from '@/store/store-hooks';
+
+import { selectOrder, setOrder } from '@/state/orderSlice';
+
 interface IOrderCheckButton {
   orderInput: string;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   setOrderInput: React.Dispatch<React.SetStateAction<string>>;
-}
-
-interface IOrder {
-  result: {
-    id: string;
-    email: string;
-    status: string;
-    message: string;
-    statusMessage: string;
-    createdAt: string;
-    updatedAt: string;
-  };
-  message: string;
-  statusCode: number;
 }
 
 interface CustomError extends Error {
@@ -40,12 +30,15 @@ const OrderCheckButton: React.FC<IOrderCheckButton> = ({
   setLoading,
   setOrderInput,
 }): JSX.Element => {
-  const [orderData, setOrderData] = useState<IOrder | null>();
   const { isLoading, refetch } = useFetchOrderById(orderInput);
+  const dispatch = useAppDispatch();
+  const order = useAppSelector(selectOrder);
+
   const handleResetToInitialState = () => {
-    setOrderData(null);
     setOrderInput('');
+    order.orderDetails ? dispatch(setOrder(null)) : null;
   };
+
   useEffect(() => {
     setLoading(isLoading);
   }, [isLoading, setLoading]);
@@ -55,7 +48,7 @@ const OrderCheckButton: React.FC<IOrderCheckButton> = ({
     const err = error as CustomError;
     if (!isError) {
       toast.success('Zamówienie znalezione');
-      setOrderData(data);
+      dispatch(setOrder(data.result));
       return;
     }
     if (err?.response?.status === 404) {
@@ -74,12 +67,6 @@ const OrderCheckButton: React.FC<IOrderCheckButton> = ({
         handler={checkOrder}
         isDisabled={orderInput.length !== 25 || isLoading}
       />
-      {orderData ? (
-        <div className='mt-3 flex gap-1'>
-          <p className='text-lg font-bold'>Status zamówienia:</p>
-          <p className='text-lg'>{orderData?.result?.status}</p>
-        </div>
-      ) : null}
     </>
   );
 };

@@ -6,7 +6,7 @@ import IOrderSlice from '@/interfaces/IOrderSlice';
 import { RootState } from '../store';
 
 const initialState: IOrderSlice = {
-  order: [],
+  orderDetails: null,
 };
 
 export const orderSlice = createSlice({
@@ -14,7 +14,7 @@ export const orderSlice = createSlice({
   initialState,
   reducers: {
     setOrder: (state, action: PayloadAction<any>) => {
-      state.order = action.payload;
+      state.orderDetails = action.payload;
     },
   },
 });

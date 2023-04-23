@@ -3,7 +3,6 @@ import * as React from 'react';
 import AboutUs from '@/components/AboutUs/AboutUs';
 import Hero from '@/components/Hero/Hero';
 import Layout from '@/components/layout/Layout';
-import OrderStatus from '@/components/OrderStatus/OrderStatus';
 import Seo from '@/components/Seo';
 import Services from '@/components/Services/Services';
 import WhyUs from '@/components/WhyUs/WhyUs';
@@ -18,7 +17,6 @@ export default function HomePage() {
       <AboutUs />
       <WhyUs />
       <Services />
-      <OrderStatus />
       <Contact />
     </Layout>
   );

@@ -9,5 +9,5 @@ interface IOrder {
 }
 
 export default interface IOrderSlice {
-  order: IOrder[];
+  orderDetails: IOrder | null;
 }
