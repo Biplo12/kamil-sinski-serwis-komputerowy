@@ -1,10 +1,11 @@
 import React, { Fragment, useState } from 'react';
 
-import ContactClearButton from '@/Contact/Partials/ContactClearButton';
-import ContactInput from '@/Contact/Partials/ContactInput';
-import ContactSubmitButton from '@/Contact/Partials/ContactSubmitButton';
-import ContactTextArea from '@/Contact/Partials/ContactTextArea';
 import { IContactInput, ISubmitStatus } from '@/interfaces';
+
+import ContactClearButton from './ContactClearButton';
+import ContactInput from './ContactInput';
+import ContactSubmitButton from './ContactSubmitButton';
+import ContactTextArea from './ContactTextArea';
 const ContactForm: React.FC = (): JSX.Element => {
   const contactInputInitial: IContactInput = {
     Imię: '',

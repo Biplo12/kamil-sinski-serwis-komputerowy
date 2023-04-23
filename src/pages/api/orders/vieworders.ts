@@ -21,7 +21,7 @@ const handler = async (
   try {
     const filters = req.query as TRequestBody;
     const filtersKeys = Object.keys(filters) as TKey[];
-    // validation
+
     validateMethod(req.method as string, 'GET');
     validateFilters(filtersKeys);
     const params: TQuery = {};

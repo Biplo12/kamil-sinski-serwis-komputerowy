@@ -1,3 +1,4 @@
+import { Prisma } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import missingArguments from '@/utils/missingArguments';
@@ -5,13 +6,6 @@ import prisma from '@/utils/prisma';
 import sendMailFunction from '@/utils/sendMailFunction';
 import validateMail from '@/utils/validateMail';
 import validateMethod from '@/utils/validateMethod';
-
-interface IOrderData {
-  email: string;
-  status: string;
-  message: string;
-  statusMessage: string;
-}
 
 type TRequestBody = {
   email: string;
@@ -36,11 +30,13 @@ const handler = async (
     }
     validateMail(email);
 
-    const orderData: IOrderData = {
+    const orderData: Prisma.OrdersCreateInput = {
       email,
       status: 'new',
       message: '',
       statusMessage: 'Zamówienie zostało złożone.',
+      repairingAt: 'N/A',
+      repairedAt: 'N/A',
     };
 
     const newOrder = await prisma.orders.create({

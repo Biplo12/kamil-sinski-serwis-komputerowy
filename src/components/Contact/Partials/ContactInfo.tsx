@@ -3,8 +3,8 @@ import React, { Fragment } from 'react';
 
 import contactInfoData from '@/components/Common/contactInfoData';
 
-import ContactIcon from '@/Contact/Partials/ContactIcon';
-import ResponsiveContactIcon from '@/Contact/Partials/ResponsiveContactIcon';
+import ContactIcon from './ContactIcon';
+import ResponsiveContactIcon from './ResponsiveContactIcon';
 
 const ContactInfo: React.FC = (): JSX.Element => {
   return (

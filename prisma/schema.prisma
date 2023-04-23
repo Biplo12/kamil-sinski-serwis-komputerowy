@@ -14,5 +14,7 @@ model Orders {
   message     String
   statusMessage String
   createdAt   DateTime @default(now())
+  repairingAt String?
+  repairedAt  String?
   updatedAt   DateTime @updatedAt
 }

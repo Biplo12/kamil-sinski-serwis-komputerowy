@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import Layout from '@/components/layout/Layout';
 import OrderStatus from '@/components/OrderStatus/OrderStatus';
-import OrderStatusDetails from '@/components/OrderStatus/Partials/OrderStatusDetails';
+import OrderStatusDetails from '@/components/OrderStatusDetails/OrderStatusDetails';
 import Seo from '@/components/Seo';
 
 import { useAppSelector } from '@/store/store-hooks';

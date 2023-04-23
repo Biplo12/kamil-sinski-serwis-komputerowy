@@ -13,7 +13,7 @@ const handler = async (
 ): Promise<void> => {
   try {
     const { orderId } = req.query as TRequestBody;
-    // validation
+
     const missArgs = missingArguments({ orderId });
 
     if (missArgs.length > 0) {

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useState } from 'react';
 
 import OrderCheckButton from '@/components/OrderStatus/Partials/OrderCheckButton';
@@ -11,7 +12,7 @@ const OrderStatus: React.FC = (): JSX.Element => {
       id='status-zlecenia'
     >
       <div className='flex flex-col items-start justify-start gap-5'>
-        <h1 className='text-[4rem] font-[400] uppercase'>
+        <h1 className='mxlg:text-3xl text-[4rem] font-[400] uppercase'>
           Sprawdz status <span className='text-pylon font-bold'>zlecenia</span>
         </h1>
         <p className='max-w-[800px] text-left'>
@@ -23,7 +24,7 @@ const OrderStatus: React.FC = (): JSX.Element => {
           </span>{' '}
           lub poprzez{' '}
           <span className='text-pylon'>
-            <a href='#kontakt'>formularz kontaktowy.</a>
+            <Link href='/#kontakt'>formularz kontaktowy.</Link>
           </span>
         </p>
         <OrderInput
