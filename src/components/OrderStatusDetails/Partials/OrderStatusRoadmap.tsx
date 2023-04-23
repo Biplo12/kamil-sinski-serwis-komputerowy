@@ -32,7 +32,7 @@ const OrderStatusRoadmap: React.FC<IOrder> = ({ order }): JSX.Element => {
           </div>
           <div className='bg-pylon h-0.5 w-full' />
         </div>
-        <div className='mt-3 sm:pr-8'>
+        <div className='mt-3 flex flex-col gap-3 sm:pr-8'>
           <h3 className='text-lg font-semibold text-gray-900 dark:text-white'>
             Diagnostyka
           </h3>
@@ -42,7 +42,7 @@ const OrderStatusRoadmap: React.FC<IOrder> = ({ order }): JSX.Element => {
         </div>
       </li>
       <li className='mxlg:w-[90%] mxlg:mx-auto relative w-[350px]'>
-        <div className='flex items-center justify-center gap-3'>
+        <div className='flex items-center justify-center gap-2'>
           <div className='z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full ring-0 ring-white dark:bg-blue-900 dark:ring-gray-900 sm:ring-8'>
             <img
               src={`/svg/wrench${
@@ -61,7 +61,7 @@ const OrderStatusRoadmap: React.FC<IOrder> = ({ order }): JSX.Element => {
             }`}
           />
         </div>
-        <div className='mt-3 sm:pr-8'>
+        <div className='mt-3 flex flex-col gap-2 sm:pr-8'>
           <h3 className='text-lg font-semibold text-gray-900 dark:text-white'>
             Naprawa
           </h3>
@@ -88,7 +88,7 @@ const OrderStatusRoadmap: React.FC<IOrder> = ({ order }): JSX.Element => {
             }`}
           />
         </div>
-        <div className='mt-3 sm:pr-8'>
+        <div className='mt-3 flex flex-col gap-2 sm:pr-8'>
           <h3 className='text-lg font-semibold text-gray-900 dark:text-white'>
             Naprawa zakończona
           </h3>
