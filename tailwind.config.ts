@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        primary: 'Poppins, sans-serif',
+        primary: 'Source Sans Pro',
       },
       colors: {
         'black-stalion': '#0B1A22',

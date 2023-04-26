@@ -18,3 +18,14 @@ model Orders {
   repairedAt  String?
   updatedAt   DateTime @updatedAt
 }
+
+model Users {
+  id          String   @id @default(cuid()) @map("_id")
+  email       String
+  password    String
+  isAdmin     Boolean
+  name        String
+  surname     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
