@@ -59,7 +59,7 @@ const Sidebar: React.FC = (): JSX.Element => {
         aria-label='Sidebar'
       >
         <div
-          className={`mt-3 overflow-y-auto px-3 py-4 ${
+          className={`mt-3 overflow-y-auto px-5 py-4 ${
             state ? 'block' : 'hidden'
           }`}
         >
@@ -81,7 +81,7 @@ const Sidebar: React.FC = (): JSX.Element => {
         </div>
         <ResizeMenuButton handleOpen={toggle} open={state} />
         <div
-          className={`absolute bottom-0 left-0 w-full px-3 py-4 ${
+          className={`absolute bottom-0 left-0 w-full px-5 py-4 ${
             state ? 'block' : 'hidden'
           }`}
         >
