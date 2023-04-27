@@ -6,15 +6,25 @@ import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
 import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import Link from 'next/link';
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 
 import { useToggleHook } from '@/hooks';
 
 import NavItem from '@/components/Dashboard/Partials/NavItem';
 import NotifyMessage from '@/components/Dashboard/Partials/NotifyMessage';
 import ResizeMenuButton from '@/components/Dashboard/Partials/ResizeMenuButton';
-const Sidebar: React.FC = (): JSX.Element => {
+
+interface ISidebar {
+  setSidebarState: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Sidebar: React.FC<ISidebar> = ({ setSidebarState }): JSX.Element => {
   const { toggle, state } = useToggleHook(true);
+
+  useEffect(() => {
+    setSidebarState(state);
+  }, [setSidebarState, state]);
+
   const navItems = [
     {
       label: 'Dashboard',

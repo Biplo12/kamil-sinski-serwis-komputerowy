@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 interface INavItem {
@@ -8,11 +9,15 @@ interface INavItem {
 }
 
 const NavItem: React.FC<INavItem> = ({ label, icon, to }): JSX.Element => {
+  const router = useRouter();
+  const isActive = router.pathname === to;
   return (
     <li>
       <Link
         href={to}
-        className='flex items-center rounded-lg p-2 text-white hover:bg-gray-700'
+        className={`flex items-center rounded-lg p-2 text-white hover:bg-gray-700 ${
+          isActive ? 'bg-gray-700' : ''
+        }`}
       >
         <svg
           aria-hidden='true'
