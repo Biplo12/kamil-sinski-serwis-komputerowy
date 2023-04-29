@@ -1,18 +1,13 @@
-import AssessmentOutlinedIcon from '@mui/icons-material/AssessmentOutlined';
-import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import InterestsOutlinedIcon from '@mui/icons-material/InterestsOutlined';
-import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
-import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import Link from 'next/link';
 import React, { Fragment, useEffect } from 'react';
 
 import { useToggleHook } from '@/hooks';
 
-import NavItem from '@/components/Dashboard/Partials/NavItem';
-import NotifyMessage from '@/components/Dashboard/Partials/NotifyMessage';
-import ResizeMenuButton from '@/components/Dashboard/Partials/ResizeMenuButton';
+import navItems from '@/components/Common/navItems';
+import NavItem from '@/components/Dashboard/Layout/Partials/NavItem';
+import NotifyMessage from '@/components/Dashboard/Layout/Partials/NotifyMessage';
+import ResizeMenuButton from '@/components/Dashboard/Layout/Partials/ResizeMenuButton';
 
 interface ISidebar {
   setSidebarState: React.Dispatch<React.SetStateAction<boolean>>;
@@ -25,45 +20,11 @@ const Sidebar: React.FC<ISidebar> = ({ setSidebarState }): JSX.Element => {
     setSidebarState(state);
   }, [setSidebarState, state]);
 
-  const navItems = [
-    {
-      label: 'Dashboard',
-      icon: <HomeOutlinedIcon />,
-      to: '/admin/dashboard',
-    },
-
-    {
-      label: 'Manage Orders',
-      icon: <ReceiptOutlinedIcon />,
-      to: '/admin/dashboard/orders',
-    },
-    {
-      label: 'Manage Users',
-      icon: <PeopleOutlinedIcon />,
-      to: '/users',
-    },
-    {
-      label: 'Website Analytics',
-      icon: <AssessmentOutlinedIcon />,
-      to: '/admin/dashboard/website-analytics',
-    },
-    {
-      label: 'Social Media Analytics',
-      icon: <InterestsOutlinedIcon />,
-      to: '/admin/dashboard/social-media-analytics',
-    },
-
-    {
-      label: 'Create New Order',
-      icon: <FeedOutlinedIcon />,
-      to: '/admin/dashboard/create-order',
-    },
-  ];
   return (
     <>
       <aside
         id='logo-sidebar'
-        className={`fixed left-0 top-0 z-40 h-screen w-64 border-r border-gray-700 bg-gray-800 pt-20 transition-transform ${
+        className={`mxslg:hidden fixed left-0 top-0 z-40 block h-screen w-64 border-r border-gray-700 bg-gray-800 pt-20 transition-transform duration-300 ${
           state ? 'translate-x-0' : '-translate-x-[93%]'
         }`}
         aria-label='Sidebar'
