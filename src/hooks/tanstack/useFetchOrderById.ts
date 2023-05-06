@@ -1,16 +1,16 @@
 import axios from 'axios';
 import { useQuery } from 'react-query';
 
-const useFetchOrderById = (orderId: string) => {
+const useFetchOrderById = (orderId: string, enabled: boolean) => {
   const { data, isLoading, error, refetch, isError } = useQuery({
-    queryKey: ['order', orderId],
+    queryKey: ['orderById', orderId],
     queryFn: async () => {
       const { data } = await axios.get(
         `/api/orders/vieworder?orderId=${orderId}`
       );
       return data;
     },
-    enabled: false,
+    enabled,
   });
   return { data, error, isLoading, refetch, isError };
 };

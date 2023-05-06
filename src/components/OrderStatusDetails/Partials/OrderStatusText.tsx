@@ -2,20 +2,12 @@ import React from 'react';
 
 import OrderStatusRoadmap from '@/components/OrderStatusDetails/Partials/OrderStatusRoadmap';
 
-interface IOrderDetails {
-  id: string;
-  email: string;
-  status: string;
-  message: string;
-  statusMessage: string;
-  createdAt: string;
-  updatedAt: string;
-}
+import { IOrder } from '@/interfaces/IOrderSlice';
 
 interface IOrderStatusText {
   headerText: JSX.Element;
   text: string;
-  order: IOrderDetails | null;
+  order: IOrder | null;
 }
 
 const OrderStatusText: React.FC<IOrderStatusText> = ({

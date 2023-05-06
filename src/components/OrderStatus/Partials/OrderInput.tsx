@@ -34,7 +34,7 @@ const OrderInput: React.FC<IOrderInput> = ({
         value={orderInput}
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
-        maxLength={25}
+        maxLength={6}
         disabled={loading}
       />
     </div>

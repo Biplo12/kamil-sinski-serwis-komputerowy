@@ -22,6 +22,18 @@ select:-webkit-autofill:focus {
   font-size: 1.1rem;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
 html,
 body,
 #root,
@@ -90,4 +102,59 @@ html {
 }
 .input-blue {
   border-bottom: 2px solid #01a3ff;
+}
+
+.MuiDataGrid-sortIcon,
+.MuiDataGrid-menuIconButton,
+.MuiTablePagination-actions,
+.MuiTablePagination-selectIcon,
+.MuiIconButton-label,
+.MuiSelect-icon {
+  color: #01a3ff !important;
+}
+
+.MuiDataGrid-cell,
+.MuiDataGrid-columnsContainer {
+  border-color: #01a3ff !important;
+}
+.MuiDataGrid-cell:focus {
+  outline: none !important;
+}
+.MuiDataGrid-columnHeader:focus {
+  outline: none !important;
+}
+.MuiDataGrid-columnSeparator {
+  color: #01a3ff !important;
+}
+.MuiList-root,
+.MuiGridFilterForm-root {
+  background-color: #1f2937 !important;
+  color: white !important;
+  border: 1px solid #01a3ff !important;
+}
+.MuiInputBase-input,
+.MuiInput-formControl,
+.MuiInputLabel-shrink,
+.MuiFormLabel-filled {
+  color: white !important;
+}
+.MuiInput-input {
+  color: white !important;
+  border-bottom: 1px solid #01a3ff !important;
+}
+.MuiInput-input:focus {
+  border-bottom: 2px solid #01a3ff !important;
+}
+.MuiInput-underline:before,
+.MuiInput-underline:after {
+  border-bottom: 1px solid #01a3ff !important;
+}
+.MuiInput-input option {
+  color: black !important;
+}
+.MuiDataGrid-overlay {
+  background-color: #1f2937 !important;
+}
+.MuiDataGrid-selectedRowCount {
+  opacity: 0 !important;
 }

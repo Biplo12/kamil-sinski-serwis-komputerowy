@@ -7,18 +7,18 @@ const NotifyMessage: React.FC = (): JSX.Element => {
     <>
       <div
         id='dropdown-cta'
-        className={`bg-blue rounded-lg bg-opacity-80 p-4 transition-opacity duration-500 ease-linear ${
+        className={`bg-black-stalion border-pylon rounded-lg border p-4 transition-opacity duration-500 ease-linear ${
           state ? 'opacity-100' : 'opacity-0'
         }`}
         role='alert'
       >
         <div className='mb-3 flex items-center'>
-          <span className='mr-2 rounded bg-orange-200 px-2.5 py-0.5 text-sm font-semibold text-orange-900'>
+          <span className='bg-pylon mr-2 rounded px-2.5 py-0.5 text-sm font-semibold'>
             New
           </span>
           <button
             type='button'
-            className='-mx-1.5 -my-1.5 ml-auto inline-flex h-6 w-6 rounded-lg bg-blue-900 p-1 text-blue-400 text-blue-900 hover:bg-blue-200 hover:bg-blue-800 focus:ring-2 focus:ring-blue-400'
+            className='bg-pylon exsm:w-full exsm:justify-center exsm:gap-2 relative ml-auto inline-flex items-center rounded-lg p-1 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300'
             data-dismiss-target='#dropdown-cta'
             aria-label='Close'
             onClick={toggle}

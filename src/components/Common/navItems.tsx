@@ -18,6 +18,11 @@ const navItems = [
     to: '/admin/dashboard/orders',
   },
   {
+    label: 'Create New Order',
+    icon: <FeedOutlinedIcon />,
+    to: '/admin/dashboard/create-order',
+  },
+  {
     label: 'Manage Users',
     icon: <PeopleOutlinedIcon />,
     to: '/users',
@@ -31,12 +36,6 @@ const navItems = [
     label: 'Social Media',
     icon: <InterestsOutlinedIcon />,
     to: '/admin/dashboard/social-media',
-  },
-
-  {
-    label: 'Create New Order',
-    icon: <FeedOutlinedIcon />,
-    to: '/admin/dashboard/create-order',
   },
 ];
 

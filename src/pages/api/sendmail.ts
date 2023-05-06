@@ -25,9 +25,6 @@ const handler = async (
       to: process.env.SENDER_EMAIL_ADDRESS?.toString() || '',
       from: email,
       subject: subject,
-      text: `From: ${name} <${email}>, ${
-        phone ? `Phone: ${phone} \n\n${message}.` : null
-      } `,
     });
 
     res.status(200).json({ statusCode: 200, message: 'Success', result: null });

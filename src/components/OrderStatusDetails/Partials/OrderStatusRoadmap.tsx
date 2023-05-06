@@ -4,9 +4,7 @@ import { format, register } from 'timeago.js';
 import pl_PL from './pl';
 interface IOrderDetails {
   id: string;
-  email: string;
   status: string;
-  message: string;
   statusMessage: string;
   createdAt: string;
   updatedAt: string;
@@ -24,7 +22,7 @@ const OrderStatusRoadmap: React.FC<IOrder> = ({ order }): JSX.Element => {
   register('pl_PL', pl_PL);
 
   return (
-    <ol className='mxlg:flex-col flex w-full items-center'>
+    <ol className='mxlg:flex-col flex w-full'>
       <li className='mxlg:w-[90%] mxlg:mx-auto relative w-[350px]'>
         <div className='flex items-center justify-center gap-3'>
           <div className='z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full ring-0 ring-white dark:bg-blue-900 dark:ring-gray-900 sm:ring-8'>

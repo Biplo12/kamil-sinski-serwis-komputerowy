@@ -13,13 +13,15 @@ const ResponsiveRecentOrder: React.FC<IResponsiveRecentOrder> = ({
 }): JSX.Element => {
   return (
     <div className='shadow-xs mxslg:inline-flex mxxsm:flex-col flex w-full cursor-pointer items-center justify-between gap-3 border-b border-gray-900 bg-gray-800 p-4 text-center hover:bg-gray-900'>
-      <div className='flex flex-col gap-3'>
-        <div className='text-pylon text-m font-medium'>{id}</div>
-        <div className='text-sm font-medium text-gray-300'>{name}</div>
+      <div className='flex flex-col'>
+        <div className='text-pylon text-m text-left font-medium'>{id}</div>
+        <div className='min-w-[150px] text-left text-sm font-medium text-gray-300'>
+          {name}
+        </div>
       </div>
       <div className='flex items-center justify-center gap-1 text-sm font-medium text-gray-500'>
         <DateRangeRoundedIcon />
-        {date}
+        {date.split('T')[0]}
       </div>
       <button
         className='bg-sea focus:shadow-outline flex min-w-[75px] items-center justify-center rounded-lg px-2

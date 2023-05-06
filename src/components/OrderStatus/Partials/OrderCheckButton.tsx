@@ -30,7 +30,7 @@ const OrderCheckButton: React.FC<IOrderCheckButton> = ({
   setLoading,
   setOrderInput,
 }): JSX.Element => {
-  const { isLoading, refetch } = useFetchOrderById(orderInput);
+  const { isLoading, refetch } = useFetchOrderById(orderInput, false);
   const dispatch = useAppDispatch();
   const order = useAppSelector(selectOrder);
 

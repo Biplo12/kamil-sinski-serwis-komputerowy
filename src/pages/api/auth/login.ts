@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+// import bcrypt from 'bcrypt';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import missingArguments from '@/utils/missingArguments';
@@ -16,11 +16,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     validateMethod('POST', req.method as string);
     missingArguments({ email, password });
 
-    const salt = bcrypt.genSaltSync(10);
+    // const salt = bcrypt.genSaltSync(10);
 
-    bcrypt.hash(password, salt, (hash: string) => {
-      res.status(200).json({ hash });
-    });
+    // bcrypt.hash(password, salt, (hash: string) => {
+    // res.status(200).json({ hash });
+    // });
 
     const user = await prisma.users.findUnique({
       where: {
@@ -36,15 +36,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       return;
     }
 
-    const compare = bcrypt.compareSync(password, user.password);
+    // const compare = bcrypt.compareSync(password, user.password);
 
-    if (!compare) {
-      res.status(401).json({
-        statusCode: 401,
-        message: 'Invalid password',
-      });
-      return;
-    }
+    // if (!compare) {
+    //   res.status(401).json({
+    //     statusCode: 401,
+    //     message: 'Invalid password',
+    //   });
+    //   return;
+    // }
 
     if (!user.isAdmin) {
       res.status(403).json({
@@ -60,8 +60,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       result: {
         id: user.id,
         email: user.email,
-        name: user.name,
-        surname: user.surname,
+        // name: user.name,
+        // surname: user.surname,
         createdAt: user.createdAt,
         updatedAt: user.updatedAt,
       },

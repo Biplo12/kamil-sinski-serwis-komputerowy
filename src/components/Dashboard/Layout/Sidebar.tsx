@@ -8,7 +8,6 @@ import navItems from '@/components/Common/navItems';
 import NavItem from '@/components/Dashboard/Layout/Partials/NavItem';
 import NotifyMessage from '@/components/Dashboard/Layout/Partials/NotifyMessage';
 import ResizeMenuButton from '@/components/Dashboard/Layout/Partials/ResizeMenuButton';
-
 interface ISidebar {
   setSidebarState: React.Dispatch<React.SetStateAction<boolean>>;
 }

@@ -1,3 +1,4 @@
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -9,23 +10,29 @@ datasource db {
 
 model Orders {
   id          String   @id @default(cuid()) @map("_id")
-  email       String
+  orderId   Int   @unique
+  ordertitle String
+  orderdescription String
+  price      Float
   status      String
-  message     String
+  clientFullName String
   statusMessage String
-  createdAt   DateTime @default(now())
   repairingAt String?
   repairedAt  String?
+  createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
-model Users {
-  id          String   @id @default(cuid()) @map("_id")
-  email       String
-  password    String
-  isAdmin     Boolean
-  name        String
-  surname     String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-}
+  model Users {
+    id          String   @id @default(cuid()) @map("_id")
+    userId    Int   @unique
+    firstname  String
+    lastname   String
+    phonenumber Int    @unique
+    email       String  @unique
+    password    String?
+    isAdmin     Boolean
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+  }
+

@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import missingArguments from '@/utils/missingArguments';
 import prisma from '@/utils/prisma';
+import validateMethod from '@/utils/validateMethod';
 
 type TRequestBody = {
   orderId: string;
@@ -14,6 +15,7 @@ const handler = async (
   try {
     const { orderId } = req.query as TRequestBody;
 
+    validateMethod(req.method as string, 'GET');
     const missArgs = missingArguments({ orderId });
 
     if (missArgs.length > 0) {
@@ -24,14 +26,14 @@ const handler = async (
       return;
     }
 
-    if (orderId.length !== 25) {
+    if (orderId.length !== 6) {
       res.status(400).json({ statusCode: 400, message: 'Invalid order id' });
       return;
     }
 
     const order = await prisma.orders.findUnique({
       where: {
-        id: orderId,
+        orderId: parseInt(orderId),
       },
     });
 
