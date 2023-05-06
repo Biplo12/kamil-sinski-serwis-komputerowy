@@ -27,7 +27,6 @@ const ContactTextArea: React.FC<IContactTextArea> = ({
       setSignsCount(0);
     }
   }, [contactInput, id]);
-
   return (
     <div className='relative flex w-full flex-col'>
       <label

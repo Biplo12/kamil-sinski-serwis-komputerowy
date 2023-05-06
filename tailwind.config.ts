@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        primary: 'Poppins, sans-serif',
+        primary: 'Source Sans Pro',
       },
       colors: {
         'black-stalion': '#0B1A22',
@@ -36,6 +36,8 @@ export default {
         mxsm: { max: '640px' },
         // => @media (max-width: 768px) { ... }
         mxmd: { max: '768px' },
+        // => @media (max-width: 940px) { ... }
+        mxslg: { max: '940px' },
         // => @media (max-width: 1024px) { ... }
         mxlg: { max: '1024px' },
         // => @media (max-width: 1280px) { ... }
@@ -43,5 +45,5 @@ export default {
       },
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [require('@tailwindcss/forms'), require('tailwind-scrollbar')],
 } satisfies Config;

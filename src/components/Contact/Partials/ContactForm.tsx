@@ -1,10 +1,11 @@
 import React, { Fragment, useState } from 'react';
 
-import ContactClearButton from '@/Contact/Partials/ContactClearButton';
-import ContactInput from '@/Contact/Partials/ContactInput';
-import ContactSubmitButton from '@/Contact/Partials/ContactSubmitButton';
-import ContactTextArea from '@/Contact/Partials/ContactTextArea';
 import { IContactInput, ISubmitStatus } from '@/interfaces';
+
+import ContactClearButton from './ContactClearButton';
+import ContactInput from './ContactInput';
+import ContactSubmitButton from './ContactSubmitButton';
+import ContactTextArea from './ContactTextArea';
 const ContactForm: React.FC = (): JSX.Element => {
   const contactInputInitial: IContactInput = {
     Imię: '',
@@ -48,7 +49,7 @@ const ContactForm: React.FC = (): JSX.Element => {
 
   return (
     <div className='mxlg:p-5 w-full p-10'>
-      <form className='flex flex-col gap-12'>
+      <div className='flex flex-col gap-12'>
         <div className='mxlg:flex-col flex gap-5'>
           {contactInputs.slice(0, 2).map((input, index) => (
             <Fragment key={index}>
@@ -90,10 +91,11 @@ const ContactForm: React.FC = (): JSX.Element => {
             <ContactClearButton
               handleClear={handleClear}
               contactInput={contactInput}
+              contactInputInitial={contactInputInitial}
             />
           </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

@@ -23,9 +23,9 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed left-0 z-50 w-full px-10 duration-300 ${
+        className={`bg-pylon fixed left-0 z-50 w-full px-10 py-2 duration-300 ${
           scrollDirection === 'down' ? 'mxsm:-top-[11rem] -top-36' : 'top-0'
-        } ${isTop || responsiveMenu.state ? '' : 'bg-pylon'}`}
+        } ${isTop || responsiveMenu.state ? 'bg-transparent' : 'bg-pylon'}`}
       >
         <div
           className={`layout flex h-[9vh] w-full items-center ${

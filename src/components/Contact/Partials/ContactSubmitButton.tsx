@@ -4,10 +4,12 @@ import toast from 'react-hot-toast';
 
 import logger from '@/lib/logger';
 
+import FormButton from '@/components/Common/FormButton';
 import Spinner from '@/components/Common/Spinner';
 
 import { IContactInput, ISubmitStatus } from '@/interfaces';
 import missingArguments from '@/utils/missingArguments';
+import validateMail from '@/utils/validateMail';
 
 interface IContactButton {
   contactInput: IContactInput;
@@ -26,6 +28,7 @@ const ContactSubmitButton: React.FC<IContactButton> = ({
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     try {
+      const validMail = validateMail(contactInput['E-mail']);
       setSubmitStatus({
         submitted: false,
         submitting: true,
@@ -39,10 +42,7 @@ const ContactSubmitButton: React.FC<IContactButton> = ({
       });
       if (missArgs.length > 0) {
         toast.error(`Brakujące pola: ${missArgs.join(', ')}`);
-      } else if (
-        !contactInput['E-mail'].includes('@') ||
-        !contactInput['E-mail'].includes('.')
-      ) {
+      } else if (!validMail) {
         toast.error('Nieprawidłowy adres e-mail');
       } else if (contactInput['Wiadomość'].length < 10) {
         toast.error('Wiadomość musi zawierać minimum 10 znaków');
@@ -78,14 +78,11 @@ const ContactSubmitButton: React.FC<IContactButton> = ({
     }
   };
   return (
-    <button
-      onClick={handleSubmit}
-      className='text from-pylon to-blue mxlg:px-2 flex transform
-        items-center justify-center rounded-full bg-gradient-to-r px-16 py-2 text-lg font-bold text-white
-        opacity-90 shadow-lg transition duration-300 ease-in-out hover:scale-[101%] hover:opacity-100 hover:shadow-xl'
-    >
-      {submitStatus.submitting ? <Spinner /> : 'Wyślij'}
-    </button>
+    <FormButton
+      text={submitStatus.submitting ? <Spinner /> : 'Wyślij'}
+      handler={handleSubmit}
+      isDisabled={submitStatus.submitting}
+    />
   );
 };
 export default ContactSubmitButton;

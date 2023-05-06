@@ -1,40 +1,33 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { createTransport } from 'nodemailer';
 
 import missingArguments from '@/utils/missingArguments';
+import sendMailFunction from '@/utils/sendMailFunction';
+import validateMethod from '@/utils/validateMethod';
+
+type TRequestBody = {
+  name: string;
+  email: string;
+  message: string;
+  subject: string;
+  phone?: number;
+};
 
 const handler = async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
   try {
-    const { name, email, message, subject, phone } = req.body;
-    const missArgs = missingArguments({ name, email, message, subject });
-    if (missArgs.length > 0) {
-      throw new Error(`Missing arguments: ${missArgs.join(', ')}`);
-    }
+    const { name, email, message, subject, phone } = req.body as TRequestBody;
+    validateMethod(req.method as string, 'POST');
+    missingArguments({ name, email, message, subject });
 
-    const emailBody = {
+    await sendMailFunction({
+      to: process.env.SENDER_EMAIL_ADDRESS?.toString() || '',
       from: email,
-      to: process.env.EMAIL_ADDRESS,
       subject: subject,
-      text: `From: ${name} <${email}>, ${
-        phone ? `Phone: ${phone} \n\n${message}.` : null
-      } `,
-    };
-
-    const transporter = createTransport({
-      port: 465,
-      host: 'smtp.gmail.com',
-      auth: {
-        user: process.env.SENDER_EMAIL_ADDRESS,
-        pass: process.env.EMAIL_PASSWORD,
-      },
     });
 
-    await transporter.sendMail(emailBody);
-
-    res.status(200).json({ statusCode: 200, message: 'Success' });
+    res.status(200).json({ statusCode: 200, message: 'Success', result: null });
   } catch (err) {
     const typedError = err as Error;
     res.status(500).json({ statusCode: 500, message: typedError.message });

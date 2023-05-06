@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export const useIsTop = (): boolean => {
-  const [isTop, setIsTop] = useState(true);
+  const [isTop, setIsTop] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {

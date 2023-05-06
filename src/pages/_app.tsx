@@ -1,16 +1,33 @@
 import { Analytics } from '@vercel/analytics/react';
 import { AppProps } from 'next/app';
 import { Toaster } from 'react-hot-toast';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { Provider } from 'react-redux';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: false,
+    },
+  },
+});
 
 import '@/styles/globals.css';
 import '@/styles/animations.css';
 
+import { store } from '@/store';
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Component {...pageProps} />
-      <Toaster />
-      <Analytics />
+      <Provider store={store}>
+        <QueryClientProvider client={queryClient}>
+          <Component {...pageProps} />
+          <Toaster />
+          <Analytics />
+        </QueryClientProvider>
+      </Provider>
     </>
   );
 }

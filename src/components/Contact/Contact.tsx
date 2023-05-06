@@ -1,7 +1,7 @@
 import React from 'react';
 
-import ContactForm from '@/Contact/Partials/ContactForm';
-import ContactInfo from '@/Contact/Partials/ContactInfo';
+import ContactForm from './Partials/ContactForm';
+import ContactInfo from './Partials/ContactInfo';
 const Contact: React.FC = (): JSX.Element => {
   return (
     <div

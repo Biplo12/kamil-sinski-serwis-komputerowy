@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
 
 import contactInfoData from '@/components/Common/contactInfoData';
-
-import ResponsiveContactIcon from '@/Contact/Partials/ResponsiveContactIcon';
+import ResponsiveContactIcon from '@/components/Contact/Partials/ResponsiveContactIcon';
 const FooterContact: React.FC = (): JSX.Element => {
   return (
     <div className='flex flex-col items-center justify-center gap-5 text-left'>
