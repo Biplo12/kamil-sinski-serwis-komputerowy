@@ -10,7 +10,6 @@ const useFetchOrders = (filters: IFilters, enabled: boolean) => {
     'orders',
     async () => {
       let url = '/api/orders/vieworders';
-
       const queryString = Object.entries(filters)
         .map(([key, value]) => {
           if (value !== undefined && value !== null) {

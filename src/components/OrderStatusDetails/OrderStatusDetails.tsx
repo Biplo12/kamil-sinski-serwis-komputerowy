@@ -7,7 +7,7 @@ import { useAppSelector } from '@/store/store-hooks';
 import { selectOrder } from '@/state/orderSlice';
 
 interface IOrderStatuses {
-  diagnosing: {
+  new: {
     headerText: JSX.Element;
     text: string;
   };
@@ -22,10 +22,10 @@ interface IOrderStatuses {
 }
 
 const orderStatuses: IOrderStatuses = {
-  diagnosing: {
+  new: {
     headerText: (
       <h1 className='mxlg:text-3xl mxsm:text-m text-[2.5rem] font-bold uppercase'>
-        Serwisant <span className='text-pylon'>diagnozuje</span> twoje
+        Serwisanci <span className='text-pylon'>diagnozują</span> twoje
         urządzenie
       </h1>
     ),
@@ -44,7 +44,8 @@ const orderStatuses: IOrderStatuses = {
   repairing: {
     headerText: (
       <h1 className='mxlg:text-3xl mxsm:text-m text-[2.5rem] font-bold uppercase'>
-        Serwisant <span className='text-pylon'>naprawia</span> twoje urządzenie
+        Serwisanci <span className='text-pylon'>naprawiją</span> twoje
+        urządzenie
       </h1>
     ),
     text: `Nasi wykwalifikowani serwisanci dokładnie zdiagnozowali usterkę Twojego urządzenia i teraz pracują nad jego naprawą. 
@@ -58,7 +59,8 @@ const orderStatuses: IOrderStatuses = {
   repaired: {
     headerText: (
       <h1 className='mxlg:text-3xl mxsm:text-m text-[2.5rem] font-bold uppercase'>
-        Serwisant <span className='text-pylon'>naprawił</span> twoje urządzenie
+        Serwisanci <span className='text-pylon'>naprawili</span> twoje
+        urządzenie
       </h1>
     ),
     text: `Mamy dla Ciebie dobrą wiadomość - nasz zespół wykwalifikowanych serwisantów zakończył naprawę Twojego urządzenia! 

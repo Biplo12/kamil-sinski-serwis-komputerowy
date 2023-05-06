@@ -46,9 +46,17 @@ const OrderCheckButton: React.FC<IOrderCheckButton> = ({
   const checkOrder = async () => {
     const { error, data, isError } = await refetch();
     const err = error as CustomError;
+    const order = data?.result;
     if (!isError) {
       toast.success('Zamówienie znalezione');
-      dispatch(setOrder(data.result));
+      dispatch(
+        setOrder({
+          createdAt: order?.createdAt,
+          repairingAt: order?.repairingAt,
+          repairedAt: order?.repairedAt,
+          status: order?.status,
+        })
+      );
       return;
     }
     if (err?.response?.status === 404) {
@@ -65,7 +73,7 @@ const OrderCheckButton: React.FC<IOrderCheckButton> = ({
       <FormButton
         text={isLoading ? <Spinner /> : 'Sprawdź status'}
         handler={checkOrder}
-        isDisabled={orderInput.length !== 25 || isLoading}
+        isDisabled={orderInput.length !== 6 || isLoading}
       />
     </>
   );

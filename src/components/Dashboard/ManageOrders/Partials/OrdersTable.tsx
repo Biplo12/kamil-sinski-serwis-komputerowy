@@ -35,12 +35,6 @@ const OrdersTable: React.FC = (): JSX.Element => {
             color: 'white',
             border: '1px solid #01a3ff',
           }}
-          sortModel={[
-            {
-              field: 'createdAt',
-              sort: 'desc',
-            },
-          ]}
           pageSize={10}
         />
       </MuiThemeProvider>

@@ -6,6 +6,7 @@ import { Fragment } from 'react';
 
 import useFetchUserById from '@/hooks/tanstack/useFetchUserById';
 
+import ImageSlider from '@/components/Dashboard/OrderDetails/Partials/ImageSlider';
 import OrderInfoItem from '@/components/Dashboard/OrderDetails/Partials/OrderInfoItem';
 import OrderStatusRoadmap from '@/components/OrderStatusDetails/Partials/OrderStatusRoadmap';
 
@@ -40,24 +41,35 @@ const OrderInfo: React.FC<IOrderInfo> = ({ order }): JSX.Element => {
   ];
 
   return (
-    <>
-      <div className='flex h-[60vh] w-full flex-col items-start justify-start gap-10'>
-        <div className='flex h-[500px] w-[800px] flex-col gap-3 rounded-lg bg-gray-800 p-5'>
-          <h1 className='text-3xl font-semibold text-gray-800 dark:text-gray-100'>
-            {order?.ordertitle}
-          </h1>
-          <span className='text-md font-semibold text-gray-400'>
-            {order?.orderdescription}
-          </span>
-          {orderInfoItems.map((item, index) => (
-            <Fragment key={index}>
-              <OrderInfoItem icon={item.icon} value={item.value} />
-            </Fragment>
-          ))}
+    <div className='flex h-auto min-h-[60vh] w-full flex-col items-center justify-center gap-10'>
+      <div className='flex h-full w-full items-start justify-between gap-5'>
+        <div className='flex h-full w-full flex-col items-start justify-start gap-10'>
+          <div className='flex h-auto min-h-[500px] w-full flex-col gap-10 rounded-lg bg-gray-800 p-5'>
+            <div className='flex items-center justify-between gap-5'>
+              <div className='flex flex-col gap-10'>
+                <div>
+                  <h1 className='text-3xl font-semibold text-gray-800 dark:text-gray-100'>
+                    {order?.ordertitle}
+                  </h1>
+                  <span className='text-md font-semibold text-gray-400'>
+                    {order?.orderdescription}
+                  </span>
+                </div>
+                <div className='flex flex-col gap-5'>
+                  {orderInfoItems.map((item, index) => (
+                    <Fragment key={index}>
+                      <OrderInfoItem icon={item.icon} value={item.value} />
+                    </Fragment>
+                  ))}
+                </div>
+                <OrderStatusRoadmap order={order} />
+              </div>
+              <ImageSlider />
+            </div>
+          </div>
         </div>
-        <OrderStatusRoadmap order={order} />
       </div>
-    </>
+    </div>
   );
 };
 export default OrderInfo;

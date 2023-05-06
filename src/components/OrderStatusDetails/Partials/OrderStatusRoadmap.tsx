@@ -22,10 +22,10 @@ const OrderStatusRoadmap: React.FC<IOrder> = ({ order }): JSX.Element => {
   register('pl_PL', pl_PL);
 
   return (
-    <ol className='mxlg:flex-col flex w-full'>
+    <ol className='mxlg:flex-col mxlg:gap-5 flex w-full'>
       <li className='mxlg:w-[90%] mxlg:mx-auto relative w-[350px]'>
         <div className='flex items-center justify-center gap-3'>
-          <div className='z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full ring-0 ring-white dark:bg-blue-900 dark:ring-gray-900 sm:ring-8'>
+          <div className='z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full dark:bg-blue-900'>
             <img src='/svg/glass-active.svg' alt='wrench icon' />
           </div>
           <div className='bg-pylon h-0.5 w-full' />
@@ -39,9 +39,9 @@ const OrderStatusRoadmap: React.FC<IOrder> = ({ order }): JSX.Element => {
           </time>
         </div>
       </li>
-      <li className='mxlg:w-[90%] mxlg:mx-auto relative w-[350px]'>
+      <li className='mxlg:w-[90%] mxlg:mx-auto relative ml-3 w-[350px]'>
         <div className='flex items-center justify-center gap-2'>
-          <div className='z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full ring-0 ring-white dark:bg-blue-900 dark:ring-gray-900 sm:ring-8'>
+          <div className='z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full dark:bg-blue-900'>
             <img
               src={`/svg/wrench${
                 orderStatus === 'repairing' || orderStatus === 'repaired'
@@ -70,9 +70,9 @@ const OrderStatusRoadmap: React.FC<IOrder> = ({ order }): JSX.Element => {
           </time>
         </div>
       </li>
-      <li className='mxlg:w-[90%] mxlg:mx-auto relative w-[350px]'>
+      <li className='mxlg:w-[90%] mxlg:mx-auto relative ml-3 w-[350px]'>
         <div className='flex items-center justify-center gap-3'>
-          <div className='z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 ring-0 ring-white dark:bg-blue-900 dark:ring-gray-900 sm:ring-8'>
+          <div className='z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900'>
             <img
               src={`/svg/checked${
                 orderStatus === 'repaired' ? '-active' : ''

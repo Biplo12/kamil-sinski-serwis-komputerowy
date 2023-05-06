@@ -19,7 +19,7 @@ export interface IInputValues {
   phonenumber: string;
   ordertitle: string;
   orderdescription: string;
-  price: number;
+  price: number | string;
 }
 
 export interface IUser {

@@ -8,26 +8,37 @@ import ResponsiveSidebar from '@/components/Dashboard/Layout/ResponsiveSidebar';
 import Sidebar from '@/components/Dashboard/Layout/Sidebar';
 import Main from '@/components/Dashboard/Main/Main';
 
-import { useAppDispatch } from '@/store/store-hooks';
+import { useAppDispatch, useAppSelector } from '@/store/store-hooks';
 
-import { setOrders, setStats } from '@/state/orderSlice';
+import { selectOrder, setOrders, setStats } from '@/state/orderSlice';
 export default function DashboardPage() {
   const [sidebarState, setSidebarState] = useState<boolean>(true);
   const dispatch = useAppDispatch();
-
+  const orders = useAppSelector(selectOrder);
   const filters = {
     limit: 100,
     orderBy: 'createdAt',
     orderDirection: 'desc',
   };
 
-  const { data } = useFetchOrders(filters, true);
+  const { refetch } = useFetchOrders(filters, false);
   const { data: statsData } = useFetchStatistics(true);
 
   useEffect(() => {
-    dispatch(setOrders(data?.result));
+    if (!statsData) return;
     dispatch(setStats(statsData?.result));
-  }, [data, statsData, dispatch]);
+  }, [statsData, dispatch]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (orders.orders && orders.orders.length > 0) return;
+      const { data } = await refetch();
+      if (!data) return;
+      dispatch(setOrders(data?.result));
+    };
+    fetchData();
+  }, [orders.orders, refetch, dispatch]);
+
   return (
     <>
       <div className='bg-black-stalion flex h-auto min-h-screen w-full flex-col'>

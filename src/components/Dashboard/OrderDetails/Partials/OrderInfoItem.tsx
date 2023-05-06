@@ -14,7 +14,7 @@ const OrderInfoItem: React.FC<IOrderInfoItem> = ({
       <span className='bg-pylon flex h-7 w-7 items-center justify-center rounded-full'>
         {icon}
       </span>
-      <span className='text-lg'>{value}</span>
+      <span className='break-all text-lg'>{value}</span>
     </div>
   );
 };

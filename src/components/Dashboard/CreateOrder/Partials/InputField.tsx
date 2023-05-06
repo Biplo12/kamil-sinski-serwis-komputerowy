@@ -25,12 +25,28 @@ const InputField: React.FC<IInputField> = ({
     e: React.ChangeEvent<HTMLInputElement>,
     key: keyof IInputValues
   ) => {
+    let inputValue = e.target.value;
+
+    if (type === 'number' || type === 'tel') {
+      inputValue = inputValue.replace(/[^0-9.]/g, '');
+      inputValue = inputValue.replace(/^0+(?=\d)/, '');
+      const parts = inputValue.split('.');
+      if (parts.length > 1) {
+        const decimalPart = parts[1].slice(0, 2);
+        inputValue = `${parts[0]}.${decimalPart}`;
+      }
+    }
+
+    if (type === 'number' && inputValue === '0') {
+      inputValue = '';
+    }
+    if (inputValue.length > maxLength) {
+      inputValue = inputValue.slice(0, maxLength);
+    }
+
     setInputValues({
       ...inputValues,
-      [key]:
-        e.target.value.length > maxLength
-          ? e.target.value.slice(0, maxLength)
-          : e.target.value,
+      [key]: inputValue,
     });
   };
 
@@ -51,8 +67,7 @@ const InputField: React.FC<IInputField> = ({
           id={`input-group-${label}`}
           className='focus:border-pylon focus:ring-pylon block w-full rounded-lg border border-gray-600 bg-gray-700 p-2.5 pl-10 text-sm text-white placeholder-gray-400 focus:ring-blue-500'
           placeholder={placeholder}
-          min={`${type === 'number' ? 0 : ''}`}
-          max={maxLength}
+          maxLength={maxLength}
           value={
             inputValues[
               label.replace(' ', '').toLowerCase() as keyof IInputValues
@@ -69,4 +84,5 @@ const InputField: React.FC<IInputField> = ({
     </>
   );
 };
+
 export default InputField;

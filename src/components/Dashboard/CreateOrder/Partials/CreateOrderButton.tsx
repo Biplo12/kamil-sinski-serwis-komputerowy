@@ -12,6 +12,7 @@ import { useAppDispatch } from '@/store/store-hooks';
 
 import { IInputValues } from '@/interfaces';
 import { setOrders, setStats } from '@/state/orderSlice';
+import validateMail from '@/utils/validateMail';
 
 interface ICreateOrderButton {
   inputValues: IInputValues;
@@ -42,6 +43,7 @@ const CreateOrderButton: React.FC<ICreateOrderButton> = ({
   const { refetch: statsRefetch } = useFetchStatistics(false);
   const handleCreateOrder = async () => {
     try {
+      validateMail(inputValues?.email);
       const { isError } = await refetch();
       const { data } = await ordersRefetch();
       const { data: statsData } = await statsRefetch();
@@ -52,8 +54,13 @@ const CreateOrderButton: React.FC<ICreateOrderButton> = ({
         return;
       }
     } catch (err) {
+      const typedError = err as Error;
+      if (typedError.message === 'Invalid email address') {
+        toast.error('Email is not valid');
+        return;
+      }
       logger(err);
-      toast.error('Error while creating order');
+      toast.error('Something went wrong');
     }
   };
 

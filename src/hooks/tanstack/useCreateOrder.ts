@@ -8,7 +8,7 @@ const useCreateOrder = (
   phonenumber: string,
   ordertitle: string,
   orderdescription: string,
-  price: number
+  price: number | string
 ) => {
   const { data, isLoading, error, refetch, isError } = useQuery({
     queryKey: ['createOrder'],

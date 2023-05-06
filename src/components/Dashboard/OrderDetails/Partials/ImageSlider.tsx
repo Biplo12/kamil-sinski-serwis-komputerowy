@@ -23,10 +23,10 @@ const ImageSlider: React.FC = (): JSX.Element => {
   return (
     <div
       id='custom-controls-gallery'
-      className='relative w-full'
+      className='relative h-[400px] w-[800px]'
       data-carousel='slide'
     >
-      <div className='relative h-56 overflow-hidden rounded-lg md:h-96'>
+      <div className='relative h-full w-full overflow-hidden rounded-lg'>
         {images.map((image, index) => (
           <div
             className={`${

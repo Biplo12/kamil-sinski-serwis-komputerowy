@@ -19,7 +19,7 @@ const CreateOrderForm: React.FC = (): JSX.Element => {
     phonenumber: '',
     ordertitle: '',
     orderdescription: '',
-    price: 0,
+    price: '',
   };
 
   const [inputValues, setInputValues] = useState<IInputValues>(inputValuesInit);
@@ -43,13 +43,13 @@ const CreateOrderForm: React.FC = (): JSX.Element => {
       icon: <AlternateEmailRoundedIcon />,
       placeholder: 'Email',
       type: 'email',
-      maxLength: 50,
+      maxLength: 30,
     },
     {
       label: 'Phone Number',
       icon: <PhoneAndroidRoundedIcon />,
       placeholder: 'Phone Number',
-      type: 'text',
+      type: 'tel',
       maxLength: 9,
     },
     {
@@ -57,14 +57,14 @@ const CreateOrderForm: React.FC = (): JSX.Element => {
       icon: <TitleRoundedIcon />,
       placeholder: 'Order Title',
       type: 'text',
-      maxLength: 200,
+      maxLength: 150,
     },
     {
       label: 'Price',
       icon: <AttachMoneyRoundedIcon />,
       placeholder: 'Price',
       type: 'number',
-      maxLength: 10,
+      maxLength: 6,
     },
   ];
   return (

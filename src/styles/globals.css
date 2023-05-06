@@ -127,7 +127,8 @@ html {
   color: #01a3ff !important;
 }
 .MuiList-root,
-.MuiGridFilterForm-root {
+.MuiGridFilterForm-root,
+.MuiGridPanelWrapper-root {
   background-color: #1f2937 !important;
   color: white !important;
   border: 1px solid #01a3ff !important;
@@ -157,4 +158,9 @@ html {
 }
 .MuiDataGrid-selectedRowCount {
   opacity: 0 !important;
+}
+
+.MuiButton-label,
+.MuiInputLabel-animated {
+  color: white !important;
 }
