@@ -2,7 +2,6 @@ import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import React from 'react';
 
 import TopBar from '@/components/Dashboard/Layout/TopBar';
-import Analtyics from '@/components/Dashboard/Main/Partials/Analtyics';
 import LineChartCard from '@/components/Dashboard/Main/Partials/LineChartCard';
 import RecentOrders from '@/components/Dashboard/Main/Partials/RecentOrders';
 import StatsCard from '@/components/Dashboard/Main/Partials/StatsCard';
@@ -38,9 +37,7 @@ const Main: React.FC<IMain> = ({ sidebarState }): JSX.Element => {
               icon={<FacebookRoundedIcon />}
             />
           </div>
-          <div className='border-pylon flex h-full items-center justify-center rounded border bg-gray-800'>
-            <Analtyics />
-          </div>
+          <div className='border-pylon flex h-full items-center justify-center rounded border bg-gray-800'></div>
           <div className='border-pylon flex h-full items-center justify-center rounded border bg-gray-800'></div>
           <div className='border-pylon flex h-full items-center justify-center rounded border bg-gray-800'></div>
         </div>
