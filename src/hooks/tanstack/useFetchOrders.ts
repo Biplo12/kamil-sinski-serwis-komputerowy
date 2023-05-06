@@ -5,7 +5,7 @@ interface IFilters {
   [key: string]: string | number;
 }
 
-const useFetchOrders = (filters: IFilters) => {
+const useFetchOrders = (filters: IFilters, enabled: boolean) => {
   const { data, isLoading, error, refetch, isError } = useQuery(
     'orders',
     async () => {
@@ -28,7 +28,7 @@ const useFetchOrders = (filters: IFilters) => {
       const { data } = await axios.get(url);
       return data;
     },
-    { cacheTime: 0 }
+    { cacheTime: 0, enabled }
   );
 
   return { data, error, isLoading, refetch, isError };

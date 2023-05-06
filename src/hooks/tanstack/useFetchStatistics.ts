@@ -1,14 +1,14 @@
 import axios from 'axios';
 import { useQuery } from 'react-query';
 
-const useFetchStatistics = () => {
+const useFetchStatistics = (enabled: boolean) => {
   const { data, isLoading, error, refetch, isError } = useQuery(
     'stats',
     async () => {
       const { data } = await axios.get(`/api/stats/ordersandusersstatistics`);
       return data;
     },
-    { cacheTime: 0 }
+    { cacheTime: 0, enabled }
   );
 
   return { data, error, isLoading, refetch, isError };

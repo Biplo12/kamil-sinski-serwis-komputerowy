@@ -15,7 +15,8 @@ model Orders {
   orderdescription String
   price      Float
   status      String
-  clientFullName String
+  userFullName String
+  userId      Int
   statusMessage String
   repairingAt String?
   repairedAt  String?

@@ -3,10 +3,11 @@ export interface IOrder {
   orderId: number;
   status: string;
   price: number;
-  clientFullName: string;
+  userFullName: string;
   ordertitle: string;
   orderdescription: string;
   statusMessage: string;
+  userId: string;
   createdAt: string;
   updatedAt: string;
   repairingAt: string;

@@ -30,14 +30,14 @@ const RecentOrders: React.FC = (): JSX.Element => {
             <Fragment key={index}>
               <div className='mxslg:hidden block'>
                 <RecentOrder
-                  name={item.clientFullName}
+                  name={item.userFullName}
                   date={item.createdAt}
                   id={item.orderId.toString()}
                 />
               </div>
               <div className='mxslg:block hidden'>
                 <ResponsiveRecentOrder
-                  name={item.clientFullName}
+                  name={item.userFullName}
                   date={item.createdAt}
                   id={item.orderId.toString()}
                 />

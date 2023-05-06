@@ -70,7 +70,8 @@ const handler = async (
       ordertitle,
       orderdescription,
       price,
-      clientFullName: `${capitalizeFirstLetter(
+      userId,
+      userFullName: `${capitalizeFirstLetter(
         firstname
       )} ${capitalizeFirstLetter(lastname)}`,
       status: 'new',

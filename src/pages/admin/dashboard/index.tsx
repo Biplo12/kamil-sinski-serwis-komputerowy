@@ -21,8 +21,8 @@ export default function DashboardPage() {
     orderDirection: 'desc',
   };
 
-  const { data } = useFetchOrders(filters);
-  const { data: statsData } = useFetchStatistics();
+  const { data } = useFetchOrders(filters, true);
+  const { data: statsData } = useFetchStatistics(true);
 
   useEffect(() => {
     dispatch(setOrders(data?.result));

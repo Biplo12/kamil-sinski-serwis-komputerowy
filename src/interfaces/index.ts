@@ -21,3 +21,17 @@ export interface IInputValues {
   orderdescription: string;
   price: number;
 }
+
+export interface IUser {
+  id: string;
+  firstname: string;
+  lastname: string;
+  email: string;
+  phonenumber: number;
+  createdAt: string;
+  updatedAt: string;
+  repairingAt: string;
+  repairedAt: string;
+  isAdmin: boolean;
+  userId: number;
+}

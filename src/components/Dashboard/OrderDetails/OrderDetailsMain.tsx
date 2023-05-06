@@ -40,13 +40,13 @@ const OrderDetailsMain: React.FC<IOrderDetailsMain> = ({
       <h1 className='mt-5 text-3xl font-semibold'>
         Order - <span className='text-pylon'>{orderId}</span>
       </h1>
-      <div className='border-pylon my-2 w-[215px] border-t' />
+      <div className='border-pylon mb-10 mt-2 w-[215px] border-t' />
       {isLoading && (
         <div className='flex h-[60vh] w-full items-center justify-center'>
           <Spinner />
         </div>
       )}
-      {!isLoading && !isError && <OrderInfo order={data?.data?.order} />}
+      {!isLoading && !isError && <OrderInfo order={data?.result} />}
       {isOrderNotFound && <OrderNotFound />}
       {isError && !isOrderNotFound && (
         <div className='flex h-[70vh] w-full items-center justify-center'>

@@ -3,10 +3,15 @@ import toast from 'react-hot-toast';
 
 import logger from '@/lib/logger';
 import useCreateOrder from '@/hooks/tanstack/useCreateOrder';
+import useFetchOrders from '@/hooks/tanstack/useFetchOrders';
+import useFetchStatistics from '@/hooks/tanstack/useFetchStatistics';
 
 import Spinner from '@/components/Common/Spinner';
 
+import { useAppDispatch } from '@/store/store-hooks';
+
 import { IInputValues } from '@/interfaces';
+import { setOrders, setStats } from '@/state/orderSlice';
 
 interface ICreateOrderButton {
   inputValues: IInputValues;
@@ -15,6 +20,8 @@ interface ICreateOrderButton {
 const CreateOrderButton: React.FC<ICreateOrderButton> = ({
   inputValues,
 }): JSX.Element => {
+  const dispatch = useAppDispatch();
+
   const { refetch, isLoading } = useCreateOrder(
     inputValues?.firstname,
     inputValues?.lastname,
@@ -25,9 +32,21 @@ const CreateOrderButton: React.FC<ICreateOrderButton> = ({
     inputValues?.price
   );
 
+  const filters = {
+    limit: 100,
+    orderBy: 'createdAt',
+    orderDirection: 'desc',
+  };
+
+  const { refetch: ordersRefetch } = useFetchOrders(filters, false);
+  const { refetch: statsRefetch } = useFetchStatistics(false);
   const handleCreateOrder = async () => {
     try {
       const { isError } = await refetch();
+      const { data } = await ordersRefetch();
+      const { data: statsData } = await statsRefetch();
+      dispatch(setOrders(data?.result));
+      dispatch(setStats(statsData?.result));
       if (!isError) {
         toast.success('Order created');
         return;

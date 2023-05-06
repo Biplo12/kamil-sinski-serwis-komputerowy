@@ -6,7 +6,6 @@ const defaultMeta = {
   siteName: 'Kamil Siński - Serwis Komputerowy',
   description:
     'Serwis komputerowy w Bytomiu. Naprawa laptopów, komputerów stacjonarnych, serwerów, drukarek, routerów, konfiguracja sieci LAN, serwerów, instalacja systemów operacyjnych, konfiguracja oprogramowania, konfiguracja serwerów poczty, serwerów plików, serwerów drukarek, serwerów VPN, serwerów WWW, serwerów baz danych, serwerów proxy, serwerów firewall, serwerów antywirusowych, serwerów antyspamowych, serwerów antyphishingowych, serwerów antyspyware, serwerów antybotnetowych, serwerów antypharmingowych',
-  /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
   url: 'https://www.kamilsinski.pl/',
   type: 'website',
   robots: 'follow, index',
