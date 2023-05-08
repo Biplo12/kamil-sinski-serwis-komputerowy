@@ -12,6 +12,13 @@ type TRequestBody = {
 
 type TQuery = TRequestBody;
 
+type OrdersOrderByWithRelationInput = {
+  createdAt?: SortOrder;
+  // Add other properties if necessary
+};
+
+type SortOrder = 'asc' | 'desc';
+
 const handler = async (
   req: NextApiRequest,
   res: NextApiResponse
@@ -19,9 +26,9 @@ const handler = async (
   try {
     const filters = req.query as TRequestBody;
     const filtersKeys = Object.keys(filters) as Array<keyof TRequestBody>;
-    let limit = 10;
+    let limit = 100;
     let offset = 0;
-    let orderBy = {};
+    let orderBy: OrdersOrderByWithRelationInput = {};
 
     validateMethod(req.method as string, 'GET');
     validateFiltersAndParams(filtersKeys);

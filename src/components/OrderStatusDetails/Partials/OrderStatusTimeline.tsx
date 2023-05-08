@@ -16,7 +16,7 @@ interface IOrder {
   order: IOrderDetails | null;
 }
 
-const OrderStatusRoadmap: React.FC<IOrder> = ({ order }): JSX.Element => {
+const OrderStatusTimeline: React.FC<IOrder> = ({ order }): JSX.Element => {
   const orderStatus = order?.status;
 
   register('pl_PL', pl_PL);
@@ -100,4 +100,4 @@ const OrderStatusRoadmap: React.FC<IOrder> = ({ order }): JSX.Element => {
     </ol>
   );
 };
-export default OrderStatusRoadmap;
+export default OrderStatusTimeline;

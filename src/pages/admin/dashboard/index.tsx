@@ -15,13 +15,8 @@ export default function DashboardPage() {
   const [sidebarState, setSidebarState] = useState<boolean>(true);
   const dispatch = useAppDispatch();
   const orders = useAppSelector(selectOrder);
-  const filters = {
-    limit: 100,
-    orderBy: 'createdAt',
-    orderDirection: 'desc',
-  };
 
-  const { refetch } = useFetchOrders(filters, false);
+  const { refetch } = useFetchOrders(false);
   const { data: statsData } = useFetchStatistics(true);
 
   useEffect(() => {

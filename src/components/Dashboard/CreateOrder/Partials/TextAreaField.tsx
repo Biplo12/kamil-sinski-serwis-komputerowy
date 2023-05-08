@@ -41,7 +41,7 @@ const TextAreaField: React.FC<ITextAreaField> = ({
         value={
           inputValues[
             label.replace(' ', '').toLowerCase() as keyof IInputValues
-          ]
+          ] ?? ''
         }
         onChange={(e) =>
           handleInputChange(

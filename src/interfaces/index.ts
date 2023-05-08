@@ -13,13 +13,13 @@ export interface ISubmitStatus {
 }
 
 export interface IInputValues {
-  firstname: string;
-  lastname: string;
-  email: string;
-  phonenumber: string;
-  ordertitle: string;
-  orderdescription: string;
-  price: number | string;
+  firstname?: string | null | undefined;
+  lastname?: string | null | undefined;
+  email?: string | null | undefined;
+  phonenumber?: string | number | null | undefined;
+  ordertitle: string | null | undefined;
+  orderdescription: string | null | undefined;
+  price: number | string | null | undefined;
 }
 
 export interface IUser {

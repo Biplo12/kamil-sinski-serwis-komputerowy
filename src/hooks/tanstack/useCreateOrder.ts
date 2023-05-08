@@ -2,13 +2,13 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 
 const useCreateOrder = (
-  firstname: string,
-  lastname: string,
-  email: string,
-  phonenumber: string,
-  ordertitle: string,
-  orderdescription: string,
-  price: number | string
+  firstname: string | null | undefined,
+  lastname: string | null | undefined,
+  email: string | null | undefined,
+  phonenumber: string | number | null | undefined,
+  ordertitle: string | null | undefined,
+  orderdescription: string | null | undefined,
+  price: number | string | null | undefined
 ) => {
   const { data, isLoading, error, refetch, isError } = useQuery({
     queryKey: ['createOrder'],
@@ -17,10 +17,10 @@ const useCreateOrder = (
         firstname,
         lastname,
         email,
-        phonenumber: parseInt(phonenumber.toString()),
+        phonenumber: parseInt(phonenumber?.toString() || '0'),
         ordertitle,
         orderdescription,
-        price: parseFloat(price.toString()),
+        price: parseFloat(price?.toString() || '0'),
       });
       return data;
     },

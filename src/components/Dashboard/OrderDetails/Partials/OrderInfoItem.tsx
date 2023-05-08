@@ -1,8 +1,10 @@
 import React from 'react';
 
+import Spinner from '@/components/Common/Spinner';
+
 interface IOrderInfoItem {
   icon: JSX.Element;
-  value: string | number;
+  value: string | number | null | undefined;
 }
 
 const OrderInfoItem: React.FC<IOrderInfoItem> = ({
@@ -14,7 +16,9 @@ const OrderInfoItem: React.FC<IOrderInfoItem> = ({
       <span className='bg-pylon flex h-7 w-7 items-center justify-center rounded-full'>
         {icon}
       </span>
-      <span className='break-all text-lg'>{value}</span>
+      <span className='break-all text-lg'>
+        {value === null || value === undefined ? <Spinner /> : value}
+      </span>
     </div>
   );
 };

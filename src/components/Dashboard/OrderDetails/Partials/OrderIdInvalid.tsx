@@ -4,12 +4,10 @@ import TopBar from '@/components/Dashboard/Layout/TopBar';
 
 interface IOrderIdInvalid {
   sidebarState: boolean;
-  orderId: string | undefined;
 }
 
 const OrderIdInvalid: React.FC<IOrderIdInvalid> = ({
   sidebarState,
-  orderId,
 }): JSX.Element => {
   return (
     <div

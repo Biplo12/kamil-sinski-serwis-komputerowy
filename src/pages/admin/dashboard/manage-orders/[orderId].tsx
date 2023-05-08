@@ -13,6 +13,7 @@ export default function OrderDetails() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const router = useRouter();
   const { orderId } = router.query;
+  const parsedOrderId = parseInt(orderId as string);
 
   useEffect(() => {
     if (!orderId || orderId.length !== 6) {
@@ -33,16 +34,10 @@ export default function OrderDetails() {
       <Sidebar setSidebarState={setSidebarState} />
       {isLoading && <Spinner />}
       {!isLoading && isValidOrderId && (
-        <OrderDetailsMain
-          sidebarState={sidebarState}
-          orderId={orderId?.toString()}
-        />
+        <OrderDetailsMain sidebarState={sidebarState} orderId={parsedOrderId} />
       )}
       {!isLoading && !isValidOrderId && (
-        <OrderIdInvalid
-          sidebarState={sidebarState}
-          orderId={orderId?.toString()}
-        />
+        <OrderIdInvalid sidebarState={sidebarState} />
       )}
     </div>
   );

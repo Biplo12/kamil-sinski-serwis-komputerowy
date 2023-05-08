@@ -81,7 +81,7 @@ const ContactSubmitButton: React.FC<IContactButton> = ({
     <FormButton
       text={submitStatus.submitting ? <Spinner /> : 'Wyślij'}
       handler={handleSubmit}
-      isDisabled={submitStatus.submitting}
+      disabled={submitStatus.submitting}
     />
   );
 };

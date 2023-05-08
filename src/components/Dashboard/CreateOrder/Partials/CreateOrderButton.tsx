@@ -33,13 +33,7 @@ const CreateOrderButton: React.FC<ICreateOrderButton> = ({
     inputValues?.price
   );
 
-  const filters = {
-    limit: 100,
-    orderBy: 'createdAt',
-    orderDirection: 'desc',
-  };
-
-  const { refetch: ordersRefetch } = useFetchOrders(filters, false);
+  const { refetch: ordersRefetch } = useFetchOrders(false);
   const { refetch: statsRefetch } = useFetchStatistics(false);
   const handleCreateOrder = async () => {
     try {

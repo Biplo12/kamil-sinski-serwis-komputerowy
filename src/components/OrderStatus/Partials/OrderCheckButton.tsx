@@ -11,9 +11,9 @@ import { useAppDispatch, useAppSelector } from '@/store/store-hooks';
 import { selectOrder, setOrder } from '@/state/orderSlice';
 
 interface IOrderCheckButton {
-  orderInput: string;
+  orderInput: number | null;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  setOrderInput: React.Dispatch<React.SetStateAction<string>>;
+  setOrderInput: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
 interface CustomError extends Error {
@@ -35,7 +35,7 @@ const OrderCheckButton: React.FC<IOrderCheckButton> = ({
   const order = useAppSelector(selectOrder);
 
   const handleResetToInitialState = () => {
-    setOrderInput('');
+    setOrderInput(null);
     order.orderDetails ? dispatch(setOrder(null)) : null;
   };
 
@@ -73,7 +73,7 @@ const OrderCheckButton: React.FC<IOrderCheckButton> = ({
       <FormButton
         text={isLoading ? <Spinner /> : 'Sprawdź status'}
         handler={checkOrder}
-        isDisabled={orderInput.length !== 6 || isLoading}
+        disabled={orderInput?.toString()?.length !== 6 || isLoading}
       />
     </>
   );

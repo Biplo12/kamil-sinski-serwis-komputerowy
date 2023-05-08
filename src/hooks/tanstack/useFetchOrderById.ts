@@ -1,7 +1,10 @@
 import axios from 'axios';
 import { useQuery } from 'react-query';
 
-const useFetchOrderById = (orderId: string, enabled: boolean) => {
+const useFetchOrderById = (
+  orderId: number | null | undefined,
+  enabled: boolean
+) => {
   const { data, isLoading, error, refetch, isError } = useQuery({
     queryKey: ['orderById', orderId],
     queryFn: async () => {

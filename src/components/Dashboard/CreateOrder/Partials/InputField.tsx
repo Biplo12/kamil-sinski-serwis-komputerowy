@@ -71,7 +71,7 @@ const InputField: React.FC<IInputField> = ({
           value={
             inputValues[
               label.replace(' ', '').toLowerCase() as keyof IInputValues
-            ]
+            ] ?? ''
           }
           onChange={(e) =>
             handleInputChange(

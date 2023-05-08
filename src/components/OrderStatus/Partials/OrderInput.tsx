@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 interface IOrderInput {
-  setOrderInput: React.Dispatch<React.SetStateAction<string>>;
-  orderInput: string;
+  setOrderInput: React.Dispatch<React.SetStateAction<number | null>>;
+  orderInput: number | null;
   loading: boolean;
 }
 
@@ -15,7 +15,7 @@ const OrderInput: React.FC<IOrderInput> = ({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    setOrderInput(value);
+    setOrderInput(parseInt(value));
   };
 
   return (
@@ -31,7 +31,7 @@ const OrderInput: React.FC<IOrderInput> = ({
         type='text'
         className='input focus:border-pylon ease duration-300 focus:ring-0'
         onChange={(e) => handleChange(e)}
-        value={orderInput}
+        value={orderInput || ''}
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
         maxLength={6}

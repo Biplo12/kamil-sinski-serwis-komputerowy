@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import OrderCheckButton from '@/components/OrderStatus/Partials/OrderCheckButton';
 import OrderInput from '@/components/OrderStatus/Partials/OrderInput';
 const OrderStatus: React.FC = (): JSX.Element => {
-  const [orderInput, setOrderInput] = useState<string>('');
+  const [orderInput, setOrderInput] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   return (
     <div

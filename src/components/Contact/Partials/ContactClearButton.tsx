@@ -15,10 +15,10 @@ const ContactClearButton: React.FC<IContactClearButton> = ({
   contactInput,
   contactInputInitial,
 }): JSX.Element => {
-  const isDisabled =
+  const disabled =
     JSON.stringify(contactInput) === JSON.stringify(contactInputInitial);
   return (
-    <FormButton text='Wyczyść' handler={handleClear} isDisabled={isDisabled} />
+    <FormButton text='Wyczyść' handler={handleClear} disabled={disabled} />
   );
 };
 export default ContactClearButton;

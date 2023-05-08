@@ -1,6 +1,6 @@
 import React from 'react';
 
-import OrderStatusRoadmap from '@/components/OrderStatusDetails/Partials/OrderStatusRoadmap';
+import OrderStatusTimeline from '@/components/OrderStatusDetails/Partials/OrderStatusTimeline';
 
 import { IOrder } from '@/interfaces/IOrderSlice';
 
@@ -19,7 +19,7 @@ const OrderStatusText: React.FC<IOrderStatusText> = ({
     <div className='flex h-auto min-h-[100vh] flex-col items-center justify-center gap-10 px-5 text-center'>
       {headerText}
       <p className='max-w-[800px]'>{text}</p>
-      <OrderStatusRoadmap order={order} />
+      <OrderStatusTimeline order={order} />
     </div>
   );
 };
