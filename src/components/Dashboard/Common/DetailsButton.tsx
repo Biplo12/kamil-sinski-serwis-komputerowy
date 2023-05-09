@@ -2,13 +2,21 @@ import { useRouter } from 'next/router';
 import React from 'react';
 
 interface IDetailsButton {
-  orderId: number;
+  orderId?: number;
+  userId?: number;
 }
 
-const DetailsButton: React.FC<IDetailsButton> = ({ orderId }): JSX.Element => {
+const DetailsButton: React.FC<IDetailsButton> = ({
+  orderId,
+  userId,
+}): JSX.Element => {
   const router = useRouter();
+  const isOrder = orderId ? true : false;
   const handleDetails = () => {
-    router.push(`/admin/dashboard/manage-orders/${orderId}`);
+    const url = isOrder
+      ? `/admin/dashboard/manage-orders/${orderId}`
+      : `/admin/dashboard/manage-users/${userId}`;
+    router.push(url);
   };
 
   return (

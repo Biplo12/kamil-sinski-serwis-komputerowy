@@ -32,6 +32,7 @@ const initialState: IOrderSlice = {
     },
     charts: [],
   },
+  users: [],
 };
 
 export const orderSlice = createSlice({
@@ -47,11 +48,14 @@ export const orderSlice = createSlice({
     setStats: (state, action: PayloadAction<any>) => {
       state.ordersStatistics = action.payload;
     },
+    setUsers: (state, action: PayloadAction<any>) => {
+      state.users = action.payload;
+    },
   },
 });
 
 export const selectOrder = (state: RootState) => state.order;
 
-export const { setOrder, setOrders, setStats } = orderSlice.actions;
+export const { setOrder, setOrders, setStats, setUsers } = orderSlice.actions;
 
 export default orderSlice.reducer;

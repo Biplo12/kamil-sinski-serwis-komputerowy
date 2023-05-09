@@ -2,13 +2,15 @@ import { createTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { DataGrid } from '@material-ui/data-grid';
 import React from 'react';
 
-import {
-  columns,
-  useGetRows,
-} from '@/components/Dashboard/ManageOrders/Partials/data';
+interface ITableComponent {
+  rows: any;
+  columns: any;
+}
 
-const OrdersTable: React.FC = (): JSX.Element => {
-  const rows = useGetRows();
+const TableComponent: React.FC<ITableComponent> = ({
+  rows,
+  columns,
+}): JSX.Element => {
   const theme = createTheme({
     overrides: {
       MuiTableSortLabel: {
@@ -42,4 +44,4 @@ const OrdersTable: React.FC = (): JSX.Element => {
   );
 };
 
-export default OrdersTable;
+export default TableComponent;

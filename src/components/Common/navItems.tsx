@@ -25,7 +25,7 @@ const navItems = [
   {
     label: 'Manage Users',
     icon: <PeopleOutlinedIcon />,
-    to: '/users',
+    to: '/admin/dashboard/users',
   },
   {
     label: 'Website Analytics',

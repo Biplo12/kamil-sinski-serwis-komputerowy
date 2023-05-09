@@ -41,4 +41,5 @@ export default interface IOrderSlice {
     };
     charts: [] | null;
   };
+  users: [] | null;
 }

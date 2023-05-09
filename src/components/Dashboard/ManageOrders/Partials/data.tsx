@@ -1,6 +1,6 @@
 import { GridColDef } from '@material-ui/data-grid';
 
-import DetailsButton from '@/components/Dashboard/ManageOrders/Partials/DetailsButton';
+import DetailsButton from '@/components/Dashboard/Common/DetailsButton';
 
 import { useAppSelector } from '@/store/store-hooks';
 

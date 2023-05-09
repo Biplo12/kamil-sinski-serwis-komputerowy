@@ -38,12 +38,14 @@ const LineChartCard: React.FC = (): JSX.Element => {
             dataKey='Users'
             stroke='#01A3FF'
             activeDot={{ r: 8 }}
+            isAnimationActive={false}
           />
           <Line
             type='monotone'
             dataKey='Orders'
             stroke='#EF4444'
             activeDot={{ r: 8 }}
+            isAnimationActive={false}
           />
         </LineChart>
       </ResponsiveContainer>
