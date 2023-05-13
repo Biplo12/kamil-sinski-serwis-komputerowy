@@ -14,10 +14,19 @@ const handler = async (
 ): Promise<void> => {
   try {
     validateMethod(req.method as string, 'DELETE');
-
-    const { orderId } = req.body as TRequestBody;
+    const { orderId }: TRequestBody = req.body;
 
     missingArguments({ orderId });
+
+    const isOrderExist = await prisma.orders.findUnique({
+      where: {
+        orderId,
+      },
+    });
+
+    if (!isOrderExist) {
+      throw new Error('Order not found');
+    }
 
     const order = await prisma.orders.delete({
       where: {

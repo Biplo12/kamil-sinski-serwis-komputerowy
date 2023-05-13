@@ -1,21 +1,20 @@
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { useQuery } from 'react-query';
 
 const useFetchOrderById = (
   orderId: number | null | undefined,
   enabled: boolean
 ) => {
-  const { data, isLoading, error, refetch, isError } = useQuery({
-    queryKey: ['orderById', orderId],
-    queryFn: async () => {
+  return useQuery(
+    ['orderById', orderId],
+    async () => {
       const { data } = await axios.get(
         `/api/orders/vieworder?orderId=${orderId}`
       );
       return data;
     },
-    enabled,
-  });
-  return { data, error, isLoading, refetch, isError };
+    { enabled }
+  );
 };
 
 export default useFetchOrderById;

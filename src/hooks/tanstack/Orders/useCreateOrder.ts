@@ -1,5 +1,5 @@
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { useQuery } from 'react-query';
 
 const useCreateOrder = (
   firstname: string | null | undefined,
@@ -10,9 +10,9 @@ const useCreateOrder = (
   orderdescription: string | null | undefined,
   price: number | string | null | undefined
 ) => {
-  const { data, isLoading, error, refetch, isError } = useQuery({
-    queryKey: ['createOrder'],
-    queryFn: async () => {
+  return useQuery(
+    ['createOrder'],
+    async () => {
       const { data } = await axios.post(`/api/orders/createorder`, {
         firstname,
         lastname,
@@ -24,9 +24,8 @@ const useCreateOrder = (
       });
       return data;
     },
-    enabled: false,
-  });
-  return { data, error, isLoading, refetch, isError };
+    { enabled: false }
+  );
 };
 
 export default useCreateOrder;

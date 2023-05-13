@@ -1,5 +1,5 @@
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { useQuery } from 'react-query';
 
 interface IFilters {
   [key: string]: string | number | undefined;
@@ -7,16 +7,15 @@ interface IFilters {
 
 const useFetchOrders = (enabled = true, filters?: IFilters) => {
   return useQuery(
-    'orders',
+    ['orders'],
     async () => {
       const params = filters ? { ...filters } : {};
-
       const { data } = await axios.get('/api/orders/vieworders', {
         params,
       });
       return data;
     },
-    { cacheTime: 0, enabled }
+    { enabled }
   );
 };
 
