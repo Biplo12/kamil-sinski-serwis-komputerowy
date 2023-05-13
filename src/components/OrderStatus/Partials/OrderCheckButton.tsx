@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 
-import useFetchOrderById from '@/hooks/tanstack/useFetchOrderById';
+import useFetchOrderById from '@/hooks/tanstack/Orders/useFetchOrderById';
 
 import FormButton from '@/components/Common/FormButton';
 import Spinner from '@/components/Common/Spinner';

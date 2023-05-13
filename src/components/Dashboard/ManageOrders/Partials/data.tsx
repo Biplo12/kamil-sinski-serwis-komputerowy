@@ -1,5 +1,6 @@
 import { GridColDef } from '@material-ui/data-grid';
 
+import DeleteButton from '@/components/Dashboard/Common/DeleteButton';
 import DetailsButton from '@/components/Dashboard/Common/DetailsButton';
 
 import { useAppSelector } from '@/store/store-hooks';
@@ -17,12 +18,22 @@ const columns: GridColDef[] = [
   { field: 'repairingAt', headerName: 'Repairing At', width: 200 },
   { field: 'repairedAt', headerName: 'Repaired At', width: 200 },
   {
-    field: '',
+    field: ' ',
     headerName: '',
     width: 100,
     renderCell: (params) => (
       <>
         <DetailsButton orderId={params.row.orderId} />
+      </>
+    ),
+  },
+  {
+    field: '',
+    headerName: '',
+    width: 100,
+    renderCell: (params) => (
+      <>
+        <DeleteButton orderId={params.row.orderId} />
       </>
     ),
   },

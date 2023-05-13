@@ -14,7 +14,6 @@ type TQuery = TRequestBody;
 
 type OrdersOrderByWithRelationInput = {
   createdAt?: SortOrder;
-  // Add other properties if necessary
 };
 
 type SortOrder = 'asc' | 'desc';
@@ -24,31 +23,38 @@ const handler = async (
   res: NextApiResponse
 ): Promise<void> => {
   try {
+    validateMethod(req.method as string, 'GET');
+
     const filters = req.query as TRequestBody;
     const filtersKeys = Object.keys(filters) as Array<keyof TRequestBody>;
+
+    validateFiltersAndParams(filtersKeys);
+
     let limit = 100;
     let offset = 0;
     let orderBy: OrdersOrderByWithRelationInput = {};
 
-    validateMethod(req.method as string, 'GET');
-    validateFiltersAndParams(filtersKeys);
+    if (filtersKeys.includes('limit')) {
+      limit = parseInt(filters.limit as string) || limit;
+      delete filters.limit;
+    }
 
-    if (filtersKeys.includes('limit') || filtersKeys.includes('offset')) {
-      limit = parseInt(filters.limit as string) || 10;
-      offset = parseInt(filters.offset as string) || 0;
-      delete filters['limit'];
-      delete filters['offset'];
+    if (filtersKeys.includes('offset')) {
+      offset = parseInt(filters.offset as string) || offset;
+      delete filters.offset;
     }
 
     if (filtersKeys.includes('orderBy')) {
       const orderField = filters.orderBy as string;
-      delete filters['orderBy'];
-      const orderDirection = filtersKeys.includes('orderDirection')
-        ? filters.orderDirection
-        : 'asc';
-      delete filters['orderDirection'];
+      delete filters.orderBy;
+      const orderDirection = filters.orderDirection || 'asc';
+      delete filters.orderDirection;
       orderBy = {
         [orderField]: orderDirection,
+      };
+    } else {
+      orderBy = {
+        createdAt: 'desc',
       };
     }
 
@@ -63,10 +69,8 @@ const handler = async (
       }
     }
 
-    const order = await prisma.orders.findMany({
-      where: {
-        ...params,
-      },
+    const orders = await prisma.orders.findMany({
+      where: params,
       take: limit,
       skip: offset,
       orderBy,
@@ -74,7 +78,7 @@ const handler = async (
 
     res
       .status(200)
-      .json({ statusCode: 200, message: 'Success', result: order });
+      .json({ statusCode: 200, message: 'Success', result: orders });
   } catch (err) {
     const typedError = err as Error;
     res.status(500).json({ statusCode: 500, message: typedError.message });

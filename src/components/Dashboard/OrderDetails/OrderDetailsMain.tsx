@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import useFetchOrderById from '@/hooks/tanstack/useFetchOrderById';
+import useFetchOrderById from '@/hooks/tanstack/Orders/useFetchOrderById';
 
 import Spinner from '@/components/Common/Spinner';
 import TopBar from '@/components/Dashboard/Layout/TopBar';

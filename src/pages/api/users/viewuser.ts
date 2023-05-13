@@ -2,6 +2,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import missingArguments from '@/utils/missingArguments';
 import prisma from '@/utils/prisma';
+import validateId from '@/utils/validateId';
+import validateMethod from '@/utils/validateMethod';
 
 type TRequestBody = {
   userId: string;
@@ -12,26 +14,17 @@ const handler = async (
   res: NextApiResponse
 ): Promise<void> => {
   try {
+    validateMethod(req.method as string, 'GET');
+
     const { userId } = req.query as TRequestBody;
+    const id = parseInt(userId);
+    missingArguments({ userId });
 
-    const missArgs = missingArguments({ userId });
-
-    if (missArgs.length > 0) {
-      res.status(400).json({
-        statusCode: 400,
-        message: `Missing arguments: ${missArgs.join(', ')}`,
-      });
-      return;
-    }
-
-    if (userId.length !== 6) {
-      res.status(400).json({ statusCode: 400, message: 'Invalid user id' });
-      return;
-    }
+    validateId(id);
 
     const user = await prisma.users.findUnique({
       where: {
-        userId: parseInt(userId),
+        userId: id,
       },
     });
 

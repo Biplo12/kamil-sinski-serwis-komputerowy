@@ -4,7 +4,7 @@ import AttachMoneyRoundedIcon from '@mui/icons-material/AttachMoneyRounded';
 import PhoneAndroidRoundedIcon from '@mui/icons-material/PhoneAndroidRounded';
 import { Fragment, useEffect } from 'react';
 
-import useFetchUserById from '@/hooks/tanstack/useFetchUserById';
+import useFetchUserById from '@/hooks/tanstack/Users/useFetchUserById';
 
 import EditOrderDetails from '@/components/Dashboard/OrderDetails/Partials/EditOrderDetails';
 import ImageSlider from '@/components/Dashboard/OrderDetails/Partials/ImageSlider';

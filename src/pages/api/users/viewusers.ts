@@ -18,24 +18,19 @@ type UsersOrderByWithRelationInput = {
 
 type SortUser = 'asc' | 'desc';
 
-interface User {
-  password?: string;
-  isAdmin?: boolean;
-  // Add other properties as needed
-}
-
 const handler = async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
   try {
+    validateMethod(req.method as string, 'GET');
+
     const filters = req.query as TRequestBody;
     const filtersKeys = Object.keys(filters) as Array<keyof TRequestBody>;
     let limit = 100;
     let offset = 0;
     let orderBy: UsersOrderByWithRelationInput = {};
 
-    validateMethod(req.method as string, 'GET');
     validateFiltersAndParams(filtersKeys);
 
     if (filtersKeys.includes('limit') || filtersKeys.includes('offset')) {

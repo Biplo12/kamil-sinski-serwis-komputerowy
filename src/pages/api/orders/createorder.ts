@@ -23,6 +23,8 @@ const handler = async (
   res: NextApiResponse
 ): Promise<void> => {
   try {
+    validateMethod(req.method as string, 'POST');
+
     const {
       firstname,
       lastname,
@@ -33,9 +35,7 @@ const handler = async (
       price,
     } = req.body as TRequestBody;
 
-    // validation
-    validateMethod(req.method as string, 'POST');
-    const missArgs = missingArguments({
+    missingArguments({
       firstname,
       lastname,
       email,
@@ -44,13 +44,7 @@ const handler = async (
       orderdescription,
       price,
     });
-    if (missArgs.length > 0) {
-      res.status(400).json({
-        statusCode: 400,
-        message: `Missing arguments: ${missArgs.join(', ')}`,
-      });
-      return;
-    }
+
     validateMail(email);
 
     const userId = Math.floor(Math.random() * 1000000);

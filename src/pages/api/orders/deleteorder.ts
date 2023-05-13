@@ -4,37 +4,24 @@ import missingArguments from '@/utils/missingArguments';
 import prisma from '@/utils/prisma';
 import validateMethod from '@/utils/validateMethod';
 
-type TRequestBody = {
-  ordertitle: string;
-  orderdescription: string;
-  price: number;
+interface TRequestBody {
   orderId: number;
-};
+}
 
 const handler = async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
   try {
-    validateMethod(req.method as string, 'PUT');
+    validateMethod(req.method as string, 'DELETE');
 
-    const { ordertitle, orderdescription, price, orderId } =
-      req.body as TRequestBody;
+    const { orderId } = req.body as TRequestBody;
 
-    missingArguments({
-      ordertitle,
-      orderdescription,
-      price,
-    });
+    missingArguments({ orderId });
 
-    const order = await prisma.orders.update({
+    const order = await prisma.orders.delete({
       where: {
         orderId,
-      },
-      data: {
-        ordertitle,
-        orderdescription,
-        price,
       },
     });
 

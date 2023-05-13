@@ -2,9 +2,9 @@ import React, { useEffect, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 
 import logger from '@/lib/logger';
-import useEditOrder from '@/hooks/tanstack/useEditOrder';
-import useFetchOrderById from '@/hooks/tanstack/useFetchOrderById';
-import useFetchOrders from '@/hooks/tanstack/useFetchOrders';
+import useEditOrder from '@/hooks/tanstack/Orders/useEditOrder';
+import useFetchOrderById from '@/hooks/tanstack/Orders/useFetchOrderById';
+import useFetchOrders from '@/hooks/tanstack/Orders/useFetchOrders';
 
 import Spinner from '@/components/Common/Spinner';
 

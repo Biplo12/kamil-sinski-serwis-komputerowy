@@ -2,8 +2,8 @@ import React from 'react';
 import toast from 'react-hot-toast';
 
 import logger from '@/lib/logger';
-import useCreateOrder from '@/hooks/tanstack/useCreateOrder';
-import useFetchOrders from '@/hooks/tanstack/useFetchOrders';
+import useCreateOrder from '@/hooks/tanstack/Orders/useCreateOrder';
+import useFetchOrders from '@/hooks/tanstack/Orders/useFetchOrders';
 import useFetchStatistics from '@/hooks/tanstack/useFetchStatistics';
 
 import Spinner from '@/components/Common/Spinner';

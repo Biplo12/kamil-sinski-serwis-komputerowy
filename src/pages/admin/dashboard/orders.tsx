@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import useFetchOrders from '@/hooks/tanstack/useFetchOrders';
+import useFetchOrders from '@/hooks/tanstack/Orders/useFetchOrders';
 
 import Navbar from '@/components/Dashboard/Layout/Navbar';
 import ResponsiveSidebar from '@/components/Dashboard/Layout/ResponsiveSidebar';

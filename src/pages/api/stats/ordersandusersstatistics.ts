@@ -5,6 +5,37 @@ import validateMethod from '@/utils/validateMethod';
 
 const NUMBER_AFTER_COMMA = 2;
 
+interface Order {
+  createdAt: Date;
+  status: string;
+}
+
+interface User {
+  createdAt: Date;
+}
+
+const calculateOrdersLastPeriod = (orders: Order[], period: number): number => {
+  const today = new Date();
+  const lastPeriod = new Date(today.setDate(today.getDate() - period));
+  return orders.filter((order) => {
+    const orderDate = order.createdAt;
+    return orderDate > lastPeriod;
+  }).length;
+};
+
+const calculateUsersLastPeriod = (users: User[], period: number): number => {
+  const today = new Date();
+  const lastPeriod = new Date(today.setDate(today.getDate() - period));
+  return users.filter((user) => {
+    const userDate = user.createdAt;
+    return userDate > lastPeriod;
+  }).length;
+};
+
+const calculatePercentage = (value: number, total: number): string => {
+  return ((value / total) * 100).toFixed(NUMBER_AFTER_COMMA);
+};
+
 const handler = async (
   req: NextApiRequest,
   res: NextApiResponse
@@ -18,43 +49,33 @@ const handler = async (
     const totalOrders = orders.length;
     const totalUsers = users.length;
 
-    const totalOrdersLastMonth = orders.filter((order) => {
-      const today = new Date();
-      const orderDate = new Date(order.createdAt);
-      const lastMonth = new Date(today.setMonth(today.getMonth() - 1));
-      return orderDate > lastMonth;
-    }).length;
+    const totalOrdersLastMonth = calculateOrdersLastPeriod(orders, 30);
 
-    const totalOrdersLastWeek = orders.filter((order) => {
-      const today = new Date();
-      const orderDate = new Date(order.createdAt);
-      const lastWeek = new Date(today.setDate(today.getDate() - 7));
-      return orderDate > lastWeek;
-    }).length;
+    const totalOrdersLastWeek = calculateOrdersLastPeriod(orders, 7);
 
-    const totalUsersLastMonth = users.filter((user) => {
-      const today = new Date();
-      const userDate = new Date(user.createdAt);
-      const lastMonth = new Date(today.setMonth(today.getMonth() - 1));
-      return userDate > lastMonth;
-    }).length;
+    const totalUsersLastMonth = calculateUsersLastPeriod(users, 30);
 
-    const totalUsersLastWeek = users.filter((user) => {
-      const today = new Date();
-      const userDate = new Date(user.createdAt);
-      const lastWeek = new Date(today.setDate(today.getDate() - 7));
-      return userDate > lastWeek;
-    }).length;
+    const totalUsersLastWeek = calculateUsersLastPeriod(users, 7);
 
-    const totalOrdersLastWeekPercentage =
-      (totalOrdersLastWeek / totalOrders) * 100;
-    const totalOrdersLastMonthPercentage =
-      (totalOrdersLastMonth / totalOrders) * 100;
+    const totalOrdersLastWeekPercentage = calculatePercentage(
+      totalOrdersLastWeek,
+      totalOrders
+    );
 
-    const totalUsersLastWeekPercentage =
-      (totalUsersLastWeek / totalUsers) * 100;
-    const totalUsersLastMonthPercentage =
-      (totalUsersLastMonth / totalUsers) * 100;
+    const totalOrdersLastMonthPercentage = calculatePercentage(
+      totalOrdersLastMonth,
+      totalOrders
+    );
+
+    const totalUsersLastWeekPercentage = calculatePercentage(
+      totalUsersLastWeek,
+      totalUsers
+    );
+
+    const totalUsersLastMonthPercentage = calculatePercentage(
+      totalUsersLastMonth,
+      totalUsers
+    );
 
     const unactiveStatus = ['cancel', 'finished'];
 
@@ -65,25 +86,19 @@ const handler = async (
     const activeOrdersLastMonth = (activeOrders / totalOrdersLastMonth) * 100;
     const activeOrdersLastWeek = (activeOrders / totalOrdersLastWeek) * 100;
 
-    const chartDataForEveryMonth = [];
-
-    for (let i = 0; i < 12; i++) {
+    const chartDataForEveryMonth = Array.from({ length: 12 }, (_, i) => {
       const month = new Date();
       month.setMonth(month.getMonth() - i);
-      const monthOrders = orders.filter((order) => {
-        const orderDate = new Date(order.createdAt);
-        return orderDate.getMonth() === month.getMonth();
-      }).length;
-      const monthUsers = users.filter((user) => {
-        const userDate = new Date(user.createdAt);
-        return userDate.getMonth() === month.getMonth();
-      }).length;
-      chartDataForEveryMonth.push({
+      return {
         name: month.toLocaleString('eng', { month: 'short' }),
-        Orders: monthOrders,
-        Users: monthUsers,
-      });
-    }
+        Orders: orders.filter(
+          ({ createdAt }) => new Date(createdAt).getMonth() === month.getMonth()
+        ).length,
+        Users: users.filter(
+          ({ createdAt }) => new Date(createdAt).getMonth() === month.getMonth()
+        ).length,
+      };
+    });
 
     res.status(200).json({
       statusCode: 200,
@@ -94,23 +109,20 @@ const handler = async (
           active: activeOrders,
           percentage: {
             total: {
-              lastWeek:
-                totalOrdersLastWeekPercentage.toFixed(NUMBER_AFTER_COMMA),
-              lastMonth:
-                totalOrdersLastMonthPercentage.toFixed(NUMBER_AFTER_COMMA),
+              lastWeek: totalOrdersLastWeekPercentage,
+              lastMonth: totalOrdersLastMonthPercentage,
             },
             active: {
-              lastWeek: activeOrdersLastWeek.toFixed(NUMBER_AFTER_COMMA),
-              lastMonth: activeOrdersLastMonth.toFixed(NUMBER_AFTER_COMMA),
+              lastWeek: activeOrdersLastWeek,
+              lastMonth: activeOrdersLastMonth,
             },
           },
         },
         users: {
           total: totalUsers,
           percentage: {
-            lastWeek: totalUsersLastWeekPercentage.toFixed(NUMBER_AFTER_COMMA),
-            lastMonth:
-              totalUsersLastMonthPercentage.toFixed(NUMBER_AFTER_COMMA),
+            lastWeek: totalUsersLastWeekPercentage,
+            lastMonth: totalUsersLastMonthPercentage,
           },
         },
         charts: chartDataForEveryMonth.reverse(),
