@@ -7,6 +7,7 @@ import { RootState } from '../store';
 
 const initialState: IUserSlice = {
   users: [],
+  userDetails: null,
 };
 
 export const userSlice = createSlice({
@@ -16,11 +17,14 @@ export const userSlice = createSlice({
     setUsers: (state, action: PayloadAction<any>) => {
       state.users = action.payload;
     },
+    setUser: (state, action: PayloadAction<any>) => {
+      state.userDetails = action.payload;
+    },
   },
 });
 
 export const selectUser = (state: RootState) => state.user;
 
-export const { setUsers } = userSlice.actions;
+export const { setUsers, setUser } = userSlice.actions;
 
 export default userSlice.reducer;

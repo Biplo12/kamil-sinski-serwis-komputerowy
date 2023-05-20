@@ -1,13 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
+import validateMethod from '@/helpers/validateMethod';
 import prisma from '@/utils/prisma';
-import validateMethod from '@/utils/validateMethod';
-
 const NUMBER_AFTER_COMMA = 2;
 
 interface Order {
   createdAt: Date;
-  status: string;
+  status: string | null;
 }
 
 interface User {
@@ -80,7 +79,7 @@ const handler = async (
     const unactiveStatus = ['cancel', 'finished'];
 
     const activeOrders = orders.filter(
-      (order) => !unactiveStatus.includes(order.status)
+      (order) => !unactiveStatus.includes(order.status as string)
     ).length;
 
     const activeOrdersLastMonth = (activeOrders / totalOrdersLastMonth) * 100;

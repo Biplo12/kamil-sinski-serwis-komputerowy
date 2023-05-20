@@ -19,6 +19,14 @@ interface IOrderStatuses {
     headerText: JSX.Element;
     text: string;
   };
+  completed: {
+    headerText: JSX.Element;
+    text: string;
+  };
+  cancelled: {
+    headerText: JSX.Element;
+    text: string;
+  };
 }
 
 const orderStatuses: IOrderStatuses = {
@@ -72,6 +80,37 @@ const orderStatuses: IOrderStatuses = {
             Możesz odebrać swoje urządzenie w naszym serwisie.
             Dziękujemy, że zdecydowałeś się skorzystać z naszych usług i zapewniamy, że zawsze możesz na nas liczyć w przypadku 
             problemów z Twoim urządzeniem.`,
+  },
+  completed: {
+    headerText: (
+      <h1 className='mxlg:text-3xl mxsm:text-m text-[2.5rem] font-bold uppercase'>
+        Zlecenie zostało <span className='text-pylon'>zakończone</span>
+      </h1>
+    ),
+    text: `Mamy przyjemność poinformować Cię, że zlecenie naprawy Twojego urządzenia zostało zakończone z powodzeniem! 
+            Nasz wykwalifikowany zespół serwisantów przeprowadził 
+            dokładną diagnostykę i skrupulatnie naprawił wszystkie usterki.
+            Nasi specjaliści posiadają bogate doświadczenie w naprawie różnych marek i modeli urządzeń, dlatego mogłeś być pewien, że 
+            Twoje urządzenie było w najlepszych rękach. 
+            Wykorzystali najnowsze narzędzia i technologie, aby zapewnić kompleksową naprawę i przywrócić pełną funkcjonalność Twojego urządzenia.
+            Po zakończeniu naprawy, przeprowadziliśmy kompleksowe sprawdzenie urządzenia, aby upewnić się, że wszystko działa poprawnie. 
+            Możesz być spokojny, że Twój sprzęt został starannie przetestowany i spełnia wysokie standardy jakości.`,
+  },
+  cancelled: {
+    headerText: (
+      <h1 className='mxlg:text-3xl mxsm:text-m text-[2.5rem] font-bold uppercase'>
+        Zlecenie zostało <span className='text-pylon'>anulowane</span>
+      </h1>
+    ),
+    text: `Mamy przykrość poinformować, że zlecenie naprawy Twojego urządzenia zostało anulowane. Chcielibyśmy przeprosić za wszelkie niedogodności, jakie mogą wyniknąć z tej sytuacji.
+            Niestety, z różnych powodów, naprawa Twojego urządzenia nie mogła zostać przeprowadzona zgodnie z planem. Nasz zespół serwisantów dokładnie przeanalizował sytuację i zdecydowaliśmy, 
+            że anulacja zlecenia jest najlepszym rozwiązaniem.
+            Pragniemy zapewnić Ci, że podjęliśmy wszelkie możliwe kroki, aby ocenić przyczynę problemu i podjąć odpowiednie działania. Chociaż naprawa nie została zrealizowana, 
+            Twoje zlecenie było dla nas ważne, i doceniamy, że zdecydowałeś się skorzystać z naszych usług.
+            Jeśli nadal masz problemy z urządzeniem lub potrzebujesz dalszej pomocy, zachęcamy Cię do skontaktowania się z naszym zespołem serwisowym. Jesteśmy gotowi do udzielenia 
+            Ci profesjonalnego wsparcia i znalezienia najlepszego rozwiązania dla Ciebie.
+            Jeszcze raz przepraszamy za wszelkie niedogodności i liczymy na to, że w przyszłości będziemy mieli możliwość obsłużyć Cię z pełnym profesjonalizmem i zadowoleniem.
+             Dziękujemy za zrozumienie.`,
   },
 };
 

@@ -10,9 +10,10 @@ import ImagesDrop from '@/components/Dashboard/CreateOrder/Partials/ImagesDrop';
 import InputField from '@/components/Dashboard/CreateOrder/Partials/InputField';
 import TextAreaField from '@/components/Dashboard/CreateOrder/Partials/TextAreaField';
 
-import { IInputValues } from '@/interfaces';
+import { isLocal } from '@/constant/env';
+import { IOrderInputValues } from '@/interfaces';
 const CreateOrderForm: React.FC = (): JSX.Element => {
-  const inputValuesInit: IInputValues = {
+  let inputValuesInit: IOrderInputValues = {
     firstname: '',
     lastname: '',
     email: '',
@@ -22,7 +23,19 @@ const CreateOrderForm: React.FC = (): JSX.Element => {
     price: '',
   };
 
-  const [inputValues, setInputValues] = useState<IInputValues>(inputValuesInit);
+  isLocal &&
+    (inputValuesInit = {
+      firstname: 'John',
+      lastname: 'Doe',
+      email: `john.doe${Math.floor(Math.random() * 1000)}@gmail.com`,
+      phonenumber: Math.floor(Math.random() * 1000000000).toString(),
+      ordertitle: 'iPhone 12 Pro Max',
+      orderdescription: 'Broken screen',
+      price: '100',
+    });
+
+  const [inputValues, setInputValues] =
+    useState<IOrderInputValues>(inputValuesInit);
   const inputFields = [
     {
       label: 'First Name',

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import useFetchOrderById from '@/hooks/tanstack/Orders/useFetchOrderById';
 
-import Spinner from '@/components/Common/Spinner';
+import Loading from '@/components/Common/Loading';
 import TopBar from '@/components/Dashboard/Layout/TopBar';
 import OrderInfo from '@/components/Dashboard/OrderDetails/Partials/OrderInfo';
 import OrderNotFound from '@/components/Dashboard/OrderDetails/Partials/OrderNotFound';
@@ -30,13 +30,18 @@ const OrderDetailsMain: React.FC<IOrderDetailsMain> = ({
 }): JSX.Element => {
   const [loading, setLoading] = useState<boolean>(true);
   const dispatch = useAppDispatch();
-  const { data, isLoading, error, isError } = useFetchOrderById(orderId, true);
+  const { data, isInitialLoading, error, isError } = useFetchOrderById(
+    orderId,
+    true
+  );
   const axiosError = (error as IAxiosError)?.response?.data?.message;
   const isOrderNotFound = axiosError === 'Order not found';
+
   useEffect(() => {
     if (!data?.result) return;
     dispatch(setOrder(data?.result));
   }, [data?.result, dispatch]);
+
   return (
     <div
       className={`${
@@ -48,12 +53,12 @@ const OrderDetailsMain: React.FC<IOrderDetailsMain> = ({
         Order - <span className='text-pylon'>{orderId}</span>
       </h1>
       <div className='border-pylon mxsm:w-0 mb-5 w-[215px] border-t' />
-      {(isLoading || loading) && (
+      {(isInitialLoading || loading) && !isOrderNotFound && (
         <div className='flex h-[60vh] w-full items-center justify-center'>
-          <Spinner />
+          <Loading />
         </div>
       )}
-      {!isLoading && !isError && (
+      {!isInitialLoading && !isError && (
         <OrderInfo setLoading={setLoading} loading={loading} />
       )}
       {isOrderNotFound && <OrderNotFound />}

@@ -2,11 +2,11 @@ import React from 'react';
 
 import TopBar from '@/components/Dashboard/Layout/TopBar';
 
-interface IOrderIdInvalid {
+interface IInvalidOrderId {
   sidebarState: boolean;
 }
 
-const OrderIdInvalid: React.FC<IOrderIdInvalid> = ({
+const InvalidOrderId: React.FC<IInvalidOrderId> = ({
   sidebarState,
 }): JSX.Element => {
   return (
@@ -24,4 +24,4 @@ const OrderIdInvalid: React.FC<IOrderIdInvalid> = ({
     </div>
   );
 };
-export default OrderIdInvalid;
+export default InvalidOrderId;

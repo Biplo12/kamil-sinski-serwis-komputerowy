@@ -1,36 +1,26 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import missingArguments from '@/utils/missingArguments';
+import isOrderExist from '@/helpers/isOrderExist';
+import missingArguments from '@/helpers/missingArguments';
+import validateId from '@/helpers/validateId';
+import validateMethod from '@/helpers/validateMethod';
 import prisma from '@/utils/prisma';
-import validateMethod from '@/utils/validateMethod';
-
-interface TRequestBody {
-  orderId: number;
-}
-
 const handler = async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
   try {
     validateMethod(req.method as string, 'DELETE');
-    const { orderId }: TRequestBody = req.body;
-
+    const { orderId } = req.query as { orderId: string };
+    const id = parseInt(orderId);
+    validateId(id);
     missingArguments({ orderId });
 
-    const isOrderExist = await prisma.orders.findUnique({
-      where: {
-        orderId,
-      },
-    });
-
-    if (!isOrderExist) {
-      throw new Error('Order not found');
-    }
+    await isOrderExist(id);
 
     const order = await prisma.orders.delete({
       where: {
-        orderId,
+        orderId: id,
       },
     });
 

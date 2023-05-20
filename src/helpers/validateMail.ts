@@ -1,4 +1,4 @@
-const validateMail = (mail: string | undefined | null) => {
+const validateMail = (mail: string | undefined | null): boolean => {
   const mailRegex = /^\S+@\S+\.\S+$/;
   const validMail = mailRegex.test(mail || '');
   if (!validMail) {

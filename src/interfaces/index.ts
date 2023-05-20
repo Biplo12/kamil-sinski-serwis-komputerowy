@@ -12,7 +12,7 @@ export interface ISubmitStatus {
   submitting: boolean;
 }
 
-export interface IInputValues {
+export interface IOrderInputValues {
   firstname?: string | null | undefined;
   lastname?: string | null | undefined;
   email?: string | null | undefined;
@@ -20,6 +20,7 @@ export interface IInputValues {
   ordertitle: string | null | undefined;
   orderdescription: string | null | undefined;
   price: number | string | null | undefined;
+  status?: string | null | undefined;
 }
 
 export interface IUser {
@@ -34,4 +35,13 @@ export interface IUser {
   repairedAt: string;
   isAdmin: boolean;
   userId: number;
+}
+
+export interface CustomError extends Error {
+  response?: {
+    status?: number;
+    data?: {
+      message?: string;
+    };
+  };
 }

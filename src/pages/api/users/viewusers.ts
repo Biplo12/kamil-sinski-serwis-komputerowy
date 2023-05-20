@@ -1,16 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
+import validateFiltersAndParams from '@/helpers/validateFiltersAndParams';
+import validateMethod from '@/helpers/validateMethod';
 import prisma from '@/utils/prisma';
-import validateFiltersAndParams from '@/utils/validateFiltersAndParams';
-import validateMethod from '@/utils/validateMethod';
-
 type TKey = string | number;
 
-type TRequestBody = {
+type TRequestQuery = {
   [key: string]: TKey;
 };
 
-type TQuery = TRequestBody;
+type TQuery = TRequestQuery;
 
 type UsersOrderByWithRelationInput = {
   createdAt?: SortUser;
@@ -25,8 +24,8 @@ const handler = async (
   try {
     validateMethod(req.method as string, 'GET');
 
-    const filters = req.query as TRequestBody;
-    const filtersKeys = Object.keys(filters) as Array<keyof TRequestBody>;
+    const filters = req.query as TRequestQuery;
+    const filtersKeys = Object.keys(filters) as Array<keyof TRequestQuery>;
     let limit = 100;
     let offset = 0;
     let orderBy: UsersOrderByWithRelationInput = {};

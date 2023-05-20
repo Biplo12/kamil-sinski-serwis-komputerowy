@@ -28,7 +28,7 @@ export default function Header() {
         } ${isTop || responsiveMenu.state ? 'bg-transparent' : 'bg-pylon'}`}
       >
         <div
-          className={`layout flex h-[9vh] w-full items-center ${
+          className={`layout flex h-[6.5vh] w-full items-center ${
             responsiveMenu.state ? 'justify-end' : 'justify-between'
           }`}
         >

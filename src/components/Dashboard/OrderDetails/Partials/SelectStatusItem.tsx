@@ -1,28 +1,60 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+
+import { IOrderInputValues } from '@/interfaces';
+import { IOrder } from '@/interfaces/IOrderSlice';
 
 interface ISelectStatusItem {
   label: string;
+  setInputValues: React.Dispatch<React.SetStateAction<IOrderInputValues>>;
+  inputValues: IOrderInputValues;
+  orderDetails: IOrder | null;
 }
 
 const SelectStatusItem: React.FC<ISelectStatusItem> = ({
   label,
+  setInputValues,
+  inputValues,
+  orderDetails,
 }): JSX.Element => {
+  const radioRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (radioRef.current && orderDetails) {
+      radioRef.current.checked =
+        orderDetails.status.toLowerCase() === label.toLowerCase();
+    }
+  }, [orderDetails, label]);
+
+  const handleClick = () => {
+    setInputValues({ ...inputValues, status: label });
+
+    if (radioRef.current) {
+      radioRef.current.checked = true;
+    }
+  };
+
   return (
-    <div className='flex w-full items-center rounded border border-gray-200 pl-4 dark:border-gray-700'>
+    <div
+      className='flex w-full cursor-pointer items-center rounded border border-gray-700 pl-4 duration-150 ease-in-out hover:border-gray-600 hover:bg-gray-700'
+      onClick={handleClick}
+    >
       <input
-        id='bordered-radio-1'
+        id={`bordered-radio-${label}`}
         type='radio'
-        value=''
+        value={label}
         name='bordered-radio'
-        className='h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600'
+        className='checked:bg-ring-blue-600 h-4 w-4 bg-gray-700 text-blue-600 checked:border-gray-600 checked:ring-offset-gray-800 focus:ring-0 focus:ring-offset-0'
+        ref={radioRef}
       />
+
       <label
-        htmlFor='bordered-radio-1'
-        className='ml-2 w-full py-4 text-sm font-medium text-gray-900 dark:text-gray-300'
+        htmlFor={`bordered-radio-${label}`}
+        className='ml-2 w-full cursor-pointer py-4 text-sm font-medium text-gray-300'
       >
         {label}
       </label>
     </div>
   );
 };
+
 export default SelectStatusItem;

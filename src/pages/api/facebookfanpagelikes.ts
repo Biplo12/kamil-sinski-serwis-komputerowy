@@ -2,8 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import getAccessToken from '@/utils/facebook/getAccessToken';
 import getFanPageLikes from '@/utils/facebook/getFanPageLikes';
-import validateMethod from '@/utils/validateMethod';
-
+import validateMethod from '@/helpers/validateMethod';
 const handler = async (
   req: NextApiRequest,
   res: NextApiResponse

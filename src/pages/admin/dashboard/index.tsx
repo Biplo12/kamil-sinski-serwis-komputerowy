@@ -10,7 +10,8 @@ import Main from '@/components/Dashboard/Main/Main';
 
 import { useAppDispatch, useAppSelector } from '@/store/store-hooks';
 
-import { selectOrder, setOrders, setStats } from '@/state/orderSlice';
+import { selectOrder, setOrders } from '@/state/orderSlice';
+import { setStats } from '@/state/statsSlice';
 export default function DashboardPage() {
   const [sidebarState, setSidebarState] = useState<boolean>(true);
   const dispatch = useAppDispatch();

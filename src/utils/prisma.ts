@@ -1,5 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 
+import { isLocal } from '@/constant/env';
+
 // Prisma NextJS Hot Reloading
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
@@ -10,6 +12,6 @@ const prisma =
     log: ['query'],
   });
 
-if (process.env.DEV_MODE !== 'false') globalForPrisma.prisma = prisma;
+if (isLocal) globalForPrisma.prisma = prisma;
 
 export default prisma;

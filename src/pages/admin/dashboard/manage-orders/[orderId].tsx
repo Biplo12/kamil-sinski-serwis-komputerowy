@@ -1,12 +1,13 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
-import Spinner from '@/components/Common/Spinner';
+import Loading from '@/components/Common/Loading';
 import Navbar from '@/components/Dashboard/Layout/Navbar';
 import ResponsiveSidebar from '@/components/Dashboard/Layout/ResponsiveSidebar';
 import Sidebar from '@/components/Dashboard/Layout/Sidebar';
 import OrderDetailsMain from '@/components/Dashboard/OrderDetails/OrderDetailsMain';
-import OrderIdInvalid from '@/components/Dashboard/OrderDetails/Partials/OrderIdInvalid';
+import InvalidOrderId from '@/components/Dashboard/OrderDetails/Partials/InvalidOrderId';
+
 export default function OrderDetails() {
   const [sidebarState, setSidebarState] = useState<boolean>(true);
   const [isValidOrderId, setIsValidOrderId] = useState<boolean>(true);
@@ -32,12 +33,12 @@ export default function OrderDetails() {
       <Navbar />
       <ResponsiveSidebar />
       <Sidebar setSidebarState={setSidebarState} />
-      {isLoading && <Spinner />}
+      {isLoading && <Loading />}
       {!isLoading && isValidOrderId && (
         <OrderDetailsMain sidebarState={sidebarState} orderId={parsedOrderId} />
       )}
       {!isLoading && !isValidOrderId && (
-        <OrderIdInvalid sidebarState={sidebarState} />
+        <InvalidOrderId sidebarState={sidebarState} />
       )}
     </div>
   );

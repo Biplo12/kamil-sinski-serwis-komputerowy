@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 
+import Loading from '@/components/Common/Loading';
 import RecentOrder from '@/components/Dashboard/Main/Partials/RecentOrder';
 import ResponsiveRecentOrder from '@/components/Dashboard/Main/Partials/ResponsiveRecentOrder';
 
@@ -15,7 +16,12 @@ const RecentOrders: React.FC = (): JSX.Element => {
         Recent Orders
       </h1>
       <div className='flex w-full flex-col'>
-        {orders.orders?.length === 0 && (
+        {orders.orders?.length === 0 && orders.orders !== null && (
+          <div className='mt-28 flex w-full flex-col items-center justify-center px-5 text-center'>
+            <Loading />
+          </div>
+        )}
+        {orders.orders === null && (
           <div className='mt-10 flex w-full flex-col items-center justify-center px-5 text-center'>
             <h1 className='text-2xl font-semibold text-gray-800 dark:text-gray-100'>
               No orders yet

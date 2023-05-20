@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 
 const useCreateOrder = (
@@ -10,22 +10,18 @@ const useCreateOrder = (
   orderdescription: string | null | undefined,
   price: number | string | null | undefined
 ) => {
-  return useQuery(
-    ['createOrder'],
-    async () => {
-      const { data } = await axios.post(`/api/orders/createorder`, {
-        firstname,
-        lastname,
-        email,
-        phonenumber: parseInt(phonenumber?.toString() || '0'),
-        ordertitle,
-        orderdescription,
-        price: parseFloat(price?.toString() || '0'),
-      });
-      return data;
-    },
-    { enabled: false }
-  );
+  return useMutation(['createOrder'], async () => {
+    const { data } = await axios.post(`/api/orders/createorder`, {
+      firstname,
+      lastname,
+      email,
+      phonenumber: parseInt(phonenumber?.toString() || '0'),
+      ordertitle,
+      orderdescription,
+      price: parseFloat(price?.toString() || '0'),
+    });
+    return data;
+  });
 };
 
 export default useCreateOrder;

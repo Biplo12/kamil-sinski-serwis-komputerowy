@@ -3,17 +3,19 @@ import AlternateEmailRoundedIcon from '@mui/icons-material/AlternateEmailRounded
 import AttachMoneyRoundedIcon from '@mui/icons-material/AttachMoneyRounded';
 import PhoneAndroidRoundedIcon from '@mui/icons-material/PhoneAndroidRounded';
 import { Fragment, useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 import useFetchUserById from '@/hooks/tanstack/Users/useFetchUserById';
 
 import EditOrderDetails from '@/components/Dashboard/OrderDetails/Partials/EditOrderDetails';
 import ImageSlider from '@/components/Dashboard/OrderDetails/Partials/ImageSlider';
 import OrderInfoItem from '@/components/Dashboard/OrderDetails/Partials/OrderInfoItem';
+import UserDetailsButton from '@/components/Dashboard/OrderDetails/Partials/UserDetailsButton';
 import VerticalTimeLine from '@/components/Dashboard/OrderDetails/Partials/VerticalTimeLine';
 
 import { useAppSelector } from '@/store/store-hooks';
 
-import { IUser } from '@/interfaces';
+import { CustomError, IUser } from '@/interfaces';
 import { selectOrder } from '@/state/orderSlice';
 
 interface IOrderInfo {
@@ -26,18 +28,24 @@ const OrderInfo: React.FC<IOrderInfo> = ({
   loading,
 }): JSX.Element => {
   const order = useAppSelector(selectOrder);
-  const orderDetails = order.orderDetails;
-  const { data: userData } = useFetchUserById(
-    orderDetails?.userId as string,
-    true
-  );
+  const orderDetails = order?.orderDetails;
+  const userId = parseInt(orderDetails?.userId as string);
+  const { data: userData, isError, error } = useFetchUserById(userId, true);
+
   const user = userData?.result as IUser;
 
   useEffect(() => {
-    if (user) {
+    const err = error as CustomError;
+    if (isError) {
+      toast.error(err?.response?.data?.message || 'Something went wrong');
+    }
+  }, [error, isError]);
+
+  useEffect(() => {
+    if (user || isError) {
       setLoading(false);
     }
-  }, [user, setLoading]);
+  }, [user, isError, setLoading]);
 
   const orderInfoItems = [
     {
@@ -60,13 +68,13 @@ const OrderInfo: React.FC<IOrderInfo> = ({
 
   return (
     <div
-      className={`'mb-5 gap-10' h-full w-full flex-col items-center justify-center ${
+      className={`gap-10' mb-5 h-full w-full flex-col items-center justify-center ${
         loading ? 'hidden' : 'flex'
       }`}
     >
-      <div className='border-pylon flex h-full w-full flex-col gap-10 rounded-lg border bg-gray-800 p-5 pb-16'>
+      <div className='border-pylon flex h-full w-full flex-col gap-10 rounded-lg border bg-gray-800 p-5'>
         <div className='flex flex-wrap items-center justify-between gap-5'>
-          <div className='flex flex-col gap-10'>
+          <div className='flex flex-col gap-5'>
             <div className='flex flex-col gap-5'>
               <div>
                 <h1 className='text-3xl font-semibold text-gray-800 dark:text-gray-100'>
@@ -79,11 +87,16 @@ const OrderInfo: React.FC<IOrderInfo> = ({
               <div className='flex flex-col gap-5'>
                 {orderInfoItems.map((item, index) => (
                   <Fragment key={index}>
-                    <OrderInfoItem icon={item.icon} value={item.value} />
+                    <OrderInfoItem
+                      icon={item.icon}
+                      value={item.value}
+                      loading={loading}
+                    />
                   </Fragment>
                 ))}
               </div>
             </div>
+            <UserDetailsButton userId={userId} />
             <div className='flex flex-col gap-5'>
               <h1 className='text-3xl font-semibold text-gray-800 dark:text-gray-100'>
                 Status:

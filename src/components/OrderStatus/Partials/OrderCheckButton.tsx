@@ -8,6 +8,7 @@ import Spinner from '@/components/Common/Spinner';
 
 import { useAppDispatch, useAppSelector } from '@/store/store-hooks';
 
+import { CustomError } from '@/interfaces';
 import { selectOrder, setOrder } from '@/state/orderSlice';
 
 interface IOrderCheckButton {
@@ -16,21 +17,12 @@ interface IOrderCheckButton {
   setOrderInput: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
-interface CustomError extends Error {
-  response?: {
-    status?: number;
-    data?: {
-      message?: string;
-    };
-  };
-}
-
 const OrderCheckButton: React.FC<IOrderCheckButton> = ({
   orderInput,
   setLoading,
   setOrderInput,
 }): JSX.Element => {
-  const { isLoading, refetch } = useFetchOrderById(orderInput, false);
+  const { refetch, isInitialLoading } = useFetchOrderById(orderInput, false);
   const dispatch = useAppDispatch();
   const order = useAppSelector(selectOrder);
 
@@ -40,8 +32,8 @@ const OrderCheckButton: React.FC<IOrderCheckButton> = ({
   };
 
   useEffect(() => {
-    setLoading(isLoading);
-  }, [isLoading, setLoading]);
+    setLoading(isInitialLoading);
+  }, [isInitialLoading, setLoading]);
 
   const checkOrder = async () => {
     const { error, data, isError } = await refetch();
@@ -71,9 +63,9 @@ const OrderCheckButton: React.FC<IOrderCheckButton> = ({
   return (
     <>
       <FormButton
-        text={isLoading ? <Spinner /> : 'Sprawdź status'}
+        text={isInitialLoading ? <Spinner /> : 'Sprawdź status'}
         handler={checkOrder}
-        disabled={orderInput?.toString()?.length !== 6 || isLoading}
+        disabled={orderInput?.toString()?.length !== 6 || isInitialLoading}
       />
     </>
   );

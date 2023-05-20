@@ -30,8 +30,8 @@ const RecentOrder: React.FC<IRecentOrder> = ({
         {date.split('T')[0]}
       </div>
       <button
-        className='bg-sea focus:shadow-outline flex max-h-[30px] min-w-[30px] items-center justify-center rounded-lg px-3
-      py-2 text-center font-bold
+        className='from-pylon to-sea focus:shadow-outline flex max-h-[30px] min-w-[30px] items-center justify-center rounded-lg bg-gradient-to-r px-3 py-2
+      text-center text-sm font-bold
       text-white transition duration-300 ease-in-out hover:opacity-75 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
         onClick={() => handleDetails()}
       >

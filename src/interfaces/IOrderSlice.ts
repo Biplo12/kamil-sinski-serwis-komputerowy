@@ -12,34 +12,12 @@ export interface IOrder {
   updatedAt: string;
   repairingAt: string;
   repairedAt: string;
+  completedAt: string;
+  cancelledAt: string;
+  diagnosingAt: string;
 }
 
 export default interface IOrderSlice {
   orderDetails: IOrder | null;
   orders: IOrder[] | null;
-  ordersStatistics: {
-    orders: {
-      total: 0 | null;
-      active: 0 | null;
-      percentage: {
-        total: {
-          lastWeek: 0 | null;
-          lastMonth: 0 | null;
-        };
-        active: {
-          lastWeek: 0 | null;
-          lastMonth: 0 | null;
-        };
-      };
-    };
-    users: {
-      total: 0 | null;
-      percentage: {
-        lastWeek: 0 | null;
-        lastMonth: 0 | null;
-      };
-    };
-    charts: [] | null;
-  };
-  users: [] | null;
 }

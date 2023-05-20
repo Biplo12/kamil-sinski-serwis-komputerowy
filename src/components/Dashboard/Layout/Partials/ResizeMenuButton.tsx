@@ -14,7 +14,7 @@ const ResizeMenuButton: React.FC<IResizeMenuButton> = ({
   return (
     <div className='absolute -right-12 top-32 flex -translate-x-8 items-center justify-center'>
       <button
-        className='bg-pylon flex h-8 w-8 items-center justify-start rounded-full px-1'
+        className='from-pylon to-sea flex h-8 w-8 items-center justify-start rounded-full bg-gradient-to-r px-1'
         onClick={handleOpen}
       >
         {!open ? <ChevronRightRoundedIcon /> : <ChevronLeftRoundedIcon />}

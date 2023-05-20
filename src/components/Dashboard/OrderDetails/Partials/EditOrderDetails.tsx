@@ -8,7 +8,7 @@ import TextAreaField from '@/components/Dashboard/CreateOrder/Partials/TextAreaF
 import EditOrderButton from '@/components/Dashboard/OrderDetails/Partials/EditOrderButton';
 import SelectOrderStatus from '@/components/Dashboard/OrderDetails/Partials/SelectOrderStatus';
 
-import { IInputValues } from '@/interfaces';
+import { IOrderInputValues } from '@/interfaces';
 import { IOrder } from '@/interfaces/IOrderSlice';
 
 interface IEditOrderDetails {
@@ -23,14 +23,17 @@ const EditOrderDetails: React.FC<IEditOrderDetails> = ({
       ordertitle: orderDetails?.ordertitle,
       orderdescription: orderDetails?.orderdescription,
       price: orderDetails?.price,
+      status: orderDetails?.status,
     };
   }, [
     orderDetails?.ordertitle,
     orderDetails?.orderdescription,
     orderDetails?.price,
+    orderDetails?.status,
   ]);
 
-  const [inputValues, setInputValues] = useState<IInputValues>(inputValuesInit);
+  const [inputValues, setInputValues] =
+    useState<IOrderInputValues>(inputValuesInit);
 
   useEffect(() => {
     setInputValues(inputValuesInit);
@@ -75,7 +78,11 @@ const EditOrderDetails: React.FC<IEditOrderDetails> = ({
           setInputValues={setInputValues}
         />
         <ImagesDrop />
-        <SelectOrderStatus />
+        <SelectOrderStatus
+          orderDetails={orderDetails}
+          setInputValues={setInputValues}
+          inputValues={inputValues}
+        />
       </div>
       <EditOrderButton
         inputValues={inputValues}

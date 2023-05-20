@@ -1,9 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import missingArguments from '@/utils/missingArguments';
+import isOrderExist from '@/helpers/isOrderExist';
+import missingArguments from '@/helpers/missingArguments';
+import validateId from '@/helpers/validateId';
+import validateMethod from '@/helpers/validateMethod';
 import prisma from '@/utils/prisma';
-import validateMethod from '@/utils/validateMethod';
-
 type TRequestBody = {
   ordertitle: string;
   orderdescription: string;
@@ -27,9 +28,13 @@ const handler = async (
       price,
     });
 
+    const id = parseInt(orderId as unknown as string);
+    validateId(id);
+    await isOrderExist(id);
+
     const order = await prisma.orders.update({
       where: {
-        orderId,
+        orderId: id,
       },
       data: {
         ordertitle,

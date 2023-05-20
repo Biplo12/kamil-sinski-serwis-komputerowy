@@ -35,9 +35,7 @@ const VerticalTimeLine: React.FC<IVerticalTimeLine> = ({
         <Fragment key={index}>
           <TimelineItem
             icon={item.icon}
-            timestamp={
-              item.timestamp === 'N/A' ? 'N/A' : format(item.timestamp)
-            }
+            timestamp={!item.timestamp ? 'N/A' : format(item.timestamp)}
             label={item.label}
           />
         </Fragment>

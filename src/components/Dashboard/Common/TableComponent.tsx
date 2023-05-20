@@ -36,6 +36,7 @@ const TableComponent: React.FC<ITableComponent> = ({
             backgroundColor: '#1F2937',
             color: 'white',
             border: '1px solid #01a3ff',
+            padding: '0 1rem',
           }}
           pageSize={10}
         />

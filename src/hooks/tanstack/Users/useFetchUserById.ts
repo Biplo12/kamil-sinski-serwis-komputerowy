@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
-const useFetchUserById = (userId: string, enabled: boolean) => {
-  const { data, isLoading, error, refetch, isError } = useQuery(
+const useFetchUserById = (userId: number, enabled: boolean) => {
+  return useQuery(
     ['userById', userId],
     async () => {
       const { data } = await axios.get(`/api/users/viewuser?userId=${userId}`);
@@ -10,7 +10,6 @@ const useFetchUserById = (userId: string, enabled: boolean) => {
     },
     { enabled }
   );
-  return { data, error, isLoading, refetch, isError };
 };
 
 export default useFetchUserById;

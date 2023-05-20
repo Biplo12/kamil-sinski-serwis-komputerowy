@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { IInputValues } from '@/interfaces';
+import { IOrderInputValues } from '@/interfaces';
 
 interface ITextAreaField {
   label: string;
   placeholder: string;
-  inputValues: IInputValues;
-  setInputValues: React.Dispatch<React.SetStateAction<IInputValues>>;
+  inputValues: IOrderInputValues;
+  setInputValues: React.Dispatch<React.SetStateAction<IOrderInputValues>>;
 }
 
 const TextAreaField: React.FC<ITextAreaField> = ({
@@ -17,7 +17,7 @@ const TextAreaField: React.FC<ITextAreaField> = ({
 }): JSX.Element => {
   const handleInputChange = (
     e: React.ChangeEvent<HTMLTextAreaElement>,
-    key: keyof IInputValues
+    key: keyof IOrderInputValues
   ) => {
     setInputValues({
       ...inputValues,
@@ -40,13 +40,13 @@ const TextAreaField: React.FC<ITextAreaField> = ({
         placeholder={placeholder}
         value={
           inputValues[
-            label.replace(' ', '').toLowerCase() as keyof IInputValues
+            label.replace(' ', '').toLowerCase() as keyof IOrderInputValues
           ] ?? ''
         }
         onChange={(e) =>
           handleInputChange(
             e,
-            label.replace(' ', '').toLowerCase() as keyof IInputValues
+            label.replace(' ', '').toLowerCase() as keyof IOrderInputValues
           )
         }
       />

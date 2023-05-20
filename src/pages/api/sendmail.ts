@@ -1,9 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import missingArguments from '@/utils/missingArguments';
+import missingArguments from '@/helpers/missingArguments';
+import validateMethod from '@/helpers/validateMethod';
 import sendMailFunction from '@/utils/sendMailFunction';
-import validateMethod from '@/utils/validateMethod';
-
 type TRequestBody = {
   name: string;
   email: string;
@@ -17,7 +16,7 @@ const handler = async (
   res: NextApiResponse
 ): Promise<void> => {
   try {
-    const { name, email, message, subject, phone } = req.body as TRequestBody;
+    const { name, email, message, subject } = req.body as TRequestBody;
     validateMethod(req.method as string, 'POST');
     missingArguments({ name, email, message, subject });
 

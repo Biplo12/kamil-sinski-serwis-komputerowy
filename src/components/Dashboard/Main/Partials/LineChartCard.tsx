@@ -10,11 +10,11 @@ import {
 
 import { useAppSelector } from '@/store/store-hooks';
 
-import { selectOrder } from '@/state/orderSlice';
+import { selectStats } from '@/state/statsSlice';
 
 const LineChartCard: React.FC = (): JSX.Element => {
-  const orders = useAppSelector(selectOrder);
-  const chartData = orders?.ordersStatistics?.charts;
+  const stats = useAppSelector(selectStats);
+  const chartData = stats?.statistics?.charts;
 
   return (
     <>

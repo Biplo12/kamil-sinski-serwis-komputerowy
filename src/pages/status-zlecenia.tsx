@@ -14,6 +14,8 @@ export default function OrderStatusPage() {
   useEffect(() => {
     if (order.orderDetails) {
       window.scrollTo(0, 1000);
+    } else {
+      window.scrollTo(0, 0);
     }
   }, [order.orderDetails]);
   return (

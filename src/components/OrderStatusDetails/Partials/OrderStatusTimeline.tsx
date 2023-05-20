@@ -10,6 +10,9 @@ interface IOrderDetails {
   updatedAt: string;
   repairedAt?: string;
   repairingAt?: string;
+  diagnosingAt?: string;
+  cancelledAt?: string;
+  completedAt?: string;
 }
 
 interface IOrder {
@@ -44,7 +47,9 @@ const OrderStatusTimeline: React.FC<IOrder> = ({ order }): JSX.Element => {
           <div className='z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full dark:bg-blue-900'>
             <img
               src={`/svg/wrench${
-                orderStatus === 'repairing' || orderStatus === 'repaired'
+                orderStatus === 'repairing' ||
+                orderStatus === 'repaired' ||
+                orderStatus === 'completed'
                   ? '-active'
                   : ''
               }.svg`}
@@ -53,7 +58,9 @@ const OrderStatusTimeline: React.FC<IOrder> = ({ order }): JSX.Element => {
           </div>
           <div
             className={`h-0.5 w-full ${
-              orderStatus === 'repairing' || orderStatus === 'repaired'
+              orderStatus === 'repairing' ||
+              orderStatus === 'repaired' ||
+              orderStatus === 'completed'
                 ? 'bg-pylon'
                 : 'bg-gray-700'
             }`}
@@ -64,7 +71,9 @@ const OrderStatusTimeline: React.FC<IOrder> = ({ order }): JSX.Element => {
             Naprawa
           </h3>
           <time className='mb-2 block text-sm font-normal leading-none text-gray-400 dark:text-gray-500'>
-            {orderStatus === 'repairing' || orderStatus === 'repaired'
+            {orderStatus === 'repairing' ||
+            orderStatus === 'repaired' ||
+            orderStatus === 'completed'
               ? order?.repairingAt && format(order?.repairingAt, 'pl_PL')
               : '---'}
           </time>
@@ -75,14 +84,18 @@ const OrderStatusTimeline: React.FC<IOrder> = ({ order }): JSX.Element => {
           <div className='z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900'>
             <img
               src={`/svg/checked${
-                orderStatus === 'repaired' ? '-active' : ''
+                orderStatus === 'repaired' || orderStatus === 'completed'
+                  ? '-active'
+                  : ''
               }.svg`}
               alt='wrench icon'
             />
           </div>
           <div
             className={`h-0.5 w-full ${
-              orderStatus === 'repaired' ? 'bg-pylon' : 'bg-gray-700'
+              orderStatus === 'repaired' || orderStatus === 'completed'
+                ? 'bg-pylon'
+                : 'bg-gray-700'
             }`}
           />
         </div>
@@ -91,7 +104,7 @@ const OrderStatusTimeline: React.FC<IOrder> = ({ order }): JSX.Element => {
             Naprawa zakończona
           </h3>
           <time className='mb-2 block text-sm font-normal leading-none text-gray-400 dark:text-gray-500'>
-            {orderStatus === 'repaired'
+            {orderStatus === 'repaired' || orderStatus === 'completed'
               ? order?.repairedAt && format(order?.repairedAt, 'pl_PL')
               : '---'}
           </time>

@@ -1,11 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import missingArguments from '@/utils/missingArguments';
+import missingArguments from '@/helpers/missingArguments';
+import validateId from '@/helpers/validateId';
+import validateMethod from '@/helpers/validateMethod';
 import prisma from '@/utils/prisma';
-import validateId from '@/utils/validateId';
-import validateMethod from '@/utils/validateMethod';
-
-type TRequestBody = {
+type TRequestQuery = {
   orderId: string;
 };
 
@@ -16,7 +15,7 @@ const handler = async (
   try {
     validateMethod(req.method as string, 'GET');
 
-    const { orderId } = req.query as TRequestBody;
+    const { orderId } = req.query as TRequestQuery;
     const id = parseInt(orderId);
     missingArguments({ orderId });
 

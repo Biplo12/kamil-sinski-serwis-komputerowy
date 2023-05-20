@@ -1,8 +1,6 @@
-type TKey = string | number;
-
-const validFilters = ['status', 'email', 'price', 'orderId'];
-const validParams = ['limit', 'offset', 'orderBy', 'orderDirection'];
-const validateFiltersAndParams = (filtersKeys: TKey[]) => {
+const validateFiltersAndParams = (filtersKeys: (string | number)[]): void => {
+  const validFilters = ['status', 'email', 'price', 'orderId'];
+  const validParams = ['limit', 'offset', 'orderBy', 'orderDirection'];
   for (const filter of filtersKeys) {
     if (
       !validFilters.includes(filter.toString()) &&
@@ -15,6 +13,8 @@ const validateFiltersAndParams = (filtersKeys: TKey[]) => {
       );
     }
   }
+
+  return;
 };
 
 export default validateFiltersAndParams;

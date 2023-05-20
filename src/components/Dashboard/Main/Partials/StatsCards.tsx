@@ -8,32 +8,32 @@ import StatsCard from '@/components/Dashboard/Main/Partials/StatsCard';
 
 import { useAppSelector } from '@/store/store-hooks';
 
-import { selectOrder } from '@/state/orderSlice';
+import { selectStats } from '@/state/statsSlice';
 const StatsCards: React.FC = (): JSX.Element => {
-  const orders = useAppSelector(selectOrder);
-  const ordersStats = orders?.ordersStatistics;
+  const stats = useAppSelector(selectStats);
+  const statistics = stats?.statistics;
   const statsCardData = [
     {
-      value: ordersStats?.orders?.total,
-      stats: ordersStats?.orders?.percentage?.total.lastMonth,
+      value: statistics?.orders?.total,
+      stats: statistics?.orders?.percentage?.total.lastMonth,
       label: 'Total orders',
       icon: <ReceiptOutlinedIcon />,
     },
     {
-      value: ordersStats?.orders?.active,
-      stats: ordersStats?.orders?.percentage?.active.lastMonth,
+      value: statistics?.orders?.active,
+      stats: statistics?.orders?.percentage?.active.lastMonth,
       label: 'Active orders',
       icon: <FeedOutlinedIcon />,
     },
     {
-      value: ordersStats?.users?.total,
-      stats: ordersStats?.orders?.percentage?.total.lastMonth,
+      value: statistics?.users?.total,
+      stats: statistics?.orders?.percentage?.total.lastMonth,
       label: 'Total Users',
       icon: <PeopleOutlinedIcon />,
     },
     {
       value: 100,
-      stats: ordersStats?.orders?.percentage?.total.lastMonth,
+      stats: statistics?.orders?.percentage?.total.lastMonth,
       label: 'Website visits',
       icon: <AssessmentOutlinedIcon />,
     },

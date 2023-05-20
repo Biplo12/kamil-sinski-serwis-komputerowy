@@ -7,9 +7,8 @@ import logger from '@/lib/logger';
 import FormButton from '@/components/Common/FormButton';
 import Spinner from '@/components/Common/Spinner';
 
+import validateMail from '@/helpers/validateMail';
 import { IContactInput, ISubmitStatus } from '@/interfaces';
-import missingArguments from '@/utils/missingArguments';
-import validateMail from '@/utils/validateMail';
 
 interface IContactButton {
   contactInput: IContactInput;
@@ -34,15 +33,19 @@ const ContactSubmitButton: React.FC<IContactButton> = ({
         submitting: true,
       });
       e.preventDefault();
-      const missArgs = missingArguments({
+      const fields = {
         Imię: contactInput['Imię'],
         ['E-mail']: contactInput['E-mail'],
         Temat: contactInput['Temat'],
         Wiadomość: contactInput['Wiadomość'],
-      });
-      if (missArgs.length > 0) {
-        toast.error(`Brakujące pola: ${missArgs.join(', ')}`);
-      } else if (!validMail) {
+      };
+      const missingFields: string[] = [];
+      for (const [key, value] of Object.entries(fields)) {
+        if (!value) {
+          missingFields.push(key);
+        }
+      }
+      if (!validMail) {
         toast.error('Nieprawidłowy adres e-mail');
       } else if (contactInput['Wiadomość'].length < 10) {
         toast.error('Wiadomość musi zawierać minimum 10 znaków');

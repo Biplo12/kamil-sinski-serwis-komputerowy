@@ -6,16 +6,17 @@ import useCreateOrder from '@/hooks/tanstack/Orders/useCreateOrder';
 import useFetchOrders from '@/hooks/tanstack/Orders/useFetchOrders';
 import useFetchStatistics from '@/hooks/tanstack/useFetchStatistics';
 
-import Spinner from '@/components/Common/Spinner';
+import Loading from '@/components/Common/Loading';
 
 import { useAppDispatch } from '@/store/store-hooks';
 
-import { IInputValues } from '@/interfaces';
-import { setOrders, setStats } from '@/state/orderSlice';
-import validateMail from '@/utils/validateMail';
+import validateMail from '@/helpers/validateMail';
+import { CustomError, IOrderInputValues } from '@/interfaces';
+import { setOrders } from '@/state/orderSlice';
+import { setStats } from '@/state/statsSlice';
 
 interface ICreateOrderButton {
-  inputValues: IInputValues;
+  inputValues: IOrderInputValues;
 }
 
 const CreateOrderButton: React.FC<ICreateOrderButton> = ({
@@ -23,7 +24,7 @@ const CreateOrderButton: React.FC<ICreateOrderButton> = ({
 }): JSX.Element => {
   const dispatch = useAppDispatch();
 
-  const { refetch, isLoading } = useCreateOrder(
+  const { mutateAsync, isLoading } = useCreateOrder(
     inputValues?.firstname,
     inputValues?.lastname,
     inputValues?.email,
@@ -38,7 +39,8 @@ const CreateOrderButton: React.FC<ICreateOrderButton> = ({
   const handleCreateOrder = async () => {
     try {
       validateMail(inputValues?.email);
-      const { isError } = await refetch();
+      const { isError, error } = await mutateAsync();
+      const err = error as CustomError;
       const { data } = await ordersRefetch();
       const { data: statsData } = await statsRefetch();
       dispatch(setOrders(data?.result));
@@ -46,6 +48,8 @@ const CreateOrderButton: React.FC<ICreateOrderButton> = ({
       if (!isError) {
         toast.success('Order created');
         return;
+      } else {
+        toast.error(err?.response?.data?.message || 'Something went wrong');
       }
     } catch (err) {
       const typedError = err as Error;
@@ -60,12 +64,12 @@ const CreateOrderButton: React.FC<ICreateOrderButton> = ({
 
   return (
     <button
-      className='bg-sea focus:shadow-outline mt-6 flex min-w-[200px] items-center justify-center rounded-lg px-3
+      className='from-pylon to-sea focus:shadow-outline mt-6 flex min-w-[200px] items-center justify-center rounded-lg bg-gradient-to-r px-3
       py-2 text-center font-bold
       text-white transition duration-300 ease-in-out hover:opacity-75 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
       onClick={() => handleCreateOrder()}
     >
-      {isLoading ? <Spinner /> : 'Create order'}
+      {isLoading ? <Loading /> : 'Create order'}
     </button>
   );
 };

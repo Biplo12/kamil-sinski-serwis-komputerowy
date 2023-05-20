@@ -1,10 +1,9 @@
 // import bcrypt from 'bcrypt';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import missingArguments from '@/utils/missingArguments';
+import missingArguments from '@/helpers/missingArguments';
+import validateMethod from '@/helpers/validateMethod';
 import prisma from '@/utils/prisma';
-import validateMethod from '@/utils/validateMethod';
-
 interface IRequestBody {
   email: string;
   password: string;

@@ -1,15 +1,17 @@
 import React from 'react';
 
-import Spinner from '@/components/Common/Spinner';
+import Loading from '@/components/Common/Loading';
 
 interface IOrderInfoItem {
   icon: JSX.Element;
   value: string | number | null | undefined;
+  loading: boolean;
 }
 
 const OrderInfoItem: React.FC<IOrderInfoItem> = ({
   icon,
   value,
+  loading,
 }): JSX.Element => {
   return (
     <div className='flex items-center justify-start gap-3 rounded-lg'>
@@ -17,7 +19,7 @@ const OrderInfoItem: React.FC<IOrderInfoItem> = ({
         {icon}
       </span>
       <span className='break-all text-lg'>
-        {value === null || value === undefined ? <Spinner /> : value}
+        {value === undefined ? 'N/A' : loading ? <Loading /> : value}
       </span>
     </div>
   );

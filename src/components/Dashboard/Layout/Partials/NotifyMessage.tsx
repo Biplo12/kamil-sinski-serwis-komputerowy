@@ -18,7 +18,7 @@ const NotifyMessage: React.FC = (): JSX.Element => {
           </span>
           <button
             type='button'
-            className='bg-pylon exsm:w-full exsm:justify-center exsm:gap-2 relative ml-auto inline-flex items-center rounded-lg p-1 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300'
+            className='from-pylon to-sea exsm:w-full exsm:justify-center exsm:gap-2 relative ml-auto inline-flex items-center rounded-lg bg-gradient-to-r p-1 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300'
             data-dismiss-target='#dropdown-cta'
             aria-label='Close'
             onClick={toggle}

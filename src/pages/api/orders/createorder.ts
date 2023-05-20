@@ -1,13 +1,12 @@
 import { Prisma } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import capitalizeFirstLetter from '@/utils/capitalizeFirstLetter';
-import missingArguments from '@/utils/missingArguments';
+import capitalizeFirstLetter from '@/helpers/capitalizeFirstLetter';
+import missingArguments from '@/helpers/missingArguments';
+import validateMail from '@/helpers/validateMail';
+import validateMethod from '@/helpers/validateMethod';
 import prisma from '@/utils/prisma';
 import sendMailFunction from '@/utils/sendMailFunction';
-import validateMail from '@/utils/validateMail';
-import validateMethod from '@/utils/validateMethod';
-
 type TRequestBody = {
   firstname: string;
   lastname: string;
@@ -16,6 +15,7 @@ type TRequestBody = {
   ordertitle: string;
   orderdescription: string;
   price: number;
+  status?: string;
 };
 
 const handler = async (
@@ -68,10 +68,9 @@ const handler = async (
       userFullName: `${capitalizeFirstLetter(
         firstname
       )} ${capitalizeFirstLetter(lastname)}`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       status: 'new',
-      statusMessage: 'Zamówienie zostało złożone.',
-      repairingAt: 'N/A',
-      repairedAt: 'N/A',
     };
 
     const isInDB = await prisma.users.findUnique({
