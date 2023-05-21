@@ -29,6 +29,7 @@ const initialState: IStatsSlice = {
       },
     },
     charts: [],
+    pageViews: null,
   },
 };
 

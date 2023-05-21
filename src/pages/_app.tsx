@@ -1,10 +1,16 @@
-import GoogleAnalytics from '@bradgarropy/next-google-analytics';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { Analytics } from '@vercel/analytics/react';
 import { AppProps } from 'next/app';
+import { PostHogProvider } from 'posthog-js/react';
 import { Toaster } from 'react-hot-toast';
 import { Provider } from 'react-redux';
+
+import '@/styles/globals.css';
+import '@/styles/animations.css';
+
+import usePosthog from '@/hooks/useInitPosthog';
+import useTrackPageViews from '@/hooks/useTrackPageViews';
+
+import { store } from '@/store';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,24 +21,23 @@ const queryClient = new QueryClient({
   },
 });
 
-<GoogleAnalytics
-  measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string}
-/>;
-
-import '@/styles/globals.css';
-import '@/styles/animations.css';
-
-import { store } from '@/store';
-
 function MyApp({ Component, pageProps }: AppProps) {
+  const posthog = usePosthog();
+  posthog.capture('$pageview');
+  useTrackPageViews(posthog);
+
   return (
     <>
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
-          <Component {...pageProps} />
-          <Toaster />
-          <Analytics />
-          <ReactQueryDevtools initialIsOpen={false} />
+          <PostHogProvider
+            apiKey={process.env.NEXT_PUBLIC_POSTHOG_KEY as string}
+            options={{ api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST }}
+          >
+            <Component {...pageProps} />
+            <Toaster />
+            {/* <Analytics /> */}
+          </PostHogProvider>
         </QueryClientProvider>
       </Provider>
     </>

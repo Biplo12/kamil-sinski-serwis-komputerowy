@@ -1,26 +1,27 @@
 export default interface IOrderSlice {
   statistics: {
     orders: {
-      total: 0 | null;
-      active: 0 | null;
+      total: number | null;
+      active: number | null;
       percentage: {
         total: {
-          lastWeek: 0 | null;
-          lastMonth: 0 | null;
+          lastWeek: number | null;
+          lastMonth: number | null;
         };
         active: {
-          lastWeek: 0 | null;
-          lastMonth: 0 | null;
+          lastWeek: number | null;
+          lastMonth: number | null;
         };
       };
     };
     users: {
-      total: 0 | null;
+      total: number | null;
       percentage: {
-        lastWeek: 0 | null;
-        lastMonth: 0 | null;
+        lastWeek: number | null;
+        lastMonth: number | null;
       };
     };
     charts: [] | null;
+    pageViews: number | null;
   };
 }

@@ -18,9 +18,18 @@ const StatsCard: React.FC<IStatsCard> = ({
   icon,
   stats,
 }): JSX.Element => {
+  const isWithProgress = label !== 'Website visits';
   return (
-    <div className='flex h-48 w-full items-center justify-around rounded bg-gray-800 p-3'>
-      <div className='mxxl:items-center flex flex-col items-start justify-center gap-1'>
+    <div
+      className={`flex h-48 w-full items-center  rounded bg-gray-800 p-3
+    ${isWithProgress ? 'justify-around' : 'justify-center'}
+    `}
+    >
+      <div
+        className={`mxxl:items-center flex flex-col justify-center gap-1
+      ${isWithProgress ? 'items-start' : 'items-center'}
+      `}
+      >
         <div className='from-pylon to-sea relative inline-flex items-center rounded-lg bg-gradient-to-r p-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300'>
           {icon}
         </div>
@@ -43,7 +52,15 @@ const StatsCard: React.FC<IStatsCard> = ({
         </div>
       </div>
       <div className='mxxl:hidden flex flex-col items-center justify-center'>
-        {!stats ? <Spinner /> : <RoundedProgressBar percent={Number(stats)} />}
+        {isWithProgress && (
+          <>
+            {!stats ? (
+              <Spinner />
+            ) : (
+              <RoundedProgressBar percent={Number(stats)} />
+            )}
+          </>
+        )}
       </div>
     </div>
   );

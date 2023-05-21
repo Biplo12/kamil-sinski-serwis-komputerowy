@@ -32,8 +32,8 @@ const StatsCards: React.FC = (): JSX.Element => {
       icon: <PeopleOutlinedIcon />,
     },
     {
-      value: 100,
-      stats: statistics?.orders?.percentage?.total.lastMonth,
+      value: statistics?.pageViews,
+      stats: 0,
       label: 'Website visits',
       icon: <AssessmentOutlinedIcon />,
     },

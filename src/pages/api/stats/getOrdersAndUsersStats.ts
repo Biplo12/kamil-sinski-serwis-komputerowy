@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import validateMethod from '@/helpers/validateMethod';
@@ -99,6 +100,17 @@ const handler = async (
       };
     });
 
+    const result = await axios.get(
+      `${process.env.NEXT_PUBLIC_POSTHOG_HOST}/api/projects/${process.env.NEXT_PUBLIC_POST_HOG_PROJECT_ID}/insights/?short_id=${process.env.NEXT_PUBLIC_POST_HOG_PAGEVIEW_INSIGHTS}`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_POSTHOG_PERSONAL_KEY}`,
+        },
+      }
+    );
+
+    const pageViews = result.data.results?.[0]?.result?.[0]?.count;
+
     res.status(200).json({
       statusCode: 200,
       message: 'Success',
@@ -125,6 +137,7 @@ const handler = async (
           },
         },
         charts: chartDataForEveryMonth.reverse(),
+        pageViews,
       },
     });
   } catch (err) {
