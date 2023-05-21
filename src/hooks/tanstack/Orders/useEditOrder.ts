@@ -7,7 +7,7 @@ const useEditOrder = (
   orderId: number | null | undefined
 ) => {
   return useMutation(['createOrder'], async () => {
-    const { data } = await axios.put(`/api/orders/editorder`, {
+    const { data } = await axios.put(`/api/orders/editOrder`, {
       ordertitle: ordertitle || '',
       orderdescription: orderdescription || '',
       price: typeof price === 'number' ? price : parseFloat(price || '0'),

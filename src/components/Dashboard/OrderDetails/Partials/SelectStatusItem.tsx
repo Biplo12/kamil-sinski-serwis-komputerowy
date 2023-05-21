@@ -35,7 +35,7 @@ const SelectStatusItem: React.FC<ISelectStatusItem> = ({
 
   return (
     <div
-      className='flex w-full cursor-pointer items-center rounded border border-gray-700 pl-4 duration-150 ease-in-out hover:border-gray-600 hover:bg-gray-700'
+      className='flex w-full cursor-pointer items-center rounded border border-gray-700 px-4 duration-150 ease-in-out hover:border-gray-600 hover:bg-gray-700'
       onClick={handleClick}
     >
       <input

@@ -9,7 +9,7 @@ const useFetchOrderById = (
     ['orderById', orderId],
     async () => {
       const { data } = await axios.get(
-        `/api/orders/vieworder?orderId=${orderId}`
+        `/api/orders/getOrder?orderId=${orderId}`
       );
       return data;
     },

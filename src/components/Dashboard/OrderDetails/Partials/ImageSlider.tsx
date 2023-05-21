@@ -79,7 +79,7 @@ const ImageSlider: React.FC = (): JSX.Element => {
           </div>
         ))}
       </div>
-      <div className='mxslg:hidden flex items-center justify-center pt-4'>
+      <div className='mxslg:hidden flex items-center justify-center pt-1'>
         <button
           type='button'
           className='group mr-4 flex h-full cursor-pointer items-center justify-center focus:outline-none'

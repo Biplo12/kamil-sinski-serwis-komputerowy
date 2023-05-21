@@ -45,7 +45,7 @@ const SelectOrderStatus: React.FC<ISelectOrderStatus> = ({
       >
         Order Status
       </label>
-      <div className='mxsm:flex-wrap flex w-full gap-3'>
+      <div className='mx2xl:flex-wrap flex w-full gap-3'>
         {availableStatuses.map((status, index) => (
           <Fragment key={index}>
             <SelectStatusItem

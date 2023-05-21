@@ -21,7 +21,7 @@ const StatsCard: React.FC<IStatsCard> = ({
   return (
     <div className='flex h-48 w-full items-center justify-around rounded bg-gray-800 p-3'>
       <div className='mxxl:items-center flex flex-col items-start justify-center gap-1'>
-        <div className='bg-sea relative inline-flex items-center rounded-lg p-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300'>
+        <div className='from-pylon to-sea relative inline-flex items-center rounded-lg bg-gradient-to-r p-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300'>
           {icon}
         </div>
         <div className='text-2xl font-bold'>{!value ? <Spinner /> : value}</div>

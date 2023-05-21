@@ -55,7 +55,7 @@ const ContactSubmitButton: React.FC<IContactButton> = ({
       ) {
         toast.error('Nieprawidłowy numer telefonu');
       } else {
-        await axios.post('/api/sendmail', {
+        await axios.post('/api/sendMail', {
           name: contactInput['Imię'],
           email: contactInput['E-mail'],
           phone: contactInput['Telefon'] || 'Not provided',

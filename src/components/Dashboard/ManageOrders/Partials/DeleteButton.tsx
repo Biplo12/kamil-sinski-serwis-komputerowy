@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 import useDeleteOrder from '@/hooks/tanstack/Orders/useDeleteOrder';
 import useFetchOrders from '@/hooks/tanstack/Orders/useFetchOrders';
 
-import Loading from '@/components/Common/Loading';
+import Spinner from '@/components/Common/Spinner';
 
 import { useAppDispatch } from '@/store/store-hooks';
 
@@ -38,7 +38,7 @@ const DeleteButton: React.FC<IDeleteButton> = ({ orderId }): JSX.Element => {
     font-bold text-white transition duration-300 ease-in-out hover:opacity-75 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
       disabled={isLoading}
     >
-      {isLoading ? <Loading /> : 'Delete'}
+      {isLoading ? <Spinner /> : 'Delete'}
     </button>
   );
 };

@@ -5,7 +5,7 @@ const useFetchUserById = (userId: number, enabled: boolean) => {
   return useQuery(
     ['userById', userId],
     async () => {
-      const { data } = await axios.get(`/api/users/viewuser?userId=${userId}`);
+      const { data } = await axios.get(`/api/users/getUser?userId=${userId}`);
       return data;
     },
     { enabled }

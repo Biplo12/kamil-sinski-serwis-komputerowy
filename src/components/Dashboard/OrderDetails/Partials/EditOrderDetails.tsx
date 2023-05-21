@@ -56,7 +56,7 @@ const EditOrderDetails: React.FC<IEditOrderDetails> = ({
     },
   ];
   return (
-    <div className='mb-10 mt-5 w-full'>
+    <div className='mxxl:w-fullw-full'>
       {inputFields.map((inputField, index) => (
         <Fragment key={index}>
           <InputField

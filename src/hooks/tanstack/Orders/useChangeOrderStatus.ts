@@ -6,7 +6,7 @@ const useChangeOrderStatus = (
   orderId: number | null | undefined
 ) => {
   return useMutation(['changeOrderStatus'], async () => {
-    const { data } = await axios.put(`/api/orders/changestatus`, {
+    const { data } = await axios.put(`/api/orders/changeStatus`, {
       status: status?.toLowerCase() || '',
       orderId: orderId || 0,
     });

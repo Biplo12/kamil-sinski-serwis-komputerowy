@@ -42,6 +42,8 @@ export default {
         mxlg: { max: '1024px' },
         // => @media (max-width: 1280px) { ... }
         mxxl: { max: '1280px' },
+        // => @media (max-width: 1380px) { ... }
+        mx2xl: { max: '1380px' },
       },
     },
   },

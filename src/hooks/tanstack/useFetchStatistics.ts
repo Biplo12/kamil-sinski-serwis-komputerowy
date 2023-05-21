@@ -5,7 +5,7 @@ const useFetchStatistics = (enabled: boolean) => {
   return useQuery(
     ['stats'],
     async () => {
-      const { data } = await axios.get(`/api/stats/ordersandusersstatistics`);
+      const { data } = await axios.get(`/api/stats/getOrdersAndUsersStats`);
       return data;
     },
     { enabled }

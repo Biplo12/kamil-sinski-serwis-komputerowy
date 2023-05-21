@@ -11,7 +11,7 @@ const useCreateOrder = (
   price: number | string | null | undefined
 ) => {
   return useMutation(['createOrder'], async () => {
-    const { data } = await axios.post(`/api/orders/createorder`, {
+    const { data } = await axios.post(`/api/orders/createOrder`, {
       firstname,
       lastname,
       email,

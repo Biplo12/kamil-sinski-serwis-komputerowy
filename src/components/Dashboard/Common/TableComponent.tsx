@@ -1,10 +1,11 @@
 import { createTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import { DataGrid } from '@material-ui/data-grid';
+import { GridColDef, GridRowData } from '@material-ui/data-grid';
 import React from 'react';
 
 interface ITableComponent {
-  rows: any;
-  columns: any;
+  rows: GridRowData[];
+  columns: GridColDef[];
 }
 
 const TableComponent: React.FC<ITableComponent> = ({

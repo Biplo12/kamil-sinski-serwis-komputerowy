@@ -14,9 +14,14 @@ const VerticalTimeLine: React.FC<IVerticalTimeLine> = ({
 }): JSX.Element => {
   const timelineItems = [
     {
-      icon: 'glass',
+      icon: 'New',
       timestamp: orderDetails?.createdAt as string,
-      label: 'Diagnoing',
+      label: 'New',
+    },
+    {
+      icon: 'glass',
+      timestamp: orderDetails?.diagnosingAt as string,
+      label: 'Diagnosing',
     },
     {
       icon: 'wrench',

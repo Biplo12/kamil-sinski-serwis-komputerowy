@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const useDeleteOrder = (orderId: number | null) => {
   return useMutation(async () => {
-    const { data } = await axios.delete('/api/orders/deleteorder', {
+    const { data } = await axios.delete('/api/orders/deleteOrder', {
       params: {
         orderId,
       },

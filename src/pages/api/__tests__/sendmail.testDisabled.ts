@@ -16,7 +16,7 @@ describe('SendMail', () => {
       },
     });
 
-    const response = await axios.post('/api/sendmail', {
+    const response = await axios.post('/api/sendMail', {
       name: 'Test',
       email: 'test@gmail.com',
       message: 'Test message',

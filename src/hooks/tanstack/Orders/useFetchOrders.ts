@@ -10,7 +10,7 @@ const useFetchOrders = (enabled = true, filters?: IFilters) => {
     ['orders'],
     async () => {
       const params = filters ? { ...filters } : {};
-      const { data } = await axios.get('/api/orders/vieworders', {
+      const { data } = await axios.get('/api/orders/getOrdersMany', {
         params,
       });
       return data;

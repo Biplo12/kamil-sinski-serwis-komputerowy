@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Analytics } from '@vercel/analytics/react';
 import { AppProps } from 'next/app';
+import ReactGA from 'react-ga4';
 import { Toaster } from 'react-hot-toast';
 import { Provider } from 'react-redux';
 
@@ -13,6 +14,15 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+ReactGA.initialize([
+  {
+    trackingId: process.env.GA_TRACKING_ID as string,
+    gaOptions: {
+      name: 'tracker1',
+    },
+  },
+]);
 
 import '@/styles/globals.css';
 import '@/styles/animations.css';

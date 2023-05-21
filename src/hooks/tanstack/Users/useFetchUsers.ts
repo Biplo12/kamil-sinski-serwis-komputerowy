@@ -10,7 +10,7 @@ const useFetchUsers = (enabled = true, filters?: IFilters) => {
     ['users'],
     async () => {
       const params = filters ? { ...filters } : {};
-      const { data } = await axios.get('/api/users/viewusers', {
+      const { data } = await axios.get('/api/users/getUsersMany', {
         params,
       });
       return data;

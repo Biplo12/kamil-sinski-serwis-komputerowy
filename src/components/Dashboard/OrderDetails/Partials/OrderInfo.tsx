@@ -7,10 +7,9 @@ import toast from 'react-hot-toast';
 
 import useFetchUserById from '@/hooks/tanstack/Users/useFetchUserById';
 
+import RedirectButton from '@/components/Dashboard/Common/RedirectButton';
 import EditOrderDetails from '@/components/Dashboard/OrderDetails/Partials/EditOrderDetails';
-import ImageSlider from '@/components/Dashboard/OrderDetails/Partials/ImageSlider';
 import OrderInfoItem from '@/components/Dashboard/OrderDetails/Partials/OrderInfoItem';
-import UserDetailsButton from '@/components/Dashboard/OrderDetails/Partials/UserDetailsButton';
 import VerticalTimeLine from '@/components/Dashboard/OrderDetails/Partials/VerticalTimeLine';
 
 import { useAppSelector } from '@/store/store-hooks';
@@ -34,6 +33,14 @@ const OrderInfo: React.FC<IOrderInfo> = ({
 
   const user = userData?.result as IUser;
 
+  const userFullName =
+    `${user?.firstname} ${user?.lastname}` === 'undefined undefined'
+      ? 'N/A'
+      : `${user?.firstname} ${user?.lastname}`;
+
+  const isButtonDisabled =
+    user?.email === undefined || user?.phonenumber === undefined;
+
   useEffect(() => {
     const err = error as CustomError;
     if (isError) {
@@ -49,31 +56,31 @@ const OrderInfo: React.FC<IOrderInfo> = ({
 
   const orderInfoItems = [
     {
-      icon: <AttachMoneyRoundedIcon className='text-[1.2rem]' />,
+      icon: <AttachMoneyRoundedIcon className='text-[1rem]' />,
       value: `${orderDetails?.price} zł`,
     },
     {
-      icon: <AccountCircleRoundedIcon className='text-[1.2rem]' />,
-      value: orderDetails?.userFullName,
+      icon: <AccountCircleRoundedIcon className='text-[1rem]' />,
+      value: userFullName,
     },
     {
-      icon: <AlternateEmailRoundedIcon className='text-[1.2rem]' />,
+      icon: <AlternateEmailRoundedIcon className='text-[1rem]' />,
       value: user?.email,
     },
     {
-      icon: <PhoneAndroidRoundedIcon className='text-[1.2rem]' />,
+      icon: <PhoneAndroidRoundedIcon className='text-[1rem]' />,
       value: user?.phonenumber,
     },
   ];
 
   return (
     <div
-      className={`gap-10' mb-5 h-full w-full flex-col items-center justify-center ${
+      className={`mb-5 h-full w-full flex-col items-center justify-center ${
         loading ? 'hidden' : 'flex'
       }`}
     >
-      <div className='border-pylon flex h-full w-full flex-col gap-10 rounded-lg border bg-gray-800 p-5'>
-        <div className='flex flex-wrap items-center justify-between gap-5'>
+      <div className='border-pylon mxxl:flex-col flex h-full w-full gap-10 rounded-lg border bg-gray-800 p-5'>
+        <div className='mxxl:w-full flex w-1/2 items-start justify-between gap-5'>
           <div className='flex flex-col gap-5'>
             <div className='flex flex-col gap-5'>
               <div>
@@ -96,7 +103,11 @@ const OrderInfo: React.FC<IOrderInfo> = ({
                 ))}
               </div>
             </div>
-            <UserDetailsButton userId={userId} />
+            <RedirectButton
+              label='User details'
+              path={`/admin/dashboard/manage-users/${userId}`}
+              disabled={isButtonDisabled}
+            />
             <div className='flex flex-col gap-5'>
               <h1 className='text-3xl font-semibold text-gray-800 dark:text-gray-100'>
                 Status:
@@ -104,10 +115,10 @@ const OrderInfo: React.FC<IOrderInfo> = ({
               <VerticalTimeLine orderDetails={orderDetails} />
             </div>
           </div>
-          <ImageSlider />
+          {/* <ImageSlider /> */}
         </div>
+        <EditOrderDetails orderDetails={orderDetails} />
       </div>
-      <EditOrderDetails orderDetails={orderDetails} />
     </div>
   );
 };

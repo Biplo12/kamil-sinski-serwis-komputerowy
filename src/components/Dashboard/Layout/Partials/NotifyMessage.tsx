@@ -13,7 +13,7 @@ const NotifyMessage: React.FC = (): JSX.Element => {
         role='alert'
       >
         <div className='mb-3 flex items-center'>
-          <span className='bg-pylon mr-2 rounded px-2.5 py-0.5 text-sm font-semibold'>
+          <span className='from-pylon to-sea mr-2 rounded bg-gradient-to-r px-2.5 py-0.5 text-sm font-semibold'>
             New
           </span>
           <button
