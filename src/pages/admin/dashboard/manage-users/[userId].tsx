@@ -1,5 +1,7 @@
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+
+import useValidateUserId from '@/hooks/Users/useValidateUserId';
 
 import Loading from '@/components/Common/Loading';
 import Navbar from '@/components/Dashboard/Layout/Navbar';
@@ -10,23 +12,11 @@ import UserDetailsMain from '@/components/Dashboard/UserDetails/UserDetailsMain'
 
 export default function UserDetails() {
   const [sidebarState, setSidebarState] = useState<boolean>(true);
-  const [isValidUserId, setIsValidUserId] = useState<boolean>(true);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+
   const router = useRouter();
   const { userId } = router.query;
   const parsedUserId = parseInt(userId as string);
-
-  useEffect(() => {
-    if (!userId || userId.length !== 6) {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 100);
-      setIsValidUserId(false);
-    } else {
-      setIsValidUserId(true);
-      setIsLoading(false);
-    }
-  }, [userId]);
+  const { isLoading, isValidUserId } = useValidateUserId(userId as string);
 
   return (
     <div className='bg-black-stalion flex h-auto min-h-screen w-full flex-col'>

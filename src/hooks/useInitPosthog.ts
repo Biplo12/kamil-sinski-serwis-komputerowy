@@ -8,6 +8,7 @@ const usePosthog = () => {
         api_host:
           process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://app.posthog.com',
       });
+      posthog.opt_out_capturing();
     }
   }, []);
 

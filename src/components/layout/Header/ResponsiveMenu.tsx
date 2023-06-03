@@ -13,7 +13,6 @@ const ResponsiveMenu: React.FC<IResponsiveMenu> = ({
   menuState,
   links,
 }): JSX.Element => {
-  //TODO: SOCIAL LINKS
   return (
     <div
       className={`bg-pylon fixed right-0 top-0 z-40 flex h-full w-full items-center justify-center duration-300 ease-in-out ${

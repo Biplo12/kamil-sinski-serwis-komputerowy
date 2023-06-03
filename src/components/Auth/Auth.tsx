@@ -79,7 +79,7 @@ const Auth: React.FC = (): JSX.Element => {
               onBlur={() => setFocus(focusInitial)}
             />
           </div>
-          <FormButton text='Zaloguj' handler={() => console.log('login')} />
+          <FormButton text='Login' handler={() => console.log('login')} />
         </div>
       </div>
     </div>

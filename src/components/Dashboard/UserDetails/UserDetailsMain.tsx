@@ -1,44 +1,22 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import useFetchUserById from '@/hooks/tanstack/Users/useFetchUserById';
+import useSaveUser from '@/hooks/Users/useSaveUser';
 
 import Loading from '@/components/Common/Loading';
 import TopBar from '@/components/Dashboard/Layout/TopBar';
+import UserInfo from '@/components/Dashboard/UserDetails/Partials/UserInfo';
 import UserNotFound from '@/components/Dashboard/UserDetails/Partials/UserNotFound';
-
-import { useAppDispatch } from '@/store/store-hooks';
-
-import { setUser } from '@/state/userSlice';
 
 interface IUserDetailsMain {
   sidebarState: boolean;
   userId: number;
 }
 
-interface IAxiosError {
-  response: {
-    data: {
-      message: string;
-    };
-  };
-}
-
 const UserDetailsMain: React.FC<IUserDetailsMain> = ({
   sidebarState,
   userId,
 }): JSX.Element => {
-  const dispatch = useAppDispatch();
-  const { data, isInitialLoading, error, isError } = useFetchUserById(
-    userId,
-    true
-  );
-  const axiosError = (error as IAxiosError)?.response?.data?.message;
-  const isUserNotFound = axiosError === 'User not found';
-
-  useEffect(() => {
-    if (!data?.result) return;
-    dispatch(setUser(data?.result));
-  }, [data?.result, dispatch]);
+  const { isInitialLoading, isError, isUserNotFound } = useSaveUser(userId);
 
   return (
     <div
@@ -56,9 +34,7 @@ const UserDetailsMain: React.FC<IUserDetailsMain> = ({
           <Loading />
         </div>
       )}
-      {/* {!isInitialLoading && !isError && (
-        <UserInfo setLoading={setLoading} loading={loading} />
-      )} */}
+      {!isInitialLoading && !isError && <UserInfo />}
       {isUserNotFound && <UserNotFound />}
       {isError && !isUserNotFound && (
         <div className='flex h-[70vh] w-full items-center justify-center'>

@@ -1,3 +1,4 @@
+import { ClerkProvider } from '@clerk/nextjs';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AppProps } from 'next/app';
 import { PostHogProvider } from 'posthog-js/react';
@@ -12,29 +13,33 @@ import useTrackPageViews from '@/hooks/useTrackPageViews';
 
 import { store } from '@/store';
 
+import { isProd } from '@/constant/env';
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      refetchOnWindowFocus: false,
-      retry: false,
+      refetchOnWindowFocus: isProd,
+      retry: isProd,
     },
   },
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
   const posthog = usePosthog();
-  posthog.capture('$pageview');
   useTrackPageViews(posthog);
 
   return (
     <>
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
+          {/* TODO:DELETE POSTHOG */}
           <PostHogProvider
             apiKey={process.env.NEXT_PUBLIC_POSTHOG_KEY as string}
             options={{ api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST }}
           >
-            <Component {...pageProps} />
+            <ClerkProvider {...pageProps}>
+              <Component {...pageProps} />
+            </ClerkProvider>
             <Toaster />
             {/* <Analytics /> */}
           </PostHogProvider>

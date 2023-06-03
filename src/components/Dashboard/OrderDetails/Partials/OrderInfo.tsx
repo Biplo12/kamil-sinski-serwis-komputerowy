@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 import useFetchUserById from '@/hooks/tanstack/Users/useFetchUserById';
 
 import RedirectButton from '@/components/Dashboard/Common/RedirectButton';
+import DeleteOrderDetails from '@/components/Dashboard/OrderDetails/Partials/DeleteOrderDetails';
 import EditOrderDetails from '@/components/Dashboard/OrderDetails/Partials/EditOrderDetails';
 import OrderInfoItem from '@/components/Dashboard/OrderDetails/Partials/OrderInfoItem';
 import VerticalTimeLine from '@/components/Dashboard/OrderDetails/Partials/VerticalTimeLine';
@@ -103,17 +104,18 @@ const OrderInfo: React.FC<IOrderInfo> = ({
                 ))}
               </div>
             </div>
-            <RedirectButton
-              label='User details'
-              path={`/admin/dashboard/manage-users/${userId}`}
-              disabled={isButtonDisabled}
-            />
             <div className='flex flex-col gap-5'>
               <h1 className='text-3xl font-semibold text-gray-800 dark:text-gray-100'>
                 Status:
               </h1>
               <VerticalTimeLine orderDetails={orderDetails} />
             </div>
+            <RedirectButton
+              label='User details'
+              path={`/admin/dashboard/manage-users/${userId}`}
+              disabled={isButtonDisabled}
+            />
+            <DeleteOrderDetails orderId={orderDetails?.orderId as number} />
           </div>
           {/* <ImageSlider /> */}
         </div>

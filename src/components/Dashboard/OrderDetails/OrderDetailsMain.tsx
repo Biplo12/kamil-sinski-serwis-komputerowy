@@ -1,27 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
-import useFetchOrderById from '@/hooks/tanstack/Orders/useFetchOrderById';
+import useSaveOrder from '@/hooks/useSaveOrder';
 
 import Loading from '@/components/Common/Loading';
 import TopBar from '@/components/Dashboard/Layout/TopBar';
 import OrderInfo from '@/components/Dashboard/OrderDetails/Partials/OrderInfo';
 import OrderNotFound from '@/components/Dashboard/OrderDetails/Partials/OrderNotFound';
 
-import { useAppDispatch } from '@/store/store-hooks';
-
-import { setOrder } from '@/state/orderSlice';
-
 interface IOrderDetailsMain {
   sidebarState: boolean;
   orderId: number;
-}
-
-interface IAxiosError {
-  response: {
-    data: {
-      message: string;
-    };
-  };
 }
 
 const OrderDetailsMain: React.FC<IOrderDetailsMain> = ({
@@ -29,18 +17,8 @@ const OrderDetailsMain: React.FC<IOrderDetailsMain> = ({
   orderId,
 }): JSX.Element => {
   const [loading, setLoading] = useState<boolean>(true);
-  const dispatch = useAppDispatch();
-  const { data, isInitialLoading, error, isError } = useFetchOrderById(
-    orderId,
-    true
-  );
-  const axiosError = (error as IAxiosError)?.response?.data?.message;
-  const isOrderNotFound = axiosError === 'Order not found';
 
-  useEffect(() => {
-    if (!data?.result) return;
-    dispatch(setOrder(data?.result));
-  }, [data?.result, dispatch]);
+  const { isInitialLoading, isError, isOrderNotFound } = useSaveOrder(orderId);
 
   return (
     <div

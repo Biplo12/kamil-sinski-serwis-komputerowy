@@ -1,35 +1,15 @@
 import React from 'react';
-import toast from 'react-hot-toast';
 
-import useDeleteUser from '@/hooks/tanstack/Users/useDeleteUser';
-import useFetchUsers from '@/hooks/tanstack/Users/useFetchUsers';
+import useDeleteUserCall from '@/hooks/Users/useDeleteUserCall';
 
 import Spinner from '@/components/Common/Spinner';
-
-import { useAppDispatch } from '@/store/store-hooks';
-
-import { setUsers } from '@/state/userSlice';
 
 interface IDeleteButton {
   userId: number;
 }
 
 const DeleteButton: React.FC<IDeleteButton> = ({ userId }): JSX.Element => {
-  const dispatch = useAppDispatch();
-  const { mutateAsync, isLoading } = useDeleteUser(userId);
-  const { refetch } = useFetchUsers(false);
-
-  const deleteUser = async () => {
-    try {
-      await mutateAsync();
-      const { data } = await refetch();
-      dispatch(setUsers(data.result));
-      toast.success('User deleted successfully');
-    } catch (error) {
-      toast.error('Error deleting user');
-    }
-  };
-
+  const { deleteUser, isLoading } = useDeleteUserCall(userId);
   return (
     <button
       onClick={() => deleteUser()}

@@ -19,7 +19,7 @@ const RedirectButton: React.FC<IRedirectButton> = ({
   return (
     <button
       onClick={handleRedirect}
-      className='bg-pylon focus:shadow-outline flex min-w-[100px] items-center justify-center rounded-lg px-3
+      className='bg-pylon focus:shadow-outline flex max-h-[40px] min-w-[70px] items-center justify-center rounded-lg px-3
       py-2 text-center font-bold
       text-white transition duration-300 ease-in-out hover:opacity-75 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
       disabled={disabled}
