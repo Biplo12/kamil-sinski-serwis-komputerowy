@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import useSaveUsers from '@/hooks/useSaveUsers';
+import useSaveUsers from '@/hooks/Users/useSaveUsers';
 
 import Navbar from '@/components/Dashboard/Layout/Navbar';
 import ResponsiveSidebar from '@/components/Dashboard/Layout/ResponsiveSidebar';

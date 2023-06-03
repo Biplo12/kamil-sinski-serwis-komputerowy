@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
-import useValidateOrderId from '@/hooks/useValidateOrderId';
+import useValidateOrderId from '@/hooks/Orders/useValidateOrderId';
 
 import Loading from '@/components/Common/Loading';
 import Navbar from '@/components/Dashboard/Layout/Navbar';
