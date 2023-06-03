@@ -73,13 +73,13 @@ const handler = async (
       status: 'new',
     };
 
-    const isInDB = await prisma.users.findUnique({
+    const isUserInDB = await prisma.users.findUnique({
       where: {
         email,
       },
     });
 
-    if (!isInDB) {
+    if (!isUserInDB) {
       await prisma.users.create({
         data: userData,
       });

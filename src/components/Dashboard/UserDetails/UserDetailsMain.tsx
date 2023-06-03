@@ -17,7 +17,6 @@ const UserDetailsMain: React.FC<IUserDetailsMain> = ({
   userId,
 }): JSX.Element => {
   const { isInitialLoading, isError, isUserNotFound } = useSaveUser(userId);
-
   return (
     <div
       className={`${
