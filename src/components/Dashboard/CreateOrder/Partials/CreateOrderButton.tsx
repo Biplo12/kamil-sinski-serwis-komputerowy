@@ -16,6 +16,7 @@ const CreateOrderButton: React.FC<ICreateOrderButton> = ({
 }): JSX.Element => {
   const { handleCreateOrder, isLoading, isSuccess, orderId } =
     useCreateOrderCall(inputValues);
+
   return (
     <div className='flex items-end justify-start gap-3'>
       <button
@@ -23,6 +24,7 @@ const CreateOrderButton: React.FC<ICreateOrderButton> = ({
       py-2 text-center font-bold
       text-white transition duration-300 ease-in-out hover:opacity-75 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
         onClick={handleCreateOrder}
+        disabled={isLoading}
       >
         {isLoading ? <Loading /> : 'Create order'}
       </button>

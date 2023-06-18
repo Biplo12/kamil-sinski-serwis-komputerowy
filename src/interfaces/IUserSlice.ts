@@ -15,4 +15,5 @@ export interface IUser {
 export default interface IUserSlice {
   users: IUser[] | null;
   userDetails: IUser | null;
+  isUserAuthenticated: boolean;
 }

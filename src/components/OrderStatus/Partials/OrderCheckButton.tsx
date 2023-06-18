@@ -24,11 +24,11 @@ const OrderCheckButton: React.FC<IOrderCheckButton> = ({
 }): JSX.Element => {
   const { refetch, isInitialLoading } = useFetchOrderById(orderInput, false);
   const dispatch = useAppDispatch();
-  const order = useAppSelector(selectOrder);
+  const orderSelector = useAppSelector(selectOrder);
 
   const handleResetToInitialState = () => {
     setOrderInput(null);
-    order.orderDetails ? dispatch(setOrder(null)) : null;
+    orderSelector.orderDetails ? dispatch(setOrder(null)) : null;
   };
 
   useEffect(() => {
@@ -36,6 +36,11 @@ const OrderCheckButton: React.FC<IOrderCheckButton> = ({
   }, [isInitialLoading, setLoading]);
 
   const checkOrder = async () => {
+    if (orderSelector?.orderDetails?.orderId === orderInput) {
+      toast.success('Zamówienie znalezione');
+      window.scrollTo(0, 1000);
+      return;
+    }
     const { error, data, isError } = await refetch();
     const err = error as CustomError;
     const order = data?.result;
@@ -47,6 +52,7 @@ const OrderCheckButton: React.FC<IOrderCheckButton> = ({
           repairingAt: order?.repairingAt,
           repairedAt: order?.repairedAt,
           status: order?.status,
+          orderId: order?.orderId,
         })
       );
       return;

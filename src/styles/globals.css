@@ -164,15 +164,3 @@ html {
 .MuiInputLabel-animated {
   color: white !important;
 }
-
-.cl-internal-b3fm6y {
-  display: none !important;
-}
-
-.cl-internal-w0f2qd input:webkit-autofill,
-.cl-internal-w0f2qd input:webkit-autofill:hover,
-.cl-internal-w0f2qd input:webkit-autofill:focus,
-.cl-internal-w0f2qd textarea:webkit-autofill,
-.cl-internal-w0f2qd textarea:webkit-autofill:hover {
-  color: red !important;
-}

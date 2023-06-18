@@ -1,4 +1,3 @@
-import { ClerkProvider } from '@clerk/nextjs';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AppProps } from 'next/app';
 import { PostHogProvider } from 'posthog-js/react';
@@ -37,9 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             apiKey={process.env.NEXT_PUBLIC_POSTHOG_KEY as string}
             options={{ api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST }}
           >
-            <ClerkProvider {...pageProps}>
-              <Component {...pageProps} />
-            </ClerkProvider>
+            <Component {...pageProps} />
             <Toaster />
             {/* <Analytics /> */}
           </PostHogProvider>
