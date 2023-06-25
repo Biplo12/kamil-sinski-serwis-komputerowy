@@ -1,7 +1,7 @@
 # Documentation: Kamil Sinski Serwis Komputerowy
 
 ## Overview
-Kamil Sinski Serwis Komputerowy is a computer service company website that has been remade using Tailwind, TypeScript, and Next.js. The website provides various features for both customers and administrators, including order tracking, service information, contact forms, and an admin dashboard for managing orders and users. The project's GitHub repository can be found at [https://github.com/Biplo12/kamil-sinski-serwis-komputerowy-Fullstack](https://github.com/Biplo12/kamil-sinski-serwis-komputerowy-Fullstack), and the deployed website is available at [https://www.kamilsinski.pl/](https://www.kamilsinski.pl/).
+Kamil Sinski Serwis Komputerowy is a computer service company website that has been remade using Tailwind, TypeScript, and Next.js. The website provides various features for both customers and administrators, including order tracking, service information, contact forms, and an admin dashboard for managing orders and users. Deployed website is available at [https://www.kamilsinski.pl/](https://www.kamilsinski.pl/).
 
 ## Features
 
@@ -17,9 +17,7 @@ The frontend of the website consists of the following pages:
 7. **Responsive Design**: The website is fully responsive, ensuring a consistent and user-friendly experience across different devices and screen sizes.
 
 ### Admin Dashboard
-The admin dashboard provides a secure and restricted area for authorized administrators to manage orders and users. The dashboard can be accessed on the development version of the website using the following credentials:
-- Email: admin@gmail.com
-- Password: admin123
+The admin dashboard provides a secure and restricted area for authorized administrators to manage orders and users. 
 
 The admin dashboard includes the following sections and functionality:
 
