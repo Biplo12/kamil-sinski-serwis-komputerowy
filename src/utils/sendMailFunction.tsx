@@ -44,7 +44,7 @@ const sendMailFunction = async ({
     },
   });
 
-  // await transporter.sendMail(emailBody);
+  await transporter.sendMail(emailBody);
 };
 
 export default sendMailFunction;

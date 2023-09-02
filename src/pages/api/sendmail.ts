@@ -3,6 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import missingArguments from '@/helpers/missingArguments';
 import validateMethod from '@/helpers/validateMethod';
 import sendMailFunction from '@/utils/sendMailFunction';
+
 type TRequestBody = {
   name: string;
   email: string;

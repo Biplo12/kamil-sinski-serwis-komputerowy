@@ -39,9 +39,11 @@ model Users {
   updatedAt   DateTime @updatedAt
 }
 
-model allowList{
+model signedUsers{
   id          String   @id @default(cuid()) @map("_id")
   email       String   @unique
+  password    String
+  isAdmin     Boolean @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
