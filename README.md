@@ -1,7 +1,7 @@
 # Documentation: Kamil Sinski Serwis Komputerowy
 
 ## Overview
-Kamil Sinski Serwis Komputerowy is a computer service company website that has been remade using Tailwind, TypeScript, and Next.js. The website provides various features for both customers and administrators, including order tracking, service information, contact forms, and an admin dashboard for managing orders and users. Deployed website is available at [https://www.kamilsinski.pl/](https://www.kamilsinski.pl/).
+Kamil Sinski Serwis Komputerowy is a computer service company website that has been remade using Tailwind, TypeScript, and Next.js. The website provides various features for both customers and administrators, including order tracking, service information, contact forms, and an admin dashboard for managing orders and users.
 
 ## Features
 
